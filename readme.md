@@ -3,20 +3,48 @@
 # SerpAPI
 ## Google  
 - [x] Organic
-- [ ] Maps 
-- [ ] LocalFinder 
-- [ ] News 
-- [ ] Events 
-- [ ] Images 
-- [ ] SearchByImage 
+- [x] Maps 
+- [x] LocalFinder 
+- [x] News 
+- [x] Events 
+- [x] Images 
+- [x] SearchByImage 
 - [x] Jobs 
 - [x] Autocomplete 
-- [ ] DatasetInfo 
-- [ ] AdsAdvertises 
-- [ ] AdsSearch 
+- [x] DatasetInfo 
+- [x] AdsAdvertises 
+- [x] AdsSearch 
+
+Example
+```rust
+fn client() -> DataForSeoClient {
+    dotenv::dotenv().ok();
+    let id = env::var("ID").unwrap();
+    let pass = env::var("PASSWORD").unwrap();
+
+    DataForSeoClient::new(id, pass)
+}
 
 
-## Bing
+
+#[tokio::test]
+async fn post() {
+    let client = client();
+    let mut request = KeywordsDataApiGoogleAdsSearchVolumeTaskPostRequest::new("ja".to_string(), 20636);
+    request.keywords = vec!["SEO".to_string()];
+    request.search_partners = Some(true);
+    let res = client
+        .keywords_data()
+        .google_ads()
+        .search_volume_task_post(vec![request])
+        .await;
+    println!("{:?}", res);
+}
+```
+
+
+TODO 
+Bing
 YouTube
 Yahoo
 Baidu
@@ -25,9 +53,20 @@ Seznam
 
 
 # Keyword Data API
+## Google
+- [x] Search Volume
+- [x] Keywords For Site
+- [x] Keywords For Keywords
+- [x] Ad Traffic By Keywords
+
 # Domain Analytics API
+TODO
+
 # DataForSEO Labs API
+TODO
+
 # Backlinks API
+TODO
 OnPage API
 Content Analysis API
 Content Generation API
