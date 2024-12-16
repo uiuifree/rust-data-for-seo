@@ -3,6 +3,14 @@ name = "data-for-seo"
 version = "0.1.0"
 edition = "2021"
 
+
+authors = ["uiuifree"]
+description = "DataForSEO API for Rust"
+license = "MIT"
+keywords = ["DataForSeo", "seo"]
+readme="readme.md"
+repository = "https://github.com/uiuifree/rust-data-for-seo"
+
 [dependencies]
 
 
