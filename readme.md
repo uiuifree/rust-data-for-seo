@@ -1,3 +1,6 @@
+# rust-data-for-seo
+
+`rust-data-for-seo` is a client library designed to make interacting with the [DataForSEO API](https://dataforseo.com/?aff=183967) simple and efficient in Rust. This library helps you access search engine and market data while leveraging Rust's speed and safety features.
 
 
 # SerpAPI
