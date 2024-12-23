@@ -67,7 +67,35 @@ TODO
 
 # Backlinks API
 TODO
-OnPage API
+
+
+# OnPage API
+- [ ] ID List 
+- [ ] Errors
+- [ ] Force Stop
+- [ ] Filters and Thresholds
+- [ ] Task Post
+- [ ] Tasks Ready
+- [ ] Summary
+- [ ] Pages
+- [ ] Pages By Resource
+- [ ] Resource
+- [ ] Duplicate Tags
+- [ ] Duplicate Content
+- [ ] Links
+- [ ] Redirect Chains
+- [ ] Non-Indexable
+- [ ] Waterfall
+- [ ] Keyword Density
+- [ ] Microdata
+- [ ] Raw HTML
+- [ ] Page Screenshot
+- [ ] Content Parsing
+- [ ] Content Parsing(Live)
+- [ ] Instant Pages(Live)
+- [ ] Lighthouse
+
+TODO
 Content Analysis API
 Content Generation API
 Merchant API

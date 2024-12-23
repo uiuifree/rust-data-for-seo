@@ -1,12 +1,14 @@
 mod id_list;
 mod serp;
 mod keywords_data;
+mod on_page;
 
 pub use id_list::*;
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 pub use serp::*;
 pub use keywords_data::*;
+pub use on_page::*;
 
 #[derive(Debug, Default, Serialize, Deserialize, Clone)]
 pub struct DataForSeoApiResponseData<R> {
