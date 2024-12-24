@@ -1,4 +1,4 @@
-use crate::entity::{SerpApiElementCarousel, SerpApiElementOrganic, SerpApiElementPaid, SerpApiElementRefinementChips, SerpApiGoogleOrganicTaskSpell};
+use crate::entity::{SerpApiElementAiOverview, SerpApiElementAnswerBox, SerpApiElementCarousel, SerpApiElementFeaturedSnippet, SerpApiElementHotelsPack, SerpApiElementKnowledgeGraph, SerpApiElementLocalPack, SerpApiElementMultiCarousel, SerpApiElementOrganic, SerpApiElementPaid, SerpApiElementPeopleAlsoSearch, SerpApiElementRefinementChips, SerpApiElementRelatedSearches, SerpApiGoogleOrganicTaskSpell};
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 
@@ -42,14 +42,109 @@ pub struct SerpApiGoogleOrganicTaskAdvanced {
 #[derive(Debug, Serialize, Deserialize, Clone)]
 #[serde(tag = "type")]
 pub enum SerpApiGoogleOrganicItem {
-    #[serde(rename = "organic")]
-    Organic(SerpApiElementOrganic),
-    #[serde(rename = "paid")]
-    Paid(SerpApiElementPaid),
-    #[serde(rename = "carousel")]
+    #[serde(rename="answer_box")]
+    AnswerBox(SerpApiElementAnswerBox),
+    // #[serde(rename="app")]
+    // App(SerpApiElementApp),
+    #[serde(rename="carousel")]
     Carousel(SerpApiElementCarousel),
+    #[serde(rename="multi_carousel")]
+    MultiCarousel(SerpApiElementMultiCarousel),
+    #[serde(rename="featured_snippet")]
+    FeaturedSnippet(SerpApiElementFeaturedSnippet),
+    // #[serde(rename="google_flights")]
+    // Organic(SerpApiElementOrganic),
+    // #[serde(rename="google_reviews")]
+    // Organic(SerpApiElementOrganic),
+    // #[serde(rename="google_posts")]
+    // Organic(SerpApiElementOrganic),
+    // #[serde(rename="images")]
+    // Organic(SerpApiElementImages),
+    // #[serde(rename="jobs")]
+    // Organic(SerpApiElementOrganic),
+    #[serde(rename="knowledge_graph")]
+    KnowledgeGraph(SerpApiElementKnowledgeGraph),
+    #[serde(rename="local_pack")]
+    LocalPack(SerpApiElementLocalPack),
+    #[serde(rename="hotels_pack")]
+    HotelsPack(SerpApiElementHotelsPack),
+    // #[serde(rename="map")]
+    // Organic(SerpApiElementMap),
+    #[serde(rename="organic")]
+    Organic(SerpApiElementOrganic),
+    #[serde(rename="paid")]
+    Paid(SerpApiElementPaid),
+    // #[serde(rename="people_also_ask")]
+    // PeopleAlsoSearch(SerpApiElementPeopleAlsoA),
+    #[serde(rename="related_searches")]
+    RelatedSearches(SerpApiElementRelatedSearches),
+    #[serde(rename="people_also_search")]
+    PeopleAlsoSearch(SerpApiElementPeopleAlsoSearch),
+    // #[serde(rename="shopping")]
+    // Organic(SerpApiElementOrganic),
+    // #[serde(rename="top_stories")]
+    // Organic(SerpApiElementOrganic),
+    // #[serde(rename="twitter")]
+    // Organic(SerpApiElementOrganic),
+    // #[serde(rename="video")]
+    // Organic(SerpApiElementOrganic),
+    // #[serde(rename="events")]
+    // Organic(SerpApiElementOrganic),
+    // #[serde(rename="mention_carousel")]
+    // Organic(SerpApiElementOrganic),
+    // #[serde(rename="recipes")]
+    // Organic(SerpApiElementOrganic),
+    // #[serde(rename="top_sights")]
+    // Organic(SerpApiElementOrganic),
+    // #[serde(rename="scholarly_articles")]
+    // Organic(SerpApiElementOrganic),
+    // #[serde(rename="popular_products")]
+    // Organic(SerpApiElementOrganic),
+    // #[serde(rename="podcasts")]
+    // Organic(SerpApiElementOrganic),
+    // #[serde(rename="questions_and_answers")]
+    // Organic(SerpApiElementOrganic),
+    // #[serde(rename="find_results_on")]
+    // Organic(SerpApiElementOrganic),
+    // #[serde(rename="stocks_box")]
+    // Organic(SerpApiElementOrganic),
+    // #[serde(rename="visual_stories")]
+    // Organic(SerpApiElementOrganic),
+    // #[serde(rename="commercial_units")]
+    // Organic(SerpApiElementOrganic),
+    // #[serde(rename="local_services")]
+    // Organic(SerpApiElementOrganic),
+    // #[serde(rename="google_hotels")]
+    // Organic(SerpApiElementOrganic),
+    // #[serde(rename="math_solver")]
+    // Organic(SerpApiElementOrganic),
+    // #[serde(rename="currency_box")]
+    // Organic(SerpApiElementOrganic),
+    // #[serde(rename="product_considerations")]
+    // Organic(SerpApiElementOrganic),
+    // #[serde(rename="found_on_web")]
+    // Organic(SerpApiElementOrganic),
+    // #[serde(rename="short_videos")]
+    // Organic(SerpApiElementOrganic),
+    // #[serde(rename="refine_products")]
+    // Organic(SerpApiElementOrganic),
+    // #[serde(rename="explore_brands")]
+    // Organic(SerpApiElementOrganic),
+    // #[serde(rename="perspectives")]
+    // Organic(SerpApiElementOrganic),
+    // #[serde(rename="discussions_and_forums")]
+    // Organic(SerpApiElementOrganic),
+    // #[serde(rename="compare_sites")]
+    // Organic(SerpApiElementOrganic),
+    // #[serde(rename="courses")]
+    // Organic(SerpApiElementOrganic),
+    #[serde(rename="ai_overview")]
+    AiOverview(SerpApiElementAiOverview),
+
     #[serde(untagged)]
     Unknown(Value),
+
+
 }
 
 // answer_box
@@ -69,7 +164,7 @@ pub enum SerpApiGoogleOrganicItem {
 // organic
 // paid
 // people_also_ask
-// related_searches
+//
 // people_also_search
 // shopping
 // top_stories

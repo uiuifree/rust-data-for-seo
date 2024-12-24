@@ -41,9 +41,17 @@ mod images_element;
 
 pub use about_this_result_element::*;
 pub use ads_advertiser::*;
+pub use answer_box::*;
+// pub use app::*;
 pub use ads_domain::*;
+pub use featured_snippet::*;
+pub use featured_snippet::*;
 pub use ads_multi_account_advertiser::*;
+pub use knowledge_graph::*;
 pub use ads_search::*;
+pub use hotels_pack::*;
+pub use map_search::*;
+pub use people_also_search::*;
 pub use advertiser::*;
 pub use ai_overview::*;
 pub use ai_overview_element::*;
