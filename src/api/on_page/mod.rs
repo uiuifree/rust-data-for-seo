@@ -1,4 +1,4 @@
-use crate::entity::{OnPageDataApiMicrodata, OnPageDataApiRawHtml, OnPageDataApiWaterfall};
+use crate::entity::{OnPageDataApiMicrodata, OnPageDataApiPage, OnPageDataApiRawHtml, OnPageDataApiWaterfall};
 use crate::{DataForSeoApiResponse, DataForSeoClient};
 use serde::{Deserialize, Serialize};
 use serde_json::{ Value};
@@ -27,7 +27,7 @@ impl OnPageApi<'_> {
             )
             .await
     }
-    pub async fn pages(&self, data: Vec<OnPageApiPagesPost>) -> DataForSeoApiResponse<Value> {
+    pub async fn pages(&self, data: Vec<OnPageApiPagesPost>) -> DataForSeoApiResponse<OnPageDataApiPage> {
         self.client
             .http_post("https://api.dataforseo.com/v3/on_page/pages", &data)
             .await

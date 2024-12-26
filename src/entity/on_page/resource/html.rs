@@ -54,7 +54,7 @@ pub struct OnPageResourceMeta {
     pub description_length: Option<i32>,
     pub render_blocking_scripts_count: Option<i32>,
     pub render_blocking_stylesheets_count: Option<i32>,
-    pub cumulative_layout_shift: Option<i32>,
+    pub cumulative_layout_shift: Option<f32>,
     pub social_media_tags: Option<Value>,
     pub content: Option<OnPageResourceMetaContent>,
     pub deprecated_tags: Option<Vec<String>>,
@@ -65,7 +65,7 @@ pub struct OnPageResourceMeta {
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct OnPageResourceMetaContent {
     pub plain_text_size: Option<i32>,
-    pub plain_text_rate: Option<i32>,
+    pub plain_text_rate: Option<f32>,
     pub plain_text_word_count: Option<f32>,
     pub automated_readability_index: Option<f32>,
     pub coleman_liau_readability_index: Option<f32>,

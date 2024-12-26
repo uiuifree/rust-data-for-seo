@@ -12,7 +12,7 @@ fn client() -> DataForSeoClient {
 #[cfg(test)]
 mod on_page {
     use crate::client;
-    use data_for_seo::{ OnPageApiPagesByResourcePost, OnPageApiRawHtmlPost, OnPageApiTaskPost, OnPageApiWaterfallPost};
+    use data_for_seo::{OnPageApiPagesByResourcePost, OnPageApiPagesPost, OnPageApiRawHtmlPost, OnPageApiTaskPost, OnPageApiWaterfallPost};
 
     #[tokio::test]
     async fn post() {
@@ -34,6 +34,19 @@ mod on_page {
         let res = client.on_page().pages_by_resource(vec![res]).await.unwrap();
         for task in res.tasks {
             println!("{:?}", task);
+            for result in task.result.unwrap() {
+                println!("{:?}", result);
+            }
+        }
+    }
+  #[tokio::test]
+    async fn pages() {
+        let client = client();
+        let id = "xxx".to_string();
+
+        let res = OnPageApiPagesPost::new(id);
+        let res = client.on_page().pages(vec![res]).await.unwrap();
+        for task in res.tasks {
             for result in task.result.unwrap() {
                 println!("{:?}", result);
             }
