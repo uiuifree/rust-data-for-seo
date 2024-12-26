@@ -12,7 +12,7 @@ fn client() -> DataForSeoClient {
 #[cfg(test)]
 mod on_page {
     use crate::client;
-    use data_for_seo::{OnPageApiPagesByResourcePost, OnPageApiPagesPost, OnPageApiRawHtmlPost, OnPageApiTaskPost, OnPageApiWaterfallPost};
+    use data_for_seo::{OnPageApiKeywordDensityPost, OnPageApiPagesByResourcePost, OnPageApiPagesPost, OnPageApiRawHtmlPost, OnPageApiTaskPost, OnPageApiWaterfallPost};
 
     #[tokio::test]
     async fn post() {
@@ -22,7 +22,6 @@ mod on_page {
         request.validate_micromarkup = Some(true);
         request.store_raw_html = Some(true);
         let res = client.on_page().task_post(vec![request]).await;
-
     }
     #[tokio::test]
     async fn page_by_resource() {
@@ -39,7 +38,7 @@ mod on_page {
             }
         }
     }
-  #[tokio::test]
+    #[tokio::test]
     async fn pages() {
         let client = client();
         let id = "xxx".to_string();
@@ -52,6 +51,7 @@ mod on_page {
             }
         }
     }
+
     #[tokio::test]
     async fn waterfall() {
         let client = client();
@@ -65,7 +65,26 @@ mod on_page {
                 println!("{:?}", result);
             }
         }
-    }    #[tokio::test]
+    }
+    #[tokio::test]
+    async fn keyword_density() {
+        let client = client();
+        let id = "xxx".to_string();
+        let mut res = OnPageApiKeywordDensityPost::new(id, 1);
+        res.order_by = Some(vec!["frequency,desc".to_string()]);
+        res.filters = Some(vec![vec!["frequency".to_string() ,">=".to_string(),"2".to_string()]]);
+        let res = client.on_page().keyword_density(vec![res]).await.unwrap();
+        for task in res.tasks {
+            // println!("{:?}", task);
+            for result in task.result.unwrap() {
+                for item in result.items.unwrap(){
+                    println!("{} {} {}", item.keyword.unwrap_or_default(),item.density.unwrap_or_default(),item.frequency.unwrap_or_default());
+
+                }
+            }
+        }
+    }
+    #[tokio::test]
     async fn raw_html() {
         let client = client();
         let id = "xxx".to_string();

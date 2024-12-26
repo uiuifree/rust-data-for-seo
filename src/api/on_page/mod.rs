@@ -1,4 +1,4 @@
-use crate::entity::{OnPageDataApiMicrodata, OnPageDataApiPage, OnPageDataApiRawHtml, OnPageDataApiWaterfall};
+use crate::entity::{OnPageDataApiKeywordDensity, OnPageDataApiMicrodata, OnPageDataApiPage, OnPageDataApiRawHtml, OnPageDataApiWaterfall};
 use crate::{DataForSeoApiResponse, DataForSeoClient};
 use serde::{Deserialize, Serialize};
 use serde_json::{ Value};
@@ -51,6 +51,14 @@ impl OnPageApi<'_> {
             .http_post("https://api.dataforseo.com/v3/on_page/waterfall", &data)
             .await
     }
+    pub async fn keyword_density(
+        &self,
+        data: Vec<OnPageApiKeywordDensityPost>,
+    ) -> DataForSeoApiResponse<OnPageDataApiKeywordDensity> {
+        self.client
+            .http_post("https://api.dataforseo.com/v3/on_page/keyword_density", &data)
+            .await
+    }
     pub async fn microdata(
         &self,
         data: Vec<OnPageApiMicrodataPost>,
@@ -82,6 +90,28 @@ impl OnPageApiWaterfallPost {
     }
 }
 #[derive(Debug, Default, Serialize, Deserialize, Clone)]
+pub struct OnPageApiKeywordDensityPost {
+    pub id: String,
+    pub keyword_length: i32,
+    pub url: Option<String>,
+    pub filters: Option<Vec<Vec<String>>>,
+    pub order_by: Option<Vec<String>>,
+    pub tag: Option<String>,
+    
+}
+
+impl OnPageApiKeywordDensityPost {
+    pub fn new(id: String, keyword_length:i32) -> OnPageApiKeywordDensityPost {
+        OnPageApiKeywordDensityPost {
+            id,
+            keyword_length,
+            url:None,
+            filters: None,
+            order_by: None,
+            tag: None,
+        }
+    }
+}#[derive(Debug, Default, Serialize, Deserialize, Clone)]
 pub struct OnPageApiMicrodataPost {
     pub id: String,
     pub url: String,
