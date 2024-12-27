@@ -38,7 +38,7 @@ pub struct OnPageResourceMeta {
     pub charset: Option<i32>,
     pub follow: Option<bool>,
     pub generator: Option<String>,
-    pub htags: Option<HashMap<String,Vec<String>>>,
+    pub htags: Option<HashMap<String,Option<Vec<String>>>>,
     pub description: Option<String>,
     pub favicon: Option<String>,
     pub meta_keywords: Option<String>,
