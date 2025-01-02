@@ -1,14 +1,14 @@
 mod id_list;
-mod serp;
 mod keywords_data;
 mod on_page;
+mod serp;
 
 pub use id_list::*;
+pub use keywords_data::*;
+pub use on_page::*;
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 pub use serp::*;
-pub use keywords_data::*;
-pub use on_page::*;
 
 #[derive(Debug, Default, Serialize, Deserialize, Clone)]
 pub struct DataForSeoApiResponseData<R> {
@@ -25,6 +25,7 @@ pub struct DataForSeoApiResponseData<R> {
     pub include_metadata: Option<bool>,
     pub tasks: Vec<DataForSeoApiTask<R>>,
 }
+
 #[derive(Debug, Default, Serialize, Deserialize, Clone)]
 pub struct DataForSeoApiTask<R> {
     pub id: String,
@@ -35,6 +36,26 @@ pub struct DataForSeoApiTask<R> {
     pub path: Vec<String>,
     pub data: Value,
     pub result: Option<Vec<R>>,
+}
+
+pub enum TaskStatus {
+    RequestSuccess(i32),
+    TaskWaiting(i32),
+    RateLimit(i32),
+    Other(i32),
+}
+impl<R> DataForSeoApiTask<R> {
+    pub fn task_status(&self) -> TaskStatus {
+        if 20000 <= self.status_code || self.status_code < 30000 {
+            TaskStatus::RequestSuccess(self.status_code)
+        } else if vec![40601, 40602].contains(&self.status_code) {
+            TaskStatus::TaskWaiting(self.status_code)
+        } else if vec![40202].contains(&self.status_code) {
+            TaskStatus::RateLimit(self.status_code)
+        } else {
+            TaskStatus::Other(self.status_code)
+        }
+    }
 }
 
 #[derive(Debug, Default, Serialize, Deserialize, Clone)]

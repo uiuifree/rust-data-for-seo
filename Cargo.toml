@@ -16,7 +16,7 @@ repository = "https://github.com/uiuifree/rust-data-for-seo"
 
 serde = { version = "~1", features = ["derive"] }
 serde_json = "~1"
-reqwest = { version = "0.12.9", features = ["json"] }
+reqwest = { version = "0.12.12", features = ["json"] }
 #reqwest = { version = "0.12.9", features = ["multipart", "blocking", "json", "stream"] }
 
 base64 = "0.22.1"
