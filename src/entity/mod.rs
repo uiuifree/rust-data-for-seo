@@ -41,6 +41,7 @@ pub struct DataForSeoApiTask<R> {
 pub enum TaskStatus {
     RequestSuccess(i32),
     TaskWaiting(i32),
+    TaskNotFound(i32),
     RateLimit(i32),
     Other(i32),
 }
@@ -50,6 +51,8 @@ impl<R> DataForSeoApiTask<R> {
             TaskStatus::RequestSuccess(self.status_code)
         } else if vec![40601, 40602].contains(&self.status_code) {
             TaskStatus::TaskWaiting(self.status_code)
+        } else if vec![40401,].contains(&self.status_code) {
+            TaskStatus::TaskNotFound(self.status_code)
         } else if vec![40202].contains(&self.status_code) {
             TaskStatus::RateLimit(self.status_code)
         } else {
