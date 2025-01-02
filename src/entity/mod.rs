@@ -38,6 +38,7 @@ pub struct DataForSeoApiTask<R> {
     pub result: Option<Vec<R>>,
 }
 
+#[derive(Debug,Clone)]
 pub enum TaskStatus {
     RequestSuccess(i32),
     TaskWaiting(i32),
