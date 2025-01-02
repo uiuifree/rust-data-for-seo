@@ -48,7 +48,7 @@ pub enum TaskStatus {
 }
 impl<R> DataForSeoApiTask<R> {
     pub fn task_status(&self) -> TaskStatus {
-        if 20000 <= self.status_code || self.status_code < 30000 {
+        if 20000 <= self.status_code && self.status_code < 30000 {
             TaskStatus::RequestSuccess(self.status_code)
         } else if vec![40601, 40602].contains(&self.status_code) {
             TaskStatus::TaskWaiting(self.status_code)
