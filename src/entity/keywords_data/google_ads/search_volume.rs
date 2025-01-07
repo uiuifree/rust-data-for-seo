@@ -1,6 +1,3 @@
-
-
-
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Default, Serialize, Deserialize, Clone)]
@@ -19,11 +16,9 @@ pub struct KeywordsDataApiGoogleAdsSearchVolumeTask {
     pub monthly_searches: Option<Vec<KeywordsDataApiGoogleAdsSearchVolumeTaskMonthlySearch>>,
 }
 
-
 #[derive(Debug, Default, Serialize, Deserialize, Clone)]
-pub struct KeywordsDataApiGoogleAdsSearchVolumeTaskMonthlySearch{
+pub struct KeywordsDataApiGoogleAdsSearchVolumeTaskMonthlySearch {
     pub year: Option<i32>,
     pub month: Option<i32>,
     pub search_volume: Option<i32>,
-
 }

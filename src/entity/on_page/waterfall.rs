@@ -1,5 +1,5 @@
-use serde::{Deserialize, Serialize};
 use crate::entity::OnPageDataApiCrawlStatus;
+use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Default, Serialize, Deserialize, Clone)]
 pub struct OnPageDataApiWaterfall {
@@ -43,4 +43,3 @@ pub struct OnPageDataApiWaterfallItemResourceLocation {
     pub offset_left: Option<i32>,
     pub offset_top: Option<i32>,
 }
-

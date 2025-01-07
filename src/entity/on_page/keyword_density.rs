@@ -1,5 +1,5 @@
-use serde::{Deserialize, Serialize};
 use crate::entity::OnPageDataApiCrawlStatus;
+use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Default, Serialize, Deserialize, Clone)]
 pub struct OnPageDataApiKeywordDensity {
@@ -15,4 +15,3 @@ pub struct OnPageDataApiKeywordDensityItem {
     pub frequency: Option<i32>,
     pub density: Option<f32>,
 }
-

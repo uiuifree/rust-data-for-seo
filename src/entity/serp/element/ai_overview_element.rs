@@ -1,8 +1,6 @@
-use crate::entity::{
-    SerpApiElementAiOverviewReference, SerpApiRectangle,
-};
-use serde::{Deserialize, Serialize};
 use crate::entity::serp::element::images_element::SerpApiElementImagesElement;
+use crate::entity::{SerpApiElementAiOverviewReference, SerpApiRectangle};
+use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct SerpApiElementAiOverviewElement {

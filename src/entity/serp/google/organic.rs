@@ -1,4 +1,10 @@
-use crate::entity::{SerpApiElementAiOverview, SerpApiElementAnswerBox, SerpApiElementCarousel, SerpApiElementFeaturedSnippet, SerpApiElementHotelsPack, SerpApiElementKnowledgeGraph, SerpApiElementLocalPack, SerpApiElementMultiCarousel, SerpApiElementOrganic, SerpApiElementPaid, SerpApiElementPeopleAlsoSearch, SerpApiElementRefinementChips, SerpApiElementRelatedSearches, SerpApiGoogleOrganicTaskSpell};
+use crate::entity::{
+    SerpApiElementAiOverview, SerpApiElementAnswerBox, SerpApiElementCarousel,
+    SerpApiElementFeaturedSnippet, SerpApiElementHotelsPack, SerpApiElementKnowledgeGraph,
+    SerpApiElementLocalPack, SerpApiElementMultiCarousel, SerpApiElementOrganic,
+    SerpApiElementPaid, SerpApiElementPeopleAlsoAsk, SerpApiElementPeopleAlsoSearch,
+    SerpApiElementRefinementChips, SerpApiElementRelatedSearches, SerpApiGoogleOrganicTaskSpell,
+};
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 
@@ -40,17 +46,17 @@ pub struct SerpApiGoogleOrganicTaskAdvanced {
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
-#[serde(tag = "type")]
+#[serde(tag = "type", rename_all = "snake_case")]
 pub enum SerpApiGoogleOrganicItem {
-    #[serde(rename="answer_box")]
+    #[serde(rename = "answer_box")]
     AnswerBox(SerpApiElementAnswerBox),
     // #[serde(rename="app")]
     // App(SerpApiElementApp),
-    #[serde(rename="carousel")]
+    #[serde(rename = "carousel")]
     Carousel(SerpApiElementCarousel),
-    #[serde(rename="multi_carousel")]
+    #[serde(rename = "multi_carousel")]
     MultiCarousel(SerpApiElementMultiCarousel),
-    #[serde(rename="featured_snippet")]
+    #[serde(rename = "featured_snippet")]
     FeaturedSnippet(SerpApiElementFeaturedSnippet),
     // #[serde(rename="google_flights")]
     // Organic(SerpApiElementOrganic),
@@ -62,23 +68,25 @@ pub enum SerpApiGoogleOrganicItem {
     // Organic(SerpApiElementImages),
     // #[serde(rename="jobs")]
     // Organic(SerpApiElementOrganic),
-    #[serde(rename="knowledge_graph")]
+    #[serde(rename = "knowledge_graph")]
     KnowledgeGraph(SerpApiElementKnowledgeGraph),
-    #[serde(rename="local_pack")]
+    #[serde(rename = "local_pack")]
     LocalPack(SerpApiElementLocalPack),
-    #[serde(rename="hotels_pack")]
+    #[serde(rename = "hotels_pack")]
     HotelsPack(SerpApiElementHotelsPack),
     // #[serde(rename="map")]
     // Organic(SerpApiElementMap),
-    #[serde(rename="organic")]
+    #[serde(rename = "people_also_ask")]
+    PeopleAlsoAsk(SerpApiElementPeopleAlsoAsk),
+
+    #[serde(rename = "organic")]
     Organic(SerpApiElementOrganic),
-    #[serde(rename="paid")]
+    #[serde(rename = "paid")]
     Paid(SerpApiElementPaid),
-    // #[serde(rename="people_also_ask")]
-    // PeopleAlsoSearch(SerpApiElementPeopleAlsoA),
-    #[serde(rename="related_searches")]
+    #[serde(rename = "related_searches")]
     RelatedSearches(SerpApiElementRelatedSearches),
-    #[serde(rename="people_also_search")]
+
+    #[serde(rename = "people_also_search")]
     PeopleAlsoSearch(SerpApiElementPeopleAlsoSearch),
     // #[serde(rename="shopping")]
     // Organic(SerpApiElementOrganic),
@@ -138,13 +146,11 @@ pub enum SerpApiGoogleOrganicItem {
     // Organic(SerpApiElementOrganic),
     // #[serde(rename="courses")]
     // Organic(SerpApiElementOrganic),
-    #[serde(rename="ai_overview")]
+    #[serde(rename = "ai_overview")]
     AiOverview(SerpApiElementAiOverview),
 
     #[serde(untagged)]
     Unknown(Value),
-
-
 }
 
 // answer_box
@@ -204,8 +210,6 @@ pub struct SerpApiGoogleOrganicItemPaidExtra {
 
 // --- item --------------------------------------------//
 
-
-
 // #[derive(Debug, Serialize, Deserialize, Clone)]
 // pub struct SerpApiElementFaq {
 //     #[serde(rename = "type")]
@@ -215,7 +219,6 @@ pub struct SerpApiGoogleOrganicItemPaidExtra {
 //     pub url: Option<String>,
 //     pub domain: Option<String>,
 // }
-
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct SerpApiElementHotelsPackElementPrice {

@@ -82,7 +82,7 @@ async fn test_fixed() {
     }
 }
 #[tokio::test]
-async fn test() {
+async fn test1() {
     let client = client();
 
     let mut request = SerpApiGoogleOrganicTaskPostRequest::new("ja".to_string(), 1009307);
@@ -111,8 +111,12 @@ async fn test() {
                     SerpApiGoogleOrganicItem::Organic(v) => {
                         println!("organic {:?}", v);
                     }
+                    SerpApiGoogleOrganicItem::PeopleAlsoAsk(v) => {
+                        println!("PeopleAlsoAsk {:?}", v);
+                    }
                     SerpApiGoogleOrganicItem::Unknown(v) => {
-                        println!("Unknown");
+                        println!("type field: {:?}", v["type"]);
+                        println!("Unknown {:?} {:?}", v.get("type"), v);
                     }
                     _ => {
                         println!("other");

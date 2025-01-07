@@ -77,10 +77,10 @@ TODO
 - [ ] Errors
 - [ ] Force Stop
 - [ ] Filters and Thresholds
-- [ ] Task Post
+- [x] Task Post
 - [ ] Tasks Ready
 - [ ] Summary
-- [ ] Pages
+- [x] Pages
 - [ ] Pages By Resource
 - [ ] Resource
 - [ ] Duplicate Tags
@@ -88,10 +88,10 @@ TODO
 - [ ] Links
 - [ ] Redirect Chains
 - [ ] Non-Indexable
-- [ ] Waterfall
-- [ ] Keyword Density
-- [ ] Microdata
-- [ ] Raw HTML
+- [x] Waterfall
+- [x] Keyword Density
+- [x] Microdata
+- [x] Raw HTML
 - [ ] Page Screenshot
 - [ ] Content Parsing
 - [ ] Content Parsing(Live)

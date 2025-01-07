@@ -1,5 +1,5 @@
-use serde::{Deserialize, Serialize};
 use crate::entity::OnPageDataApiCrawlStatus;
+use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Default, Serialize, Deserialize, Clone)]
 pub struct OnPageDataApiPageScreensShot {
@@ -13,4 +13,3 @@ pub struct OnPageDataApiPageScreensShot {
 pub struct OnPageDataApiPageScreensShotItem {
     pub image: Option<String>,
 }
-

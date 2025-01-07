@@ -16,6 +16,8 @@ pub struct DataForSeoClient {
     token: String,
 }
 
+
+
 impl DataForSeoClient {
     pub fn new<T: Into<String>>(id: T, password: T) -> DataForSeoClient {
         DataForSeoClient {
@@ -129,30 +131,30 @@ impl DataForSeoClient {
         let request = build.json(&json!(value));
         DataForSeoClient::http_response_reqwest(request.send().await).await
     }
-    pub(crate) async fn http_put<P, R>(&self, url: &str, value: &P) -> DataForSeoApiResponse<R>
-    where
-        P: serde::Serialize,
-        R: for<'de> serde::Deserialize<'de>,
-    {
-        let build = builder2(Url::parse(url).unwrap(), Method::PUT, self.token.as_str());
-
-        let request = build.json(&json!(value));
-        DataForSeoClient::http_response_reqwest(request.send().await).await
-    }
-    pub(crate) async fn http_delete<P, R>(&self, url: &str, value: &P) -> DataForSeoApiResponse<R>
-    where
-        P: serde::Serialize,
-        R: for<'de> serde::Deserialize<'de>,
-    {
-        let build = builder2(
-            Url::parse(url).unwrap(),
-            Method::DELETE,
-            self.token.as_str(),
-        );
-
-        let request = build.json(&json!(value));
-        DataForSeoClient::http_response_reqwest(request.send().await).await
-    }
+    // pub(crate) async fn http_put<P, R>(&self, url: &str, value: &P) -> DataForSeoApiResponse<R>
+    // where
+    //     P: serde::Serialize,
+    //     R: for<'de> serde::Deserialize<'de>,
+    // {
+    //     let build = builder2(Url::parse(url).unwrap(), Method::PUT, self.token.as_str());
+    //
+    //     let request = build.json(&json!(value));
+    //     DataForSeoClient::http_response_reqwest(request.send().await).await
+    // }
+    // pub(crate) async fn http_delete<P, R>(&self, url: &str, value: &P) -> DataForSeoApiResponse<R>
+    // where
+    //     P: serde::Serialize,
+    //     R: for<'de> serde::Deserialize<'de>,
+    // {
+    //     let build = builder2(
+    //         Url::parse(url).unwrap(),
+    //         Method::DELETE,
+    //         self.token.as_str(),
+    //     );
+    //
+    //     let request = build.json(&json!(value));
+    //     DataForSeoClient::http_response_reqwest(request.send().await).await
+    // }
     // pub(crate) async fn http_post_data<R>(&self, url: &str, content: Vec<u8>) -> DataForSeoApiResponse<R>
     // where
     //     R: for<'de> serde::Deserialize<'de>,

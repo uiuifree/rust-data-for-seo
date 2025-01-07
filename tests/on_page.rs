@@ -12,7 +12,10 @@ fn client() -> DataForSeoClient {
 #[cfg(test)]
 mod on_page {
     use crate::client;
-    use data_for_seo::{OnPageApiKeywordDensityPost, OnPageApiPagesByResourcePost, OnPageApiPagesPost, OnPageApiRawHtmlPost, OnPageApiTaskPost, OnPageApiWaterfallPost};
+    use data_for_seo::{
+        OnPageApiKeywordDensityPost, OnPageApiPagesByResourcePost, OnPageApiPagesPost,
+        OnPageApiRawHtmlPost, OnPageApiTaskPost, OnPageApiWaterfallPost,
+    };
 
     #[tokio::test]
     async fn post() {
@@ -72,14 +75,22 @@ mod on_page {
         let id = "xxx".to_string();
         let mut res = OnPageApiKeywordDensityPost::new(id, 1);
         res.order_by = Some(vec!["frequency,desc".to_string()]);
-        res.filters = Some(vec![vec!["frequency".to_string() ,">=".to_string(),"2".to_string()]]);
+        res.filters = Some(vec![vec![
+            "frequency".to_string(),
+            ">=".to_string(),
+            "2".to_string(),
+        ]]);
         let res = client.on_page().keyword_density(vec![res]).await.unwrap();
         for task in res.tasks {
             // println!("{:?}", task);
             for result in task.result.unwrap() {
-                for item in result.items.unwrap(){
-                    println!("{} {} {}", item.keyword.unwrap_or_default(),item.density.unwrap_or_default(),item.frequency.unwrap_or_default());
-
+                for item in result.items.unwrap() {
+                    println!(
+                        "{} {} {}",
+                        item.keyword.unwrap_or_default(),
+                        item.density.unwrap_or_default(),
+                        item.frequency.unwrap_or_default()
+                    );
                 }
             }
         }

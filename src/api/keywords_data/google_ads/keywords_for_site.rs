@@ -1,9 +1,9 @@
-use crate::{DataForSeoApiResponse};
+use crate::api::keywords_data::google_ads::KeywordsDataApiGoogle;
+use crate::api::keywords_data::KeywordsDataApiTaskReadyResult;
+use crate::entity::KeywordsDataApiGoogleAdsKeywordsForSiteTask;
+use crate::DataForSeoApiResponse;
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
-use crate::api::keywords_data::{ KeywordsDataApiTaskReadyResult};
-use crate::api::keywords_data::google_ads::KeywordsDataApiGoogle;
-use crate::entity::KeywordsDataApiGoogleAdsKeywordsForSiteTask;
 
 /// KeywordsForSite
 /// https://docs.dataforseo.com/v3/keywords_data/google_ads/keywords_for_site/task_post/?bash
@@ -19,11 +19,21 @@ impl KeywordsDataApiGoogle<'_> {
             )
             .await
     }
-    pub async fn keywords_for_site_tasks_ready(&self) -> DataForSeoApiResponse<KeywordsDataApiTaskReadyResult> {
-        self.client.keywords_data().task_ready_se("google/keywords_for_site").await
+    pub async fn keywords_for_site_tasks_ready(
+        &self,
+    ) -> DataForSeoApiResponse<KeywordsDataApiTaskReadyResult> {
+        self.client
+            .keywords_data()
+            .task_ready_se("google/keywords_for_site")
+            .await
     }
-    pub async fn keywords_for_site_tasks_fixed(&self) -> DataForSeoApiResponse<KeywordsDataApiTaskReadyResult> {
-        self.client.keywords_data().task_fixed_se("google/keywords_for_site").await
+    pub async fn keywords_for_site_tasks_fixed(
+        &self,
+    ) -> DataForSeoApiResponse<KeywordsDataApiTaskReadyResult> {
+        self.client
+            .keywords_data()
+            .task_fixed_se("google/keywords_for_site")
+            .await
     }
     pub async fn keywords_for_site_task_get(
         &self,
@@ -68,7 +78,6 @@ pub struct KeywordsDataApiGoogleAdsKeywordsForSiteTaskPostRequest {
     pub postback_url: Option<String>,
     pub pingback_url: Option<String>,
     pub tag: Option<String>,
-
 }
 impl KeywordsDataApiGoogleAdsKeywordsForSiteTaskPostRequest {
     pub fn new(language_code: String, location_code: i32) -> Self {

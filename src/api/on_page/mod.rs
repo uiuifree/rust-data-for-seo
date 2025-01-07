@@ -1,7 +1,10 @@
-use crate::entity::{OnPageDataApiKeywordDensity, OnPageDataApiMicrodata, OnPageDataApiPage, OnPageDataApiRawHtml, OnPageDataApiWaterfall};
+use crate::entity::{
+    OnPageDataApiKeywordDensity, OnPageDataApiMicrodata, OnPageDataApiPage, OnPageDataApiRawHtml,
+    OnPageDataApiWaterfall,
+};
 use crate::{DataForSeoApiResponse, DataForSeoClient};
 use serde::{Deserialize, Serialize};
-use serde_json::{ Value};
+use serde_json::Value;
 
 pub struct OnPageApi<'a> {
     client: &'a DataForSeoClient,
@@ -27,7 +30,10 @@ impl OnPageApi<'_> {
             )
             .await
     }
-    pub async fn pages(&self, data: Vec<OnPageApiPagesPost>) -> DataForSeoApiResponse<OnPageDataApiPage> {
+    pub async fn pages(
+        &self,
+        data: Vec<OnPageApiPagesPost>,
+    ) -> DataForSeoApiResponse<OnPageDataApiPage> {
         self.client
             .http_post("https://api.dataforseo.com/v3/on_page/pages", &data)
             .await
@@ -56,7 +62,10 @@ impl OnPageApi<'_> {
         data: Vec<OnPageApiKeywordDensityPost>,
     ) -> DataForSeoApiResponse<OnPageDataApiKeywordDensity> {
         self.client
-            .http_post("https://api.dataforseo.com/v3/on_page/keyword_density", &data)
+            .http_post(
+                "https://api.dataforseo.com/v3/on_page/keyword_density",
+                &data,
+            )
             .await
     }
     pub async fn microdata(
@@ -97,21 +106,21 @@ pub struct OnPageApiKeywordDensityPost {
     pub filters: Option<Vec<Vec<String>>>,
     pub order_by: Option<Vec<String>>,
     pub tag: Option<String>,
-    
 }
 
 impl OnPageApiKeywordDensityPost {
-    pub fn new(id: String, keyword_length:i32) -> OnPageApiKeywordDensityPost {
+    pub fn new(id: String, keyword_length: i32) -> OnPageApiKeywordDensityPost {
         OnPageApiKeywordDensityPost {
             id,
             keyword_length,
-            url:None,
+            url: None,
             filters: None,
             order_by: None,
             tag: None,
         }
     }
-}#[derive(Debug, Default, Serialize, Deserialize, Clone)]
+}
+#[derive(Debug, Default, Serialize, Deserialize, Clone)]
 pub struct OnPageApiMicrodataPost {
     pub id: String,
     pub url: String,

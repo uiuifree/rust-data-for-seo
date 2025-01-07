@@ -1,6 +1,6 @@
+use crate::entity::serp::element::images_element::SerpApiElementImagesElement;
 use crate::entity::{SerpApiElementAboutThisResultElement, SerpApiPrice, SerpApiRating};
 use serde::{Deserialize, Serialize};
-use crate::entity::serp::element::images_element::SerpApiElementImagesElement;
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct SerpApiElementRelatedResult {

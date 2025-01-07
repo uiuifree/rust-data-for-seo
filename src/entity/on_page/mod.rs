@@ -1,19 +1,19 @@
+mod keyword_density;
 mod microdata;
+mod page_screenshot;
+mod pages;
 mod raw_html;
 mod resource;
-mod keyword_density;
-mod page_screenshot;
 mod waterfall;
-mod pages;
 
+pub use keyword_density::*;
 pub use microdata::*;
+pub use page_screenshot::*;
+pub use pages::*;
 pub use raw_html::*;
 pub use resource::*;
-pub use pages::*;
-pub use keyword_density::*;
-pub use page_screenshot::*;
-pub use waterfall::*;
 use serde::{Deserialize, Serialize};
+pub use waterfall::*;
 
 #[derive(Debug, Default, Serialize, Deserialize, Clone)]
 pub struct OnPageDataApiCrawlStatus {

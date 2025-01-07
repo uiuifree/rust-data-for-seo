@@ -1,7 +1,10 @@
+use crate::entity::serp::element::images_element::SerpApiElementImagesElement;
+use crate::entity::{
+    SerpApiElementAboutThisResultElement, SerpApiElementFaqBox, SerpApiElementLinkElement,
+    SerpApiElementRelatedResult, SerpApiPrice, SerpApiRating, SerpApiRectangle,
+};
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
-use crate::entity::{SerpApiElementAboutThisResultElement, SerpApiElementFaqBox, SerpApiElementLinkElement, SerpApiElementRelatedResult, SerpApiPrice, SerpApiRating, SerpApiRectangle};
-use crate::entity::serp::element::images_element::SerpApiElementImagesElement;
 
 /// Organic
 #[derive(Debug, Serialize, Deserialize, Clone)]

@@ -1,6 +1,6 @@
-use std::collections::HashMap;
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
+use std::collections::HashMap;
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct OnPageResourceHtml {
@@ -38,7 +38,7 @@ pub struct OnPageResourceMeta {
     pub charset: Option<i32>,
     pub follow: Option<bool>,
     pub generator: Option<String>,
-    pub htags: Option<HashMap<String,Option<Vec<String>>>>,
+    pub htags: Option<HashMap<String, Option<Vec<String>>>>,
     pub description: Option<String>,
     pub favicon: Option<String>,
     pub meta_keywords: Option<String>,
@@ -120,7 +120,6 @@ pub struct OnPageResourceHtmlPageTiming {
 pub struct OnPageResourceHtmlCacheControl {
     pub cachable: Option<bool>,
     pub ttl: Option<i32>,
-
 }
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct OnPageResourceHtmlWebsiteChecks {
@@ -181,8 +180,6 @@ pub struct OnPageResourceHtmlWebsiteChecks {
     pub canonical_to_redirect: Option<bool>,
     pub canonical_to_broken: Option<bool>,
     pub recursive_canonical: Option<bool>,
-
-
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
@@ -190,5 +187,4 @@ pub struct OnPageResourceHtmlLastModified {
     pub header: Option<String>,
     pub sitemap: Option<String>,
     pub meta_tag: Option<String>,
-
 }

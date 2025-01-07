@@ -1,9 +1,9 @@
-use crate::{DataForSeoApiResponse};
+use crate::api::keywords_data::google_ads::KeywordsDataApiGoogle;
+use crate::api::keywords_data::KeywordsDataApiTaskReadyResult;
+use crate::entity::KeywordsDataApiGoogleAdsSearchVolumeTask;
+use crate::DataForSeoApiResponse;
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
-use crate::api::keywords_data::{ KeywordsDataApiTaskReadyResult};
-use crate::api::keywords_data::google_ads::KeywordsDataApiGoogle;
-use crate::entity::KeywordsDataApiGoogleAdsSearchVolumeTask;
 
 /// SearchVolume
 /// https://docs.dataforseo.com/v3/keywords_data/google_ads/search_volume/task_post/?bash
@@ -19,11 +19,21 @@ impl KeywordsDataApiGoogle<'_> {
             )
             .await
     }
-    pub async fn search_volume_tasks_ready(&self) -> DataForSeoApiResponse<KeywordsDataApiTaskReadyResult> {
-        self.client.keywords_data().task_ready_se("google/search_volume").await
+    pub async fn search_volume_tasks_ready(
+        &self,
+    ) -> DataForSeoApiResponse<KeywordsDataApiTaskReadyResult> {
+        self.client
+            .keywords_data()
+            .task_ready_se("google/search_volume")
+            .await
     }
-    pub async fn search_volume_tasks_fixed(&self) -> DataForSeoApiResponse<KeywordsDataApiTaskReadyResult> {
-        self.client.keywords_data().task_fixed_se("google/search_volume").await
+    pub async fn search_volume_tasks_fixed(
+        &self,
+    ) -> DataForSeoApiResponse<KeywordsDataApiTaskReadyResult> {
+        self.client
+            .keywords_data()
+            .task_fixed_se("google/search_volume")
+            .await
     }
     pub async fn search_volume_task_get(
         &self,
@@ -31,7 +41,8 @@ impl KeywordsDataApiGoogle<'_> {
     ) -> DataForSeoApiResponse<KeywordsDataApiGoogleAdsSearchVolumeTask> {
         self.client
             .http_get(
-                ("https://api.dataforseo.com/v3/keywords_data/google_ads/search_volume/task_get/".to_string()
+                ("https://api.dataforseo.com/v3/keywords_data/google_ads/search_volume/task_get/"
+                    .to_string()
                     + id)
                     .as_str(),
                 &{},
@@ -67,7 +78,6 @@ pub struct KeywordsDataApiGoogleAdsSearchVolumeTaskPostRequest {
     pub postback_url: Option<String>,
     pub pingback_url: Option<String>,
     pub tag: Option<String>,
-
 }
 impl KeywordsDataApiGoogleAdsSearchVolumeTaskPostRequest {
     pub fn new(language_code: String, location_code: i32) -> Self {

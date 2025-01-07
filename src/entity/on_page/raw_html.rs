@@ -1,5 +1,5 @@
-use serde::{Deserialize, Serialize};
 use crate::entity::OnPageDataApiCrawlStatus;
+use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Default, Serialize, Deserialize, Clone)]
 pub struct OnPageDataApiRawHtml {
@@ -13,4 +13,3 @@ pub struct OnPageDataApiRawHtml {
 pub struct OnPageDataApiRawHtmlItem {
     pub html: Option<String>,
 }
-

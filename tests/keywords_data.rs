@@ -1,6 +1,4 @@
-use data_for_seo::{
-    DataForSeoClient,
-};
+use data_for_seo::DataForSeoClient;
 use std::env;
 
 fn client() -> DataForSeoClient {
@@ -11,11 +9,9 @@ fn client() -> DataForSeoClient {
     DataForSeoClient::new(id, pass)
 }
 
-
 #[cfg(test)]
 mod search_volume {
     use crate::client;
-    use data_for_seo::{KeywordsDataApiGoogleAdsSearchVolumeTaskPostRequest, SerpApiGoogleAutoCompleteTaskPostRequest, SerpApiGoogleJobsTaskPostRequest};
 
     #[tokio::test]
     async fn post() {
@@ -37,7 +33,8 @@ mod search_volume {
         let id = "xxx";
         let res = client
             .keywords_data()
-            .google_ads().search_volume_task_get(id)
+            .google_ads()
+            .search_volume_task_get(id)
             .await
             .unwrap();
         for task in res.tasks {
@@ -51,7 +48,6 @@ mod search_volume {
 #[cfg(test)]
 mod keyword_for_site {
     use crate::client;
-    use data_for_seo::{KeywordsDataApiGoogleAdsKeywordsForSiteTaskPostRequest, KeywordsDataApiGoogleAdsSearchVolumeTaskPostRequest, SerpApiGoogleAutoCompleteTaskPostRequest, SerpApiGoogleJobsTaskPostRequest};
 
     #[tokio::test]
     async fn post() {
@@ -67,15 +63,14 @@ mod keyword_for_site {
         let id = "xxx";
         let res = client
             .keywords_data()
-            .google_ads().keywords_for_site_task_get(id)
+            .google_ads()
+            .keywords_for_site_task_get(id)
             .await
             .unwrap();
         for task in res.tasks {
-            println!("{:?}",task.data);
+            println!("{:?}", task.data);
             for result in task.result.unwrap() {
                 // println!("{:?}", result);
-
-
             }
         }
     }

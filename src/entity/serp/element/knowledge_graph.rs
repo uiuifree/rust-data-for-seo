@@ -17,6 +17,6 @@ pub struct SerpApiElementKnowledgeGraph {
     pub image_url: Option<String>,
     pub logo_url: Option<String>,
     pub cid: Option<String>,
-    pub items: Option<SerpApiElementHotelsPackElement>,
+    pub items: Option<Vec<SerpApiElementHotelsPackElement>>,
     pub rectangle: Option<SerpApiRectangle>,
 }

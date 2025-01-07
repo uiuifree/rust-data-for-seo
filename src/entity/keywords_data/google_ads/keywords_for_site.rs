@@ -17,13 +17,11 @@ pub struct KeywordsDataApiGoogleAdsKeywordsForSiteTask {
     pub keyword_annotations: Option<KeywordsDataApiGoogleAdsKeywordsForSiteTaskKeywordAnnotations>,
 }
 
-
 #[derive(Debug, Default, Serialize, Deserialize, Clone)]
 pub struct KeywordsDataApiGoogleAdsKeywordsForSiteTaskMonthlySearch {
     pub year: Option<i32>,
     pub month: Option<i32>,
     pub search_volume: Option<i32>,
-
 }
 #[derive(Debug, Default, Serialize, Deserialize, Clone)]
 pub struct KeywordsDataApiGoogleAdsKeywordsForSiteTaskKeywordAnnotations {

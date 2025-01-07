@@ -1,5 +1,5 @@
-use serde::{Deserialize, Serialize};
 use crate::entity::OnPageDataApiCrawlStatus;
+use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Default, Serialize, Deserialize, Clone)]
 pub struct OnPageDataApiMicrodata {

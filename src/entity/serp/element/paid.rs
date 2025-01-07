@@ -1,6 +1,9 @@
-use crate::entity::{SerpApiElementLinkElement, SerpApiElementRelatedResult, SerpApiGoogleOrganicItemPaidExtra, SerpApiPrice};
-use serde::{Deserialize, Serialize};
 use crate::entity::serp::element::images_element::SerpApiElementImagesElement;
+use crate::entity::{
+    SerpApiElementLinkElement, SerpApiElementRelatedResult, SerpApiGoogleOrganicItemPaidExtra,
+    SerpApiPrice,
+};
+use serde::{Deserialize, Serialize};
 
 /// Paid
 #[derive(Debug, Serialize, Deserialize, Clone)]
