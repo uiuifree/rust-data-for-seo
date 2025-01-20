@@ -1,4 +1,6 @@
-use crate::entity::{BacklinksApiAnchor, BacklinksApiBacklinks, BacklinksApiIndex, BacklinksApiSummary};
+use crate::entity::{
+    BacklinksApiAnchor, BacklinksApiBacklinks, BacklinksApiIndex, BacklinksApiSummary,
+};
 use crate::{DataForSeoApiResponse, DataForSeoClient};
 use serde::{Deserialize, Serialize};
 
@@ -18,9 +20,15 @@ impl BacklinksApi<'_> {
             .http_get("https://api.dataforseo.com/v3/backlinks/index", &{})
             .await
     }
-    pub async fn summary(&self,data:Vec<BacklinksApiSummaryPost>) -> DataForSeoApiResponse<BacklinksApiSummary> {
+    pub async fn summary(
+        &self,
+        data: Vec<BacklinksApiSummaryPost>,
+    ) -> DataForSeoApiResponse<BacklinksApiSummary> {
         self.client
-            .http_post("https://api.dataforseo.com/v3/backlinks/summary/live", &data)
+            .http_post(
+                "https://api.dataforseo.com/v3/backlinks/summary/live",
+                &data,
+            )
             .await
     }
     // pub async fn history(&self,data:Vec<BacklinksApiSummaryPost>) -> DataForSeoApiResponse<Value> {
@@ -28,17 +36,28 @@ impl BacklinksApi<'_> {
     //         .http_post("https://api.dataforseo.com/v3/backlinks/summary/live", &data)
     //         .await
     // }
-    pub async fn backlinks(&self,data:Vec<BacklinksApiBacklinksPost>) -> DataForSeoApiResponse<BacklinksApiBacklinks> {
+    pub async fn backlinks(
+        &self,
+        data: Vec<BacklinksApiBacklinksPost>,
+    ) -> DataForSeoApiResponse<BacklinksApiBacklinks> {
         self.client
-            .http_post("https://api.dataforseo.com/v3/backlinks/backlinks/live", &data)
+            .http_post(
+                "https://api.dataforseo.com/v3/backlinks/backlinks/live",
+                &data,
+            )
             .await
     }
-    pub async fn anchor(&self,data:Vec<BacklinksApiAnchorPost>) -> DataForSeoApiResponse<BacklinksApiAnchor> {
+    pub async fn anchor(
+        &self,
+        data: Vec<BacklinksApiAnchorPost>,
+    ) -> DataForSeoApiResponse<BacklinksApiAnchor> {
         self.client
-            .http_post("https://api.dataforseo.com/v3/backlinks/anchors/live", &data)
+            .http_post(
+                "https://api.dataforseo.com/v3/backlinks/anchors/live",
+                &data,
+            )
             .await
     }
-   
 }
 #[derive(Debug, Default, Serialize, Deserialize, Clone)]
 pub struct BacklinksApiSummaryPost {
@@ -55,7 +74,7 @@ pub struct BacklinksApiSummaryPost {
 impl BacklinksApiSummaryPost {
     pub fn new(target: &str) -> BacklinksApiSummaryPost {
         BacklinksApiSummaryPost {
-            target:target.to_string(),
+            target: target.to_string(),
             ..Default::default()
         }
     }
@@ -80,11 +99,12 @@ pub struct BacklinksApiBacklinksPost {
 impl BacklinksApiBacklinksPost {
     pub fn new(target: &str) -> BacklinksApiBacklinksPost {
         BacklinksApiBacklinksPost {
-            target:target.to_string(),
+            target: target.to_string(),
             ..Default::default()
         }
     }
-}#[derive(Debug, Default, Serialize, Deserialize, Clone)]
+}
+#[derive(Debug, Default, Serialize, Deserialize, Clone)]
 pub struct BacklinksApiAnchorPost {
     pub target: String,
     pub limit: Option<u32>,
@@ -103,7 +123,7 @@ pub struct BacklinksApiAnchorPost {
 impl BacklinksApiAnchorPost {
     pub fn new(target: &str) -> BacklinksApiAnchorPost {
         BacklinksApiAnchorPost {
-            target:target.to_string(),
+            target: target.to_string(),
             ..Default::default()
         }
     }

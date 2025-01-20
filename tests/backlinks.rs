@@ -12,7 +12,9 @@ fn client() -> DataForSeoClient {
 #[cfg(test)]
 mod backlinks {
     use crate::client;
-    use data_for_seo::{BacklinksApiAnchorPost, BacklinksApiBacklinksPost, BacklinksApiSummaryPost};
+    use data_for_seo::{
+        BacklinksApiAnchorPost, BacklinksApiBacklinksPost, BacklinksApiSummaryPost,
+    };
 
     #[tokio::test]
     async fn index() {
@@ -49,9 +51,8 @@ mod backlinks {
             for res in task.result.unwrap() {
                 println!("mode: {:?}", res.mode);
                 println!("items_count: {:?}", res.items_count);
-                for item in res.items.unwrap(){
+                for item in res.items.unwrap() {
                     println!("res: {:?}", item);
-
                 }
             }
         }
@@ -63,9 +64,8 @@ mod backlinks {
         let res = client.backlinks().anchor(vec![request]).await.unwrap();
         for task in res.tasks {
             for res in task.result.unwrap() {
-                for item in res.items.unwrap(){
+                for item in res.items.unwrap() {
                     println!("res: {:?}", item);
-
                 }
             }
         }

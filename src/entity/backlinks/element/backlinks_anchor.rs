@@ -1,9 +1,9 @@
-use std::collections::HashMap;
 use serde::{Deserialize, Serialize};
+use std::collections::HashMap;
 
 #[derive(Debug, Default, Serialize, Deserialize, Clone)]
 pub struct BacklinksElementBacklinkAnchor {
-    pub backlinks:Option<i32>,
+    pub backlinks: Option<i32>,
     pub first_seen: Option<String>,
     pub lost_date: Option<String>,
     pub backlinks_spam_score: Option<i32>,
@@ -23,5 +23,4 @@ pub struct BacklinksElementBacklinkAnchor {
     pub referring_links_semantic_locations: Option<HashMap<String, i32>>,
     pub referring_links_countries: Option<HashMap<String, i32>>,
     pub referring_pages_nofollow: Option<i32>,
-
 }

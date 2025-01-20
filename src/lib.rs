@@ -16,8 +16,6 @@ pub struct DataForSeoClient {
     token: String,
 }
 
-
-
 impl DataForSeoClient {
     pub fn new<T: Into<String>>(id: T, password: T) -> DataForSeoClient {
         DataForSeoClient {

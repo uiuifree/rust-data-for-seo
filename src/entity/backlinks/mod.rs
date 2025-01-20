@@ -1,16 +1,15 @@
+mod anchor;
 mod backlinks;
 mod element;
 mod index;
 mod summary;
-mod anchor;
 
-use serde::{Deserialize, Serialize};
+pub use anchor::*;
 pub use backlinks::*;
 pub use element::*;
 pub use index::*;
+use serde::{Deserialize, Serialize};
 pub use summary::*;
-pub use anchor::*;
-
 
 #[derive(Debug, Default, Serialize, Deserialize, Clone)]
 

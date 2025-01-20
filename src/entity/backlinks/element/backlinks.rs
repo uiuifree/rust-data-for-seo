@@ -1,5 +1,5 @@
-use serde::{Deserialize, Serialize};
 use crate::entity::BacklinksIndirectLinkPath;
+use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Default, Serialize, Deserialize, Clone)]
 pub struct BacklinksElementBacklink {
@@ -57,4 +57,3 @@ pub struct BacklinksElementBacklinkRankKeywordsInfo {
     pub page_from_keywords_count_top_10: Option<i32>,
     pub page_from_keywords_count_top_100: Option<i32>,
 }
-

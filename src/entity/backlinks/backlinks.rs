@@ -1,5 +1,5 @@
+use crate::entity::BacklinksElementBacklink;
 use serde::{Deserialize, Serialize};
-use crate::entity::{BacklinksElementBacklink};
 
 #[derive(Debug, Default, Serialize, Deserialize, Clone)]
 pub struct BacklinksApiBacklinks {
