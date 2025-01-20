@@ -1,79 +1,67 @@
-mod autocomplete;
-mod event;
-mod images;
-mod jobs;
-mod news;
-
-pub use autocomplete::*;
-pub use event::*;
-pub use images::*;
-pub use jobs::*;
-pub use news::*;
-
 use crate::api::serp::SerpApi;
-use crate::entity::{SerpApiGoogleOrganicTaskAdvanced, SerpApiLanguage};
+use crate::entity::{SerpApiBingOrganicTaskAdvanced, SerpApiLanguage};
 use crate::{DataForSeoApiResponse, DataForSeoClient, SerpApiLocation, SerpApiTaskReadyResult};
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 
 impl SerpApi<'_> {
     /// https://developers.line.biz/ja/reference/messaging-api/#get-bot-info
-    pub fn google(&self) -> SerpApiGoogle<'_> {
-        SerpApiGoogle {
+    pub fn bing(&self) -> SerpApiBing<'_> {
+        SerpApiBing {
             client: self.client,
         }
     }
 }
 
-pub struct SerpApiGoogle<'a> {
+pub struct SerpApiBing<'a> {
     client: &'a DataForSeoClient,
 }
 
-impl SerpApiGoogle<'_> {
-    /// https://docs.dataforseo.com/v3/serp/google/locations/
+impl SerpApiBing<'_> {
+    /// https://docs.dataforseo.com/v3/serp/bing/locations/
     pub async fn locations(&self) -> DataForSeoApiResponse<SerpApiLocation> {
         self.client
-            .http_get("https://api.dataforseo.com/v3/serp/google/locations", &{})
+            .http_get("https://api.dataforseo.com/v3/serp/bing/locations", &{})
             .await
     }
-    /// https://docs.dataforseo.com/v3/serp/google/locations/
+    /// https://docs.dataforseo.com/v3/serp/bing/locations/
     pub async fn locations_country(&self, country: &str) -> DataForSeoApiResponse<SerpApiLocation> {
         self.client
             .http_get(
-                ("https://api.dataforseo.com/v3/serp/google/locations/".to_string() + country)
+                ("https://api.dataforseo.com/v3/serp/bing/locations/".to_string() + country)
                     .as_str(),
                 &{},
             )
             .await
     }
-    /// https://docs.dataforseo.com/v3/serp/google/languages/
+    /// https://docs.dataforseo.com/v3/serp/bing/languages/
     pub async fn languages(&self) -> DataForSeoApiResponse<SerpApiLanguage> {
         self.client
-            .http_get("https://api.dataforseo.com/v3/serp/google/languages", &{})
+            .http_get("https://api.dataforseo.com/v3/serp/bing/languages", &{})
             .await
     }
 
-    /// https://docs.dataforseo.com/v3/serp/google/organic/task_post/?bash
+    /// https://docs.dataforseo.com/v3/serp/bing/organic/task_post/?bash
     pub async fn organic_task_post(
         &self,
-        data: Vec<SerpApiGoogleOrganicTaskPostRequest>,
+        data: Vec<SerpApiBingOrganicTaskPostRequest>,
     ) -> DataForSeoApiResponse<Value> {
         self.client
             .http_post(
-                "https://api.dataforseo.com/v3/serp/google/organic/task_post",
+                "https://api.dataforseo.com/v3/serp/bing/organic/task_post",
                 &data,
             )
             .await
     }
-    /// https://docs.dataforseo.com/v3/serp/google/organic/task_post/?bash
+    /// https://docs.dataforseo.com/v3/serp/bing/organic/task_post/?bash
     pub async fn organic_tasks_ready(&self) -> DataForSeoApiResponse<SerpApiTaskReadyResult> {
-        self.client.serp().task_ready_se("google").await
+        self.client.serp().task_ready_se("bing").await
     }
-    /// https://docs.dataforseo.com/v3/serp/google/organic/tasks_fixed/?bash
+    /// https://docs.dataforseo.com/v3/serp/bing/organic/tasks_fixed/?bash
     pub async fn organic_tasks_fixed(&self) -> DataForSeoApiResponse<SerpApiTaskReadyResult> {
         self.client
             .http_get(
-                "https://api.dataforseo.com/v3/serp/google/organic/tasks_fixed",
+                "https://api.dataforseo.com/v3/serp/bing/organic/tasks_fixed",
                 &{},
             )
             .await
@@ -81,11 +69,10 @@ impl SerpApiGoogle<'_> {
     pub async fn organic_task_get_advanced(
         &self,
         id: &str,
-    ) -> DataForSeoApiResponse<SerpApiGoogleOrganicTaskAdvanced> {
+    ) -> DataForSeoApiResponse<SerpApiBingOrganicTaskAdvanced> {
         self.client
             .http_get(
-                ("https://api.dataforseo.com/v3/serp/google/organic/task_get/advanced/"
-                    .to_string()
+                ("https://api.dataforseo.com/v3/serp/bing/organic/task_get/advanced/".to_string()
                     + id)
                     .as_str(),
                 &{},
@@ -96,28 +83,23 @@ impl SerpApiGoogle<'_> {
 
 #[derive(Debug, Default, Serialize, Deserialize, Clone)]
 
-pub struct SerpApiGoogleOrganicTaskPostRequest {
-    pub keyword: String,
+pub struct SerpApiBingOrganicTaskPostRequest {
     pub url: Option<String>,
+    pub keyword: String,
     pub priority: Option<i32>,
-    pub depth: Option<i32>,
-    pub max_crawl_pages: Option<i32>,
     pub location_name: Option<String>,
     pub location_code: i32,
     pub location_coordinate: Option<String>,
     pub language_name: Option<String>,
     pub language_code: String,
-    pub se_domain: Option<String>,
     pub device: Option<String>,
     pub os: Option<String>,
-    pub group_organic_results: Option<bool>,
+    pub depth: Option<i32>,
+    pub max_crawl_pages: Option<i32>,
     pub calculate_rectangles: Option<bool>,
     pub browser_screen_width: Option<i32>,
     pub browser_screen_height: Option<i32>,
     pub browser_screen_resolution_ratio: Option<i32>,
-    pub people_also_ask_click_depth: Option<i32>,
-    pub load_async_ai_overview: Option<bool>,
-    pub expand_ai_overview: Option<bool>,
     pub search_param: Option<String>,
     pub tag: Option<String>,
     pub postback_url: Option<String>,
@@ -125,12 +107,12 @@ pub struct SerpApiGoogleOrganicTaskPostRequest {
     pub pingback_url: Option<String>,
 }
 
-impl SerpApiGoogleOrganicTaskPostRequest {
+impl SerpApiBingOrganicTaskPostRequest {
     pub fn new(language_code: String, location_code: i32) -> Self {
-        let request = SerpApiGoogleOrganicTaskPostRequest {
+        let request = SerpApiBingOrganicTaskPostRequest {
             language_code,
             location_code,
-            ..SerpApiGoogleOrganicTaskPostRequest::default()
+            ..SerpApiBingOrganicTaskPostRequest::default()
         };
         request
     }

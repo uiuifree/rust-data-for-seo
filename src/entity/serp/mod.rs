@@ -1,7 +1,9 @@
+mod bing;
 mod element;
 mod google;
 mod languages;
 
+pub use bing::*;
 pub use element::*;
 pub use google::*;
 pub use languages::*;

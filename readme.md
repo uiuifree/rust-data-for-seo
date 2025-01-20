@@ -45,9 +45,16 @@ async fn post() {
 }
 ```
 
+## Bing
+### Organic
+- [x] Task Post
+- [x] Task Ready
+- [x] Task Fixed
+- [x] Task Get
+- [x] Live
+
 
 TODO 
-Bing
 YouTube
 Yahoo
 Baidu

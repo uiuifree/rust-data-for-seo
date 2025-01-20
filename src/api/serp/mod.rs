@@ -1,8 +1,10 @@
 use crate::{DataForSeoApiResponse, DataForSeoClient};
 use serde::{Deserialize, Serialize};
 
+mod bing;
 mod google;
 
+pub use bing::*;
 pub use google::*;
 
 pub struct SerpApi<'a> {
