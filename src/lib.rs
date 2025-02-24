@@ -35,7 +35,7 @@ impl DataForSeoClient {
     {
         let response = match response {
             Ok(v) => v,
-            Err(e) => return Err(DataForSeoSystemError::new(e.to_string()).into()),
+            Err(e) => return Err(DataForSeoSystemError::new(format!("response {}",e)).into()),
         };
 
         let status = response.status();
@@ -49,12 +49,12 @@ impl DataForSeoClient {
 
         let http_response_body = match String::from_utf8(body) {
             Ok(v) => v,
-            Err(e) => return Err(DataForSeoSystemError::new(e.to_string()).into()),
+            Err(e) => return Err(DataForSeoSystemError::new(format!("from_utf8 {}",e)).into()),
         };
 
         let value = match serde_json::from_str::<Value>(http_response_body.as_str()) {
             Ok(v) => v,
-            Err(e) => return Err(DataForSeoSystemError::new(e.to_string()).into()),
+            Err(e) => return Err(DataForSeoSystemError::new(format!("from_str::<Value> {} {}",e,http_response_body.as_str())).into()),
         };
 
         Self::http_response_text(status.as_u16(), http_response_body, value).await
@@ -91,7 +91,7 @@ impl DataForSeoClient {
                     }
                     .into());
                 }
-                Err(DataForSeoSystemError::new(e.to_string()).into())
+                Err(DataForSeoSystemError::new(format!("serde_json::from_value {} {:?}",e,value)).into())
             }
         }
     }
