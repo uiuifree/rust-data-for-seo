@@ -25,7 +25,7 @@ pub struct DataForSeoApiResponseData<R> {
     pub offset: Option<u32>,
     pub sort: Option<String>,
     pub include_metadata: Option<bool>,
-    pub tasks: Vec<DataForSeoApiTask<R>>,
+    pub tasks: Option<Vec<DataForSeoApiTask<R>>>,
 }
 
 #[derive(Debug, Default, Serialize, Deserialize, Clone)]
