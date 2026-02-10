@@ -16,8 +16,8 @@ pub struct SerpApiBingOrganicTaskRegular {
     pub spell: Option<SerpApiGoogleOrganicTaskSpell>,
     pub refinement_chips: Option<SerpApiElementRefinementChips>,
     pub item_types: Option<Vec<String>>,
-    pub se_results_count: Option<i32>,
-    pub items_count: Option<i32>,
+    pub se_results_count: Option<i64>,
+    pub items_count: Option<i64>,
     // pub items: Option<Vec<Value>>,
     pub items: Option<Vec<SerpApiGoogleOrganicItem>>,
 }
@@ -34,8 +34,8 @@ pub struct SerpApiBingOrganicTaskAdvanced {
     pub spell: Option<SerpApiGoogleOrganicTaskSpell>,
     pub refinement_chips: Option<SerpApiElementRefinementChips>,
     pub item_types: Option<Vec<String>>,
-    pub se_results_count: Option<i32>,
-    pub items_count: Option<i32>,
+    pub se_results_count: Option<i64>,
+    pub items_count: Option<i64>,
     // pub items: Option<Vec<Value>>,
     pub items: Option<Vec<SerpApiGoogleOrganicItem>>,
 }

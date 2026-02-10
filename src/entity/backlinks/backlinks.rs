@@ -7,6 +7,6 @@ pub struct BacklinksApiBacklinks {
     pub mode: Option<String>,
     pub custom_mode: Option<String>,
     pub total_count: Option<i32>,
-    pub items_count: Option<i32>,
+    pub items_count: Option<i64>,
     pub items: Option<Vec<BacklinksElementBacklink>>,
 }

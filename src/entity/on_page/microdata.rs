@@ -6,7 +6,7 @@ pub struct OnPageDataApiMicrodata {
     pub crawl_progress: Option<String>,
     pub crawl_status: Option<OnPageDataApiCrawlStatus>,
     pub test_summary: Option<OnPageDataApiTestSummary>,
-    pub items_count: Option<i32>,
+    pub items_count: Option<i64>,
     pub items: Option<Vec<OnPageDataApiItemJsonLd>>,
 }
 
