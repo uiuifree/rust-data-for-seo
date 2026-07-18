@@ -1,9 +1,27 @@
+mod ai_optimization;
+mod app_data;
+mod appendix;
 mod backlinks;
+mod business_data;
+mod content_analysis;
+mod content_generation;
+mod dataforseo_labs;
+mod domain_analytics;
 mod keywords_data;
+mod merchant;
 mod on_page;
 mod serp;
 
+pub use ai_optimization::*;
+pub use app_data::*;
+pub use appendix::*;
 pub use backlinks::*;
+pub use business_data::*;
+pub use content_analysis::*;
+pub use content_generation::*;
+pub use dataforseo_labs::*;
+pub use domain_analytics::*;
 pub use keywords_data::*;
+pub use merchant::*;
 pub use on_page::*;
 pub use serp::*;

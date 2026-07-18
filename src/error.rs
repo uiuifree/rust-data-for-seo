@@ -1,105 +1,141 @@
-use serde::{Deserialize, Serialize};
+//! Error types returned by the client.
 
+use serde_json::Value;
+use std::fmt;
+
+/// Any error produced by a DataForSEO API call.
 #[derive(Debug, Clone)]
 pub enum DataForSeoError {
-    ApiError(DataForSeoApiError),
-    HttpError(DataForSeoHttpError),
-    SystemError(DataForSeoSystemError),
+    /// The API answered with an error envelope (HTTP 4xx/5xx and a
+    /// DataForSEO `status_code` / `status_message`).
+    Api(DataForSeoApiError),
+    /// The server answered with a non-JSON HTTP failure.
+    Http(DataForSeoHttpError),
+    /// Transport or (de)serialization failure.
+    System(DataForSeoSystemError),
 }
 
 impl DataForSeoError {
-    pub fn status(&self) -> u16 {
+    /// HTTP status of the failed call, or `0` for transport-level failures.
+    pub fn http_status(&self) -> u16 {
         match self {
-            DataForSeoError::ApiError(e) => e.status,
-            DataForSeoError::HttpError(e) => e.status,
-            DataForSeoError::SystemError(_) => 0,
+            DataForSeoError::Api(e) => e.http_status,
+            DataForSeoError::Http(e) => e.http_status,
+            DataForSeoError::System(_) => 0,
         }
     }
-    pub fn api_error(&self) -> Option<&DataForSeoApiErrorResponse> {
+
+    /// DataForSEO status code (e.g. `40101`) when the API returned one.
+    /// See <https://docs.dataforseo.com/v3/appendix/errors/>.
+    pub fn api_status_code(&self) -> Option<i32> {
         match self {
-            DataForSeoError::ApiError(e) => Some(&e.error),
-            DataForSeoError::HttpError(_) => None,
-            DataForSeoError::SystemError(_) => None,
+            DataForSeoError::Api(e) => Some(e.status_code),
+            _ => None,
         }
     }
 }
 
+impl fmt::Display for DataForSeoError {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            DataForSeoError::Api(e) => write!(
+                f,
+                "DataForSEO API error (http {}): {} {}",
+                e.http_status, e.status_code, e.status_message
+            ),
+            DataForSeoError::Http(e) => write!(f, "HTTP error {}", e.http_status),
+            DataForSeoError::System(e) => write!(f, "client error: {}", e.message),
+        }
+    }
+}
+
+impl std::error::Error for DataForSeoError {}
+
 impl From<DataForSeoApiError> for DataForSeoError {
     fn from(value: DataForSeoApiError) -> Self {
-        DataForSeoError::ApiError(value)
+        DataForSeoError::Api(value)
     }
 }
 
 impl From<DataForSeoHttpError> for DataForSeoError {
     fn from(value: DataForSeoHttpError) -> Self {
-        DataForSeoError::HttpError(value)
+        DataForSeoError::Http(value)
     }
 }
 
 impl From<DataForSeoSystemError> for DataForSeoError {
     fn from(value: DataForSeoSystemError) -> Self {
-        DataForSeoError::SystemError(value)
+        DataForSeoError::System(value)
     }
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+/// Error envelope returned by the DataForSEO API.
+///
+/// ```json
+/// {"version":"0.1.x","status_code":40101,"status_message":"Authentication failed. ..."}
+/// ```
+#[derive(Debug, Clone)]
 pub struct DataForSeoApiError {
-    pub status: u16,
-    pub error: DataForSeoApiErrorResponse,
-    pub warnings: Option<Vec<String>>,
-    pub http_response_body: Option<String>,
+    /// HTTP status of the response.
+    pub http_status: u16,
+    /// DataForSEO status code, e.g. `40101`.
+    /// See <https://docs.dataforseo.com/v3/appendix/errors/>.
+    pub status_code: i32,
+    /// Human-readable message from the API.
+    pub status_message: String,
+    /// Raw response body, for debugging.
+    pub response_body: String,
 }
 
-/// https://developers.line.biz/ja/reference/messaging-api/#error-responses
-#[derive(Debug, Serialize, Deserialize, Clone)]
-pub struct DataForSeoApiErrorResponse {
-    pub message: String,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub details: Option<Vec<DataForSeoApiErrorResponseDetail>>,
-}
-
-/// https://developers.line.biz/ja/reference/messaging-api/#error-responses
-#[derive(Debug, Serialize, Deserialize, Clone)]
-pub struct DataForSeoApiErrorResponseDetail {
-    pub message: String,
-    pub property: String,
-}
-
-impl DataForSeoApiErrorResponse {
-    pub fn debug_print(&self) {
-        println!("{}", self.message);
-        if let Some(details) = &self.details {
-            for detail in details {
-                println!(" {}: {}", detail.property, detail.message);
-            }
+impl DataForSeoApiError {
+    pub(crate) fn from_envelope(http_status: u16, value: &Value, body: String) -> Self {
+        DataForSeoApiError {
+            http_status,
+            status_code: value
+                .get("status_code")
+                .and_then(Value::as_i64)
+                .unwrap_or_default() as i32,
+            status_message: value
+                .get("status_message")
+                .and_then(Value::as_str)
+                .unwrap_or_default()
+                .to_string(),
+            response_body: body,
         }
     }
 }
 
+/// Non-JSON HTTP failure (e.g. a gateway error page).
 #[derive(Debug, Clone)]
 pub struct DataForSeoHttpError {
-    pub status: u16,
-    pub http_response_body: Option<String>,
+    /// HTTP status of the response.
+    pub http_status: u16,
+    /// Raw response body, for debugging.
+    pub response_body: String,
 }
 
 impl DataForSeoHttpError {
-    pub fn new(status: u16, http_response_body: String) -> DataForSeoHttpError {
+    /// Creates an HTTP error from a status code and raw body.
+    pub fn new(http_status: u16, response_body: String) -> DataForSeoHttpError {
         DataForSeoHttpError {
-            status,
-            http_response_body: Some(http_response_body),
+            http_status,
+            response_body,
         }
     }
 }
 
+/// Transport or (de)serialization failure.
 #[derive(Debug, Clone)]
 pub struct DataForSeoSystemError {
-    pub message: Option<String>,
+    /// Description of what failed.
+    pub message: String,
 }
 
 impl DataForSeoSystemError {
-    pub fn new(message: String) -> DataForSeoSystemError {
+    /// Creates a system error from a message.
+    pub fn new<T: Into<String>>(message: T) -> DataForSeoSystemError {
         DataForSeoSystemError {
-            message: Some(message),
+            message: message.into(),
         }
     }
 }

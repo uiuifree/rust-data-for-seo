@@ -3,82 +3,117 @@ use crate::{DataForSeoApiResponse, SerpApiGoogle, SerpApiTaskReadyResult};
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 
-/// Section Job
-/// https://docs.dataforseo.com/v3/serp/google/images/overview/?bash
+/// Google Images SERP endpoint.
+/// <https://docs.dataforseo.com/v3/serp/google/images/overview/>
 impl SerpApiGoogle<'_> {
+    /// <https://docs.dataforseo.com/v3/serp/google/images/task_post/>
     pub async fn images_task_post(
         &self,
         data: Vec<SerpApiGoogleImagesTaskPostRequest>,
     ) -> DataForSeoApiResponse<Value> {
         self.client
-            .http_post(
-                "https://api.dataforseo.com/v3/serp/google/images/task_post",
-                &data,
-            )
+            .http_post("/v3/serp/google/images/task_post", &data)
             .await
     }
+    /// <https://docs.dataforseo.com/v3/serp/google/images/tasks_ready/>
     pub async fn images_tasks_ready(&self) -> DataForSeoApiResponse<SerpApiTaskReadyResult> {
         self.client.serp().task_ready_se("google/images").await
     }
+    /// <https://docs.dataforseo.com/v3/serp/google/images/tasks_fixed/>
     pub async fn images_tasks_fixed(&self) -> DataForSeoApiResponse<SerpApiTaskReadyResult> {
         self.client.serp().task_fixed_se("google/images").await
     }
-
+    /// <https://docs.dataforseo.com/v3/serp/google/images/task_get/advanced/>
     pub async fn images_task_get_advanced(
         &self,
         id: &str,
     ) -> DataForSeoApiResponse<SerpApiGoogleImagesAdvanced> {
         self.client
-            .http_get(
-                ("https://api.dataforseo.com/v3/serp/google/images/task_get/advanced/".to_string()
-                    + id)
-                    .as_str(),
-                &{},
-            )
+            .http_get(format!("/v3/serp/google/images/task_get/advanced/{id}").as_str())
             .await
     }
+    /// <https://docs.dataforseo.com/v3/serp/google/images/task_get/html/>
     pub async fn images_task_get_html(
         &self,
         id: &str,
     ) -> DataForSeoApiResponse<SerpApiGoogleImagesHtml> {
         self.client
-            .http_get(
-                ("https://api.dataforseo.com/v3/serp/google/images/task_get/html/".to_string()
-                    + id)
-                    .as_str(),
-                &{},
-            )
+            .http_get(format!("/v3/serp/google/images/task_get/html/{id}").as_str())
+            .await
+    }
+    /// <https://docs.dataforseo.com/v3/serp/google/images/live/advanced/>
+    pub async fn images_live_advanced(
+        &self,
+        data: Vec<SerpApiGoogleImagesTaskPostRequest>,
+    ) -> DataForSeoApiResponse<SerpApiGoogleImagesAdvanced> {
+        self.client
+            .http_post("/v3/serp/google/images/live/advanced", &data)
             .await
     }
 }
 
+/// Request body for Google Images task_post / live.
+/// See <https://docs.dataforseo.com/v3/serp/google/images/task_post/>.
 #[derive(Debug, Default, Serialize, Deserialize, Clone)]
 pub struct SerpApiGoogleImagesTaskPostRequest {
+    /// Search term the result was returned for.
     pub keyword: String,
+    /// URL of the result.
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub url: Option<String>,
+    /// Task execution priority: 1 (normal) or 2 (high).
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub priority: Option<i32>,
+    /// Full location name (e.g. "London,England,United Kingdom").
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub location_name: Option<String>,
+    /// DataForSEO location code the search was run for.
     pub location_code: i32,
+    /// GPS coordinates the search was run for ("lat,lng,zoom").
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub location_coordinate: Option<String>,
+    /// Full language name of the search.
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub language_name: Option<String>,
+    /// Language code the search was run for.
     pub language_code: String,
+    /// Os.
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub os: Option<String>,
+    /// Search-engine domain the results were taken from.
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub se_domain: Option<String>,
+    /// Depth.
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub depth: Option<i32>,
+    /// Max crawl pages.
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub max_crawl_pages: Option<i32>,
+    /// Search param.
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub search_param: Option<String>,
+    /// User-defined identifier echoed back on the result.
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tag: Option<String>,
+    /// URL of the postback.
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub postback_url: Option<String>,
+    /// Postback data.
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub postback_data: Option<String>,
+    /// URL of the pingback.
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub pingback_url: Option<String>,
 }
+
 impl SerpApiGoogleImagesTaskPostRequest {
+    /// Creates a request with the required language and location codes.
+    /// Set `keyword` and any optional fields before sending.
     pub fn new(language_code: String, location_code: i32) -> Self {
-        let request = SerpApiGoogleImagesTaskPostRequest {
+        SerpApiGoogleImagesTaskPostRequest {
             language_code,
             location_code,
             ..SerpApiGoogleImagesTaskPostRequest::default()
-        };
-        request
+        }
     }
 }

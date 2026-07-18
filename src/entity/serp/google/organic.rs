@@ -8,201 +8,131 @@ use crate::entity::{
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 
+/// Google Organic Task Regular SERP data model.
 #[derive(Debug, Default, Serialize, Deserialize, Clone)]
 pub struct SerpApiGoogleOrganicTaskRegular {
+    /// Search term the result was returned for.
     pub keyword: String,
+    /// Search engine result type (the API `type` field).
     #[serde(rename = "type")]
     pub search_engine_type: Option<String>,
+    /// Search-engine domain the results were taken from.
     pub se_domain: Option<String>,
+    /// DataForSEO location code the search was run for.
     pub location_code: i32,
+    /// Language code the search was run for.
     pub language_code: Option<String>,
+    /// Direct URL to reproduce the search on the search engine.
     pub check_url: Option<String>,
+    /// UTC timestamp when the result was received.
     pub datetime: Option<String>,
+    /// Search-engine spelling correction applied to the query, if any.
     pub spell: Option<SerpApiGoogleOrganicTaskSpell>,
+    /// Search-refinement chips shown for the query.
     pub refinement_chips: Option<SerpApiElementRefinementChips>,
+    /// Distinct element types present in the returned SERP.
     pub item_types: Option<Vec<String>>,
+    /// Total number of results reported by the search engine.
     pub se_results_count: Option<i64>,
+    /// Number of items returned in this result.
     pub items_count: Option<i64>,
     // pub items: Option<Vec<Value>>,
+    /// Parsed elements of the result.
     pub items: Option<Vec<SerpApiGoogleOrganicItem>>,
 }
+/// Google Organic Task Advanced SERP data model.
 #[derive(Debug, Default, Serialize, Deserialize, Clone)]
 pub struct SerpApiGoogleOrganicTaskAdvanced {
+    /// Search term the result was returned for.
     pub keyword: String,
+    /// Search engine result type (the API `type` field).
     #[serde(rename = "type")]
     pub search_engine_type: Option<String>,
+    /// Search-engine domain the results were taken from.
     pub se_domain: Option<String>,
+    /// DataForSEO location code the search was run for.
     pub location_code: i32,
+    /// Language code the search was run for.
     pub language_code: Option<String>,
+    /// Direct URL to reproduce the search on the search engine.
     pub check_url: Option<String>,
+    /// UTC timestamp when the result was received.
     pub datetime: Option<String>,
+    /// Search-engine spelling correction applied to the query, if any.
     pub spell: Option<SerpApiGoogleOrganicTaskSpell>,
+    /// Search-refinement chips shown for the query.
     pub refinement_chips: Option<SerpApiElementRefinementChips>,
+    /// Distinct element types present in the returned SERP.
     pub item_types: Option<Vec<String>>,
+    /// Total number of results reported by the search engine.
     pub se_results_count: Option<i64>,
+    /// Number of items returned in this result.
     pub items_count: Option<i64>,
     // pub items: Option<Vec<Value>>,
+    /// Parsed elements of the result.
     pub items: Option<Vec<SerpApiGoogleOrganicItem>>,
 }
 
+impl SerpApiGoogleOrganicTaskAdvanced {
+    /// Items of this result (empty slice when the API returned none).
+    pub fn items(&self) -> &[SerpApiGoogleOrganicItem] {
+        self.items.as_deref().unwrap_or_default()
+    }
+}
+
+/// A single item in a Google organic SERP, tagged by the DataForSEO `type` field.
+///
+/// Large variants are boxed to keep the enum small (avoids `clippy::large_enum_variant`).
+/// Unrecognized `type` values fall back to [`SerpApiGoogleOrganicItem::Unknown`].
+/// See <https://docs.dataforseo.com/v3/serp/google/organic/task_get/advanced/>.
 #[derive(Debug, Serialize, Deserialize, Clone)]
 #[serde(tag = "type", rename_all = "snake_case")]
 pub enum SerpApiGoogleOrganicItem {
+    /// Element of type `answer_box`.
     #[serde(rename = "answer_box")]
-    AnswerBox(SerpApiElementAnswerBox),
-    // #[serde(rename="app")]
-    // App(SerpApiElementApp),
+    AnswerBox(Box<SerpApiElementAnswerBox>),
+    /// Element of type `carousel`.
     #[serde(rename = "carousel")]
-    Carousel(SerpApiElementCarousel),
+    Carousel(Box<SerpApiElementCarousel>),
+    /// Element of type `multi_carousel`.
     #[serde(rename = "multi_carousel")]
-    MultiCarousel(SerpApiElementMultiCarousel),
+    MultiCarousel(Box<SerpApiElementMultiCarousel>),
+    /// Element of type `featured_snippet`.
     #[serde(rename = "featured_snippet")]
-    FeaturedSnippet(SerpApiElementFeaturedSnippet),
-    // #[serde(rename="google_flights")]
-    // Organic(SerpApiElementOrganic),
-    // #[serde(rename="google_reviews")]
-    // Organic(SerpApiElementOrganic),
-    // #[serde(rename="google_posts")]
-    // Organic(SerpApiElementOrganic),
-    // #[serde(rename="images")]
-    // Organic(SerpApiElementImages),
-    // #[serde(rename="jobs")]
-    // Organic(SerpApiElementOrganic),
+    FeaturedSnippet(Box<SerpApiElementFeaturedSnippet>),
+    /// Element of type `knowledge_graph`.
     #[serde(rename = "knowledge_graph")]
-    KnowledgeGraph(SerpApiElementKnowledgeGraph),
+    KnowledgeGraph(Box<SerpApiElementKnowledgeGraph>),
+    /// Element of type `local_pack`.
     #[serde(rename = "local_pack")]
-    LocalPack(SerpApiElementLocalPack),
+    LocalPack(Box<SerpApiElementLocalPack>),
+    /// Element of type `hotels_pack`.
     #[serde(rename = "hotels_pack")]
-    HotelsPack(SerpApiElementHotelsPack),
-    // #[serde(rename="map")]
-    // Organic(SerpApiElementMap),
+    HotelsPack(Box<SerpApiElementHotelsPack>),
+    /// Element of type `people_also_ask`.
     #[serde(rename = "people_also_ask")]
-    PeopleAlsoAsk(SerpApiElementPeopleAlsoAsk),
-
+    PeopleAlsoAsk(Box<SerpApiElementPeopleAlsoAsk>),
+    /// Element of type `organic`.
     #[serde(rename = "organic")]
-    Organic(SerpApiElementOrganic),
+    Organic(Box<SerpApiElementOrganic>),
+    /// Element of type `paid`.
     #[serde(rename = "paid")]
-    Paid(SerpApiElementPaid),
+    Paid(Box<SerpApiElementPaid>),
+    /// Element of type `related_searches`.
     #[serde(rename = "related_searches")]
-    RelatedSearches(SerpApiElementRelatedSearches),
-
+    RelatedSearches(Box<SerpApiElementRelatedSearches>),
+    /// Element of type `people_also_search`.
     #[serde(rename = "people_also_search")]
-    PeopleAlsoSearch(SerpApiElementPeopleAlsoSearch),
-    // #[serde(rename="shopping")]
-    // Organic(SerpApiElementOrganic),
-    // #[serde(rename="top_stories")]
-    // Organic(SerpApiElementOrganic),
-    // #[serde(rename="twitter")]
-    // Organic(SerpApiElementOrganic),
-    // #[serde(rename="video")]
-    // Organic(SerpApiElementOrganic),
-    // #[serde(rename="events")]
-    // Organic(SerpApiElementOrganic),
-    // #[serde(rename="mention_carousel")]
-    // Organic(SerpApiElementOrganic),
-    // #[serde(rename="recipes")]
-    // Organic(SerpApiElementOrganic),
-    // #[serde(rename="top_sights")]
-    // Organic(SerpApiElementOrganic),
-    // #[serde(rename="scholarly_articles")]
-    // Organic(SerpApiElementOrganic),
-    // #[serde(rename="popular_products")]
-    // Organic(SerpApiElementOrganic),
-    // #[serde(rename="podcasts")]
-    // Organic(SerpApiElementOrganic),
-    // #[serde(rename="questions_and_answers")]
-    // Organic(SerpApiElementOrganic),
-    // #[serde(rename="find_results_on")]
-    // Organic(SerpApiElementOrganic),
-    // #[serde(rename="stocks_box")]
-    // Organic(SerpApiElementOrganic),
-    // #[serde(rename="visual_stories")]
-    // Organic(SerpApiElementOrganic),
-    // #[serde(rename="commercial_units")]
-    // Organic(SerpApiElementOrganic),
-    // #[serde(rename="local_services")]
-    // Organic(SerpApiElementOrganic),
-    // #[serde(rename="google_hotels")]
-    // Organic(SerpApiElementOrganic),
-    // #[serde(rename="math_solver")]
-    // Organic(SerpApiElementOrganic),
-    // #[serde(rename="currency_box")]
-    // Organic(SerpApiElementOrganic),
-    // #[serde(rename="product_considerations")]
-    // Organic(SerpApiElementOrganic),
-    // #[serde(rename="found_on_web")]
-    // Organic(SerpApiElementOrganic),
-    // #[serde(rename="short_videos")]
-    // Organic(SerpApiElementOrganic),
-    // #[serde(rename="refine_products")]
-    // Organic(SerpApiElementOrganic),
-    // #[serde(rename="explore_brands")]
-    // Organic(SerpApiElementOrganic),
-    // #[serde(rename="perspectives")]
-    // Organic(SerpApiElementOrganic),
-    // #[serde(rename="discussions_and_forums")]
-    // Organic(SerpApiElementOrganic),
-    // #[serde(rename="compare_sites")]
-    // Organic(SerpApiElementOrganic),
-    // #[serde(rename="courses")]
-    // Organic(SerpApiElementOrganic),
+    PeopleAlsoSearch(Box<SerpApiElementPeopleAlsoSearch>),
+    /// Element of type `ai_overview`.
     #[serde(rename = "ai_overview")]
-    AiOverview(SerpApiElementAiOverview),
-
+    AiOverview(Box<SerpApiElementAiOverview>),
+    /// Fallback holding the raw JSON of an unrecognized `type`.
     #[serde(untagged)]
     Unknown(Value),
 }
 
-// answer_box
-// app
-// carousel
-// multi_carousel
-// featured_snippet
-// google_flights
-// google_reviews
-// google_posts
-// images
-// jobs
-// knowledge_graph
-// local_pack
-// hotels_pack
-// map
-// organic
-// paid
-// people_also_ask
-//
-// people_also_search
-// shopping
-// top_stories
-// twitter
-// video
-// events
-// mention_carousel
-// recipes
-// top_sights
-// scholarly_articles
-// popular_products
-// podcasts
-// questions_and_answers
-// find_results_on
-// stocks_box
-// visual_stories
-// commercial_units
-// local_services
-// google_hotels
-// math_solver
-// currency_box
-// product_considerations
-// found_on_web
-// short_videos
-// refine_products
-// explore_brands
-// perspectives
-// discussions_and_forums
-// compare_sites
-// courses
-// ai_overview
-
+/// Google Organic Item Paid Extra SERP data model.
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct SerpApiGoogleOrganicItemPaidExtra {
     ad_aclk: Option<String>,
@@ -220,26 +150,44 @@ pub struct SerpApiGoogleOrganicItemPaidExtra {
 //     pub domain: Option<String>,
 // }
 
+/// Hotels Pack Element Price SERP data model.
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct SerpApiElementHotelsPackElementPrice {
+    /// Current price.
     pub current: Option<f32>,
+    /// Regular (non-discounted) price.
     pub regular: Option<f32>,
+    /// Upper bound of the price range.
     pub max_value: Option<f32>,
+    /// ISO currency code of the price.
     pub currency: Option<String>,
+    /// `true` if the price represents a range.
     pub is_price_range: Option<bool>,
+    /// Price string as displayed in the SERP.
     pub displayed_price: Option<String>,
 }
+/// Top Stories Element SERP data model.
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct SerpApiElementTopStoriesElement {
+    /// Element type as reported by the DataForSEO API.
     #[serde(rename = "type")]
     pub type_of_element: Option<String>,
+    /// Source / publisher of the result.
     pub source: Option<String>,
+    /// Domain of the result.
     pub domain: Option<String>,
+    /// Title of the result.
     pub title: Option<String>,
+    /// Date associated with the result.
     pub date: Option<String>,
+    /// `true` if an AMP version of the page is available.
     pub amp_version: Option<bool>,
+    /// UTC timestamp associated with the result.
     pub timestamp: Option<String>,
+    /// URL of the result.
     pub url: Option<String>,
+    /// URL of the image.
     pub image_url: Option<String>,
+    /// Badges shown on the result.
     pub badges: Option<Vec<String>>,
 }

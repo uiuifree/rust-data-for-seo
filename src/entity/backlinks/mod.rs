@@ -1,20 +1,49 @@
 mod anchor;
-mod backlinks;
+mod backlinks_list;
+mod bulk_backlinks;
+mod bulk_new_lost_backlinks;
+mod bulk_new_lost_referring_domains;
+mod bulk_pages_summary;
+mod bulk_ranks;
+mod bulk_referring_domains;
+mod bulk_spam_score;
+mod competitors;
+mod domain_intersection;
+mod domain_pages;
+mod domain_pages_summary;
 mod element;
+mod errors;
+mod history;
+mod id_list;
 mod index;
+mod page_intersection;
+mod referring_domains;
+mod referring_networks;
 mod summary;
+mod timeseries_new_lost_summary;
+mod timeseries_summary;
 
 pub use anchor::*;
-pub use backlinks::*;
+pub use backlinks_list::*;
+pub use bulk_backlinks::*;
+pub use bulk_new_lost_backlinks::*;
+pub use bulk_new_lost_referring_domains::*;
+pub use bulk_pages_summary::*;
+pub use bulk_ranks::*;
+pub use bulk_referring_domains::*;
+pub use bulk_spam_score::*;
+pub use competitors::*;
+pub use domain_intersection::*;
+pub use domain_pages::*;
+pub use domain_pages_summary::*;
 pub use element::*;
+pub use errors::*;
+pub use history::*;
+pub use id_list::*;
 pub use index::*;
-use serde::{Deserialize, Serialize};
+pub use page_intersection::*;
+pub use referring_domains::*;
+pub use referring_networks::*;
 pub use summary::*;
-
-#[derive(Debug, Default, Serialize, Deserialize, Clone)]
-
-pub struct BacklinksIndirectLinkPath {
-    pub page_from_keywords_count_top_3: Option<i32>,
-    pub page_from_keywords_count_top_10: Option<i32>,
-    pub page_from_keywords_count_top_100: Option<i32>,
-}
+pub use timeseries_new_lost_summary::*;
+pub use timeseries_summary::*;
