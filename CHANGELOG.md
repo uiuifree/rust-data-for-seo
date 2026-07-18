@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.3.0 (2026-07-18)
+
+### Breaking changes
+
+- Unified numeric types across all domains: counts, sizes, and ranks are `i64` (overflow-safe — backlink counts and search volumes exceed the `i32` range in practice), money, ratios, and scores are `f64`, `location_code` and `limit`/`offset` are `i32`. All `f32`/`u32`/`u64` fields are gone, including the response envelope's `cost` (now `f64`) and `limit`/`offset` (now `Option<i32>`).
+
+### Fixed
+
+- `SerpApiTaskReadyResult`, `KeywordsDataApiTaskReadyResult`, and a few SERP element structs had private fields, making Tasks Ready results unreadable. All response fields are now public.
+
+### Added
+
+- Runnable examples for the main workflows: `serp_live`, `serp_task_flow` (post → poll → fetch), `keywords_search_volume`, `backlinks_overview`, `labs_keyword_research`, `onpage_audit`.
+
 ## 0.2.0 (2026-07-18)
 
 Complete redesign targeting full DataForSEO API v3 coverage.

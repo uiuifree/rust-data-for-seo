@@ -1,6 +1,6 @@
 [package]
 name = "data-for-seo"
-version = "0.2.0"
+version = "0.3.0"
 edition = "2024"
 authors = ["uiuifree"]
 description = "Client library for the DataForSEO API v3 (SERP, Keywords Data, Labs, Backlinks, OnPage, and more)"
@@ -18,5 +18,5 @@ reqwest = { version = "0.12", features = ["json"] }
 base64 = "0.22"
 
 [dev-dependencies]
-tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "time"] }
 dotenv = "0.15"

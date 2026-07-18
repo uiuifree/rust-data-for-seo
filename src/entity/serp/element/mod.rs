@@ -317,15 +317,20 @@ pub struct SerpApiElementDataset {
 /// Dataset Period Covered SERP data model.
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct SerpApiElementDatasetPeriodCovered {
-    start_date: Option<String>,
-    end_date: Option<String>,
-    displayed_date: Option<String>,
+    /// Start date of the period the dataset covers.
+    pub start_date: Option<String>,
+    /// End date of the period the dataset covers.
+    pub end_date: Option<String>,
+    /// Date range as displayed in the SERP.
+    pub displayed_date: Option<String>,
 }
 /// Dataset Description SERP data model.
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct SerpApiElementDatasetDescription {
-    text: Option<String>,
-    links: Option<Vec<SerpApiElementLinkElement>>,
+    /// Description text of the dataset.
+    pub text: Option<String>,
+    /// Links included in the description.
+    pub links: Option<Vec<SerpApiElementLinkElement>>,
 }
 
 /// Dataset Providers Element SERP data model.

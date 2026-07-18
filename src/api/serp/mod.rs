@@ -79,17 +79,26 @@ impl SerpApi<'_> {
     }
 }
 
-/// Task Ready Result SERP data model.
+/// A completed task listed by the Tasks Ready endpoint.
+/// See <https://docs.dataforseo.com/v3/serp/google/organic/tasks_ready/>.
 #[derive(Debug, Default, Serialize, Deserialize, Clone)]
 pub struct SerpApiTaskReadyResult {
-    id: Option<String>,
-    se: Option<String>,
-    se_type: Option<String>,
-    date_posted: Option<String>,
-    tag: Option<String>,
-    endpoint_regular: Option<String>,
-    endpoint_advanced: Option<String>,
-    endpoint_html: Option<String>,
+    /// Identifier of the completed task, UUID format.
+    pub id: Option<String>,
+    /// Search engine the task was posted for (e.g. `google`).
+    pub se: Option<String>,
+    /// Search engine type (e.g. `organic`, `maps`).
+    pub se_type: Option<String>,
+    /// Date and time when the task was posted, UTC.
+    pub date_posted: Option<String>,
+    /// User-defined tag echoed from the task request.
+    pub tag: Option<String>,
+    /// URL for collecting the results in the regular format, if available.
+    pub endpoint_regular: Option<String>,
+    /// URL for collecting the results in the advanced format, if available.
+    pub endpoint_advanced: Option<String>,
+    /// URL for collecting the results in the HTML format, if available.
+    pub endpoint_html: Option<String>,
 }
 
 /// Location SERP data model.

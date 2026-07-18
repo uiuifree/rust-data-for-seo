@@ -135,7 +135,8 @@ pub enum SerpApiGoogleOrganicItem {
 /// Google Organic Item Paid Extra SERP data model.
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct SerpApiGoogleOrganicItemPaidExtra {
-    ad_aclk: Option<String>,
+    /// Google ad click tracking parameter of the paid result.
+    pub ad_aclk: Option<String>,
 }
 
 // --- item --------------------------------------------//

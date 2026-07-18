@@ -8,7 +8,7 @@
 
 ```toml
 [dependencies]
-data-for-seo = "0.2"
+data-for-seo = "0.3"
 ```
 
 ## Quick start
@@ -83,6 +83,7 @@ Every call returns `DataForSeoApiResponse<T>` (= `Result<DataForSeoApiResponseDa
 
 ### Credentials
 
+You need a [DataForSEO account](https://dataforseo.com/?aff=183967) (affiliate link) to get API credentials.
 Pass your API login and password directly (`DataForSeoClient::new`), or read them
 from the `DATAFORSEO_LOGIN` / `DATAFORSEO_PASSWORD` environment variables:
 
@@ -127,6 +128,22 @@ let client = DataForSeoClient::new("login", "password").sandbox();
 | **AI Optimization** | AI Keyword Data, LLM Mentions, LLM Responses (ChatGPT, Claude, Gemini, Perplexity), LLM Scraper |
 
 A few endpoints whose response schema is not documented return `serde_json::Value` so the raw data is still accessible.
+
+## Examples
+
+Runnable examples for the most common workflows live in [`examples/`](./examples):
+
+- [`quick_start.rs`](./examples/quick_start.rs) — minimal setup: live call + posting a task
+- [`serp_live.rs`](./examples/serp_live.rs) — check Google rankings with one live request, matching SERP item types
+- [`serp_task_flow.rs`](./examples/serp_task_flow.rs) — the full task flow: post → poll `tasks_ready` → fetch results
+- [`keywords_search_volume.rs`](./examples/keywords_search_volume.rs) — Google Ads search volume for a keyword list
+- [`backlinks_overview.rs`](./examples/backlinks_overview.rs) — backlink profile: summary, referring domains, newest links
+- [`labs_keyword_research.rs`](./examples/labs_keyword_research.rs) — keyword ideas and related keywords with metrics
+- [`onpage_audit.rs`](./examples/onpage_audit.rs) — crawl a site and read OnPage scores per page
+
+```bash
+DATAFORSEO_LOGIN=... DATAFORSEO_PASSWORD=... cargo run --example serp_live
+```
 
 ## Testing
 

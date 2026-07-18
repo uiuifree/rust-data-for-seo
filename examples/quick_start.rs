@@ -1,6 +1,6 @@
 //! Minimal example: fetch a backlinks summary and a Google organic SERP.
 //!
-//! Run with: `ID=... PASSWORD=... cargo run --example quick_start`
+//! Run with: `DATAFORSEO_LOGIN=... DATAFORSEO_PASSWORD=... cargo run --example quick_start`
 
 use data_for_seo::{
     BacklinksApiSummaryPost, DataForSeoClient, SerpApiGoogleOrganicTaskPostRequest,
@@ -8,9 +8,7 @@ use data_for_seo::{
 
 #[tokio::main]
 async fn main() -> Result<(), data_for_seo::error::DataForSeoError> {
-    let id = std::env::var("ID").unwrap_or_default();
-    let password = std::env::var("PASSWORD").unwrap_or_default();
-    let client = DataForSeoClient::new(id, password);
+    let client = DataForSeoClient::from_env()?;
 
     // Live endpoint: backlinks summary
     let response = client
