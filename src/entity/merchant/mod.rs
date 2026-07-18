@@ -59,11 +59,11 @@ pub struct MerchantApiSpell {
 #[derive(Debug, Default, Serialize, Deserialize, Clone)]
 pub struct MerchantApiPrice {
     /// Current price, in the units of `currency`.
-    pub current: Option<f32>,
+    pub current: Option<f64>,
     /// Regular (pre-discount) price, in the units of `currency`.
-    pub regular: Option<f32>,
+    pub regular: Option<f64>,
     /// Upper bound of the price when a range is displayed.
-    pub max_value: Option<f32>,
+    pub max_value: Option<f64>,
     /// ISO 4217 currency code of the price values.
     pub currency: Option<String>,
     /// `true` when the price is shown as a range rather than a single value.
@@ -78,11 +78,11 @@ pub struct MerchantApiRating {
     /// Rating scale type (e.g. `Max5`).
     pub rating_type: Option<String>,
     /// Rating value on the `rating_type` scale.
-    pub value: Option<f32>,
+    pub value: Option<f64>,
     /// Number of votes the rating is based on.
     pub votes_count: Option<i64>,
     /// Maximum possible rating value (e.g. `5`).
-    pub rating_max: Option<i32>,
+    pub rating_max: Option<i64>,
 }
 
 /// Delivery / shipping details attached to products and offers.

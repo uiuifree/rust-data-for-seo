@@ -329,13 +329,13 @@ pub struct AiOptimizationLlmMentionsSearchPost {
     pub order_by: Option<Vec<String>>,
     /// Offset of the first returned result (max 9,000).
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub offset: Option<u32>,
+    pub offset: Option<i32>,
     /// Token to page beyond 20,000 results.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub search_after_token: Option<String>,
     /// Maximum number of results (default: 100, max: 1,000).
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub limit: Option<u32>,
+    pub limit: Option<i32>,
     /// User-defined task identifier (max 255 characters).
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tag: Option<String>,
@@ -378,7 +378,7 @@ pub struct AiOptimizationLlmMentionsMetricsPost {
     pub initial_dataset_filters: Option<Vec<serde_json::Value>>,
     /// Maximum elements kept in each internal breakdown array (1–10, default: 10).
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub internal_list_limit: Option<u32>,
+    pub internal_list_limit: Option<i32>,
     /// User-defined task identifier (max 255 characters).
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tag: Option<String>,
@@ -449,13 +449,13 @@ pub struct AiOptimizationLlmMentionsMultiTargetMetricsPost {
     pub order_by: Option<Vec<String>>,
     /// Maximum number of results (default: 100, max: 1,000).
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub limit: Option<u32>,
+    pub limit: Option<i32>,
     /// Offset of the first returned result.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub offset: Option<u32>,
+    pub offset: Option<i32>,
     /// Maximum elements kept in each internal breakdown array (1–10, default: 5).
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub internal_list_limit: Option<u32>,
+    pub internal_list_limit: Option<i32>,
     /// User-defined task identifier (max 255 characters).
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tag: Option<String>,
@@ -507,13 +507,13 @@ pub struct AiOptimizationLlmMentionsTopMentionedPost {
     pub order_by: Option<Vec<String>>,
     /// Maximum number of results.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub limit: Option<u32>,
+    pub limit: Option<i32>,
     /// Offset of the first returned result.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub offset: Option<u32>,
+    pub offset: Option<i32>,
     /// Maximum elements kept in each internal breakdown array (1–10).
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub internal_list_limit: Option<u32>,
+    pub internal_list_limit: Option<i32>,
     /// Restrict results to these domains.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub include_domains: Option<Vec<String>>,

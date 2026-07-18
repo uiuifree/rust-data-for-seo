@@ -41,9 +41,9 @@ pub struct MerchantApiAmazonSellerItem {
     #[serde(rename = "type")]
     pub item_type: Option<String>,
     /// Rank of the offer within its own `item_type`.
-    pub rank_group: Option<i32>,
+    pub rank_group: Option<i64>,
     /// Absolute rank of the offer across all items.
-    pub rank_absolute: Option<i32>,
+    pub rank_absolute: Option<i64>,
     /// Position of the offer on the page (e.g. `left`).
     pub position: Option<String>,
     /// XPath of the element in the page markup.
@@ -57,7 +57,7 @@ pub struct MerchantApiAmazonSellerItem {
     /// Offer price.
     pub price: Option<MerchantApiPrice>,
     /// Discount applied to the offer, as a percentage.
-    pub percentage_discount: Option<f32>,
+    pub percentage_discount: Option<f64>,
     /// Vouchers that can be applied to the offer.
     pub applicable_vouchers: Option<Vec<Value>>,
     /// Seller rating.

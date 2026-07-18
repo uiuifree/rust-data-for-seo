@@ -14,7 +14,7 @@ pub struct BacklinksApiTimeseriesNewLostSummary {
     /// Grouping interval: `day`, `week`, `month`, or `year`.
     pub group_range: Option<String>,
     /// Number of elements in the `items` array.
-    pub items_count: Option<i32>,
+    pub items_count: Option<i64>,
     /// Elements returned for this result.
     pub items: Option<Vec<BacklinksApiElementBacklinksTimeseriesNewLostSummary>>,
 }

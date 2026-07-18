@@ -75,7 +75,7 @@ pub struct KeywordsDataApiGoogleAdsAdTrafficByKeywordsTaskPostRequest {
     pub keywords: Option<Vec<String>>,
     /// Maximum custom bid, in USD; required by the API.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub bid: Option<f32>,
+    pub bid: Option<f64>,
     /// Match type: `exact`, `broad` or `phrase`; required by the API.
     #[serde(rename = "match", skip_serializing_if = "Option::is_none")]
     pub match_type: Option<String>,

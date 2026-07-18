@@ -79,53 +79,53 @@ pub struct SerpApiRating {
     /// Scale of the rating (e.g. `Max5`).
     pub rating_type: Option<String>,
     /// Numeric value.
-    pub value: Option<f32>,
+    pub value: Option<f64>,
     /// Number of votes the rating is based on.
-    pub votes_count: Option<u32>,
+    pub votes_count: Option<i64>,
     /// Maximum possible rating value.
-    pub rating_max: Option<u32>,
+    pub rating_max: Option<i64>,
 }
 /// Rating Distribution SERP data model.
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct SerpApiRatingDistribution {
     /// Number of 1-star ratings.
     #[serde(rename = "1")]
-    pub distribution1: Option<i32>,
+    pub distribution1: Option<i64>,
     /// Number of 2-star ratings.
     #[serde(rename = "2")]
-    pub distribution2: Option<i32>,
+    pub distribution2: Option<i64>,
     /// Number of 3-star ratings.
     #[serde(rename = "3")]
-    pub distribution3: Option<i32>,
+    pub distribution3: Option<i64>,
     /// Number of 4-star ratings.
     #[serde(rename = "4")]
-    pub distribution4: Option<i32>,
+    pub distribution4: Option<i64>,
     /// Number of 5-star ratings.
     #[serde(rename = "5")]
-    pub distribution5: Option<i32>,
+    pub distribution5: Option<i64>,
 }
 /// Rectangle SERP data model.
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct SerpApiRectangle {
     /// X coordinate of the bounding box, in pixels.
-    pub x: Option<f32>,
+    pub x: Option<f64>,
     /// Y coordinate of the bounding box, in pixels.
-    pub y: Option<f32>,
+    pub y: Option<f64>,
     /// Width of the bounding box, in pixels.
-    pub width: Option<f32>,
+    pub width: Option<f64>,
     /// Height of the bounding box, in pixels.
-    pub height: Option<f32>,
+    pub height: Option<f64>,
 }
 
 /// Price SERP data model.
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct SerpApiPrice {
     /// Current price.
-    pub current: Option<f32>,
+    pub current: Option<f64>,
     /// Regular (non-discounted) price.
-    pub regular: Option<f32>,
+    pub regular: Option<f64>,
     /// Upper bound of the price range.
-    pub max_value: Option<f32>,
+    pub max_value: Option<f64>,
     /// ISO currency code of the price.
     pub currency: Option<String>,
     /// `true` if the price represents a range.

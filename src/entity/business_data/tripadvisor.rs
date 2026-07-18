@@ -16,7 +16,7 @@ pub struct BusinessDataApiTripadvisorSearchTaskPost {
     pub location_name: Option<String>,
     /// Location code from the `locations` endpoint.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub location_code: Option<i64>,
+    pub location_code: Option<i32>,
     /// Full language name, e.g. `"English"`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub language_name: Option<String>,
@@ -61,7 +61,7 @@ pub struct BusinessDataApiTripadvisorReviewsTaskPost {
     pub location_name: Option<String>,
     /// Location code from the `locations` endpoint.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub location_code: Option<i64>,
+    pub location_code: Option<i32>,
     /// Full language name, e.g. `"English"`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub language_name: Option<String>,
@@ -109,7 +109,7 @@ pub struct BusinessDataApiTripadvisorSearchResult {
     /// Source domain the data was collected from (e.g. `"tripadvisor.com"`).
     pub se_domain: Option<String>,
     /// Location code the task was run for.
-    pub location_code: Option<i64>,
+    pub location_code: Option<i32>,
     /// Language code the task was run for.
     pub language_code: Option<String>,
     /// URL of the Tripadvisor results page the data was parsed from.
@@ -190,7 +190,7 @@ pub struct BusinessDataApiTripadvisorReviewsResult {
     /// Source domain the data was collected from (e.g. `"tripadvisor.com"`).
     pub se_domain: Option<String>,
     /// Location code the task was run for.
-    pub location_code: Option<i64>,
+    pub location_code: Option<i32>,
     /// Language code the task was run for.
     pub language_code: Option<String>,
     /// URL of the Tripadvisor business page the data was parsed from.

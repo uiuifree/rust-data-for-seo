@@ -106,7 +106,7 @@ pub struct DataForSeoLabsAmazonBulkSearchVolumeRequest {
     pub location_name: Option<String>,
     /// Location code (e.g. `2840`); alternative to `location_name`.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub location_code: Option<i64>,
+    pub location_code: Option<i32>,
     /// Full language name (e.g. `"English"`); alternative to `language_code`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub language_name: Option<String>,
@@ -139,7 +139,7 @@ pub struct DataForSeoLabsAmazonRelatedKeywordsRequest {
     pub location_name: Option<String>,
     /// Location code (e.g. `2840`); alternative to `location_name`.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub location_code: Option<i64>,
+    pub location_code: Option<i32>,
     /// Full language name (e.g. `"English"`); alternative to `language_code`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub language_name: Option<String>,
@@ -157,10 +157,10 @@ pub struct DataForSeoLabsAmazonRelatedKeywordsRequest {
     pub ignore_synonyms: Option<bool>,
     /// Maximum number of returned items (default 100, max 1000).
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub limit: Option<i64>,
+    pub limit: Option<i32>,
     /// Offset into the result set, for pagination.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub offset: Option<i64>,
+    pub offset: Option<i32>,
     /// User-defined task identifier (max 255 characters).
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tag: Option<String>,
@@ -187,7 +187,7 @@ pub struct DataForSeoLabsAmazonRankedKeywordsRequest {
     pub location_name: Option<String>,
     /// Location code (e.g. `2840`); alternative to `location_name`.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub location_code: Option<i64>,
+    pub location_code: Option<i32>,
     /// Full language name (e.g. `"English"`); alternative to `language_code`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub language_name: Option<String>,
@@ -205,10 +205,10 @@ pub struct DataForSeoLabsAmazonRankedKeywordsRequest {
     pub order_by: Option<Vec<String>>,
     /// Maximum number of returned items (default 100, max 1000).
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub limit: Option<i64>,
+    pub limit: Option<i32>,
     /// Offset into the result set, for pagination.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub offset: Option<i64>,
+    pub offset: Option<i32>,
     /// User-defined task identifier (max 255 characters).
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tag: Option<String>,
@@ -235,7 +235,7 @@ pub struct DataForSeoLabsAmazonProductRankOverviewRequest {
     pub location_name: Option<String>,
     /// Location code (e.g. `2840`); alternative to `location_name`.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub location_code: Option<i64>,
+    pub location_code: Option<i32>,
     /// Full language name (e.g. `"English"`); alternative to `language_code`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub language_name: Option<String>,
@@ -268,7 +268,7 @@ pub struct DataForSeoLabsAmazonProductCompetitorsRequest {
     pub location_name: Option<String>,
     /// Location code (e.g. `2840`); alternative to `location_name`.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub location_code: Option<i64>,
+    pub location_code: Option<i32>,
     /// Full language name (e.g. `"English"`); alternative to `language_code`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub language_name: Option<String>,
@@ -283,10 +283,10 @@ pub struct DataForSeoLabsAmazonProductCompetitorsRequest {
     pub order_by: Option<Vec<String>>,
     /// Maximum number of returned items (default 100, max 1000).
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub limit: Option<i64>,
+    pub limit: Option<i32>,
     /// Offset into the result set, for pagination.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub offset: Option<i64>,
+    pub offset: Option<i32>,
     /// User-defined task identifier (max 255 characters).
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tag: Option<String>,
@@ -313,7 +313,7 @@ pub struct DataForSeoLabsAmazonProductKeywordIntersectionsRequest {
     pub location_name: Option<String>,
     /// Location code (e.g. `2840`); alternative to `location_name`.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub location_code: Option<i64>,
+    pub location_code: Option<i32>,
     /// Full language name (e.g. `"English"`); alternative to `language_code`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub language_name: Option<String>,
@@ -331,10 +331,10 @@ pub struct DataForSeoLabsAmazonProductKeywordIntersectionsRequest {
     pub order_by: Option<Vec<String>>,
     /// Maximum number of returned items (default 100, max 1000).
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub limit: Option<i64>,
+    pub limit: Option<i32>,
     /// Offset into the result set, for pagination.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub offset: Option<i64>,
+    pub offset: Option<i32>,
     /// User-defined task identifier (max 255 characters).
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tag: Option<String>,

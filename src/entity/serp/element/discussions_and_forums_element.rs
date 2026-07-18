@@ -18,5 +18,5 @@ pub struct SerpApiElementDiscussionsAndForumsElement {
     /// UTC timestamp associated with the result.
     pub timestamp: Option<String>,
     /// Number of posts.
-    pub posts_count: Option<i32>,
+    pub posts_count: Option<i64>,
 }

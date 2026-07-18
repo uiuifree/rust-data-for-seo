@@ -12,7 +12,7 @@ pub struct OnPageDataApiMicrodata {
     /// Aggregated counts of validation issues by severity.
     pub test_summary: Option<OnPageDataApiTestSummary>,
     /// Number of items returned in this response.
-    pub items_count: Option<i32>,
+    pub items_count: Option<i64>,
     /// Parsed structured-data items found on the page.
     pub items: Option<Vec<OnPageDataApiItemJsonLd>>,
 }
@@ -22,13 +22,13 @@ pub struct OnPageDataApiMicrodata {
 #[derive(Debug, Default, Serialize, Deserialize, Clone)]
 pub struct OnPageDataApiTestSummary {
     /// Number of fatal-level issues.
-    pub fatal: Option<i32>,
+    pub fatal: Option<i64>,
     /// Number of error-level issues.
-    pub error: Option<i32>,
+    pub error: Option<i64>,
     /// Number of warning-level issues.
-    pub warning: Option<i32>,
+    pub warning: Option<i64>,
     /// Number of info-level notices.
-    pub info: Option<i32>,
+    pub info: Option<i64>,
 }
 
 /// A single structured-data item parsed from the page.

@@ -6,7 +6,7 @@ use serde::{Deserialize, Serialize};
 #[derive(Debug, Default, Serialize, Deserialize, Clone)]
 pub struct BacklinksApiBulkNewLostBacklinks {
     /// Number of elements in the `items` array.
-    pub items_count: Option<i32>,
+    pub items_count: Option<i64>,
     /// Elements returned for this result.
     pub items: Option<Vec<BacklinksApiElementBulkNewLostBacklinks>>,
 }

@@ -16,7 +16,7 @@ pub struct BacklinksApiIdListItem {
     /// Task status code as a string (e.g. "20000").
     pub status: Option<String>,
     /// Cost of the task in USD.
-    pub cost: Option<f32>,
+    pub cost: Option<f64>,
     /// Original POST request parameters of the task.
     pub metadata: Option<Value>,
 }

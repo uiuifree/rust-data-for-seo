@@ -295,7 +295,7 @@ pub struct BacklinksApiSummaryPost {
     pub exclude_internal_backlinks: Option<bool>,
     /// Maximum number of elements within internal arrays.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub internal_list_limit: Option<u32>,
+    pub internal_list_limit: Option<i32>,
     /// Which backlinks to include: `all`, `live`, or `lost`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub backlinks_status_type: Option<String>,
@@ -368,13 +368,13 @@ pub struct BacklinksApiBacklinksPost {
     pub order_by: Option<Vec<String>>,
     /// Offset into the result set for pagination.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub offset: Option<u32>,
+    pub offset: Option<i32>,
     /// Pagination token for retrieving results beyond the offset limit.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub search_after_token: Option<String>,
     /// Maximum number of returned elements.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub limit: Option<u32>,
+    pub limit: Option<i32>,
     /// Which backlinks to include: `all`, `live`, or `lost`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub backlinks_status_type: Option<String>,
@@ -412,13 +412,13 @@ pub struct BacklinksApiAnchorPost {
     pub target: String,
     /// Maximum number of returned elements.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub limit: Option<u32>,
+    pub limit: Option<i32>,
     /// Offset into the result set for pagination.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub offset: Option<u32>,
+    pub offset: Option<i32>,
     /// Maximum number of elements within internal arrays.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub internal_list_limit: Option<u32>,
+    pub internal_list_limit: Option<i32>,
     /// Which backlinks to include: `all`, `live`, or `lost`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub backlinks_status_type: Option<String>,
@@ -465,13 +465,13 @@ pub struct BacklinksApiDomainPagesPost {
     pub target: String,
     /// Maximum number of returned elements.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub limit: Option<u32>,
+    pub limit: Option<i32>,
     /// Offset into the result set for pagination.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub offset: Option<u32>,
+    pub offset: Option<i32>,
     /// Maximum number of elements within internal arrays.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub internal_list_limit: Option<u32>,
+    pub internal_list_limit: Option<i32>,
     /// Which backlinks to include: `all`, `live`, or `lost`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub backlinks_status_type: Option<String>,
@@ -515,13 +515,13 @@ pub struct BacklinksApiDomainPagesSummaryPost {
     pub target: String,
     /// Maximum number of returned elements.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub limit: Option<u32>,
+    pub limit: Option<i32>,
     /// Offset into the result set for pagination.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub offset: Option<u32>,
+    pub offset: Option<i32>,
     /// Maximum number of elements within internal arrays.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub internal_list_limit: Option<u32>,
+    pub internal_list_limit: Option<i32>,
     /// Which backlinks to include: `all`, `live`, or `lost`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub backlinks_status_type: Option<String>,
@@ -568,13 +568,13 @@ pub struct BacklinksApiReferringDomainsPost {
     pub target: String,
     /// Maximum number of returned elements.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub limit: Option<u32>,
+    pub limit: Option<i32>,
     /// Offset into the result set for pagination.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub offset: Option<u32>,
+    pub offset: Option<i32>,
     /// Maximum number of elements within internal arrays.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub internal_list_limit: Option<u32>,
+    pub internal_list_limit: Option<i32>,
     /// Which backlinks to include: `all`, `live`, or `lost`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub backlinks_status_type: Option<String>,
@@ -624,13 +624,13 @@ pub struct BacklinksApiReferringNetworksPost {
     pub network_address_type: Option<String>,
     /// Maximum number of returned elements.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub limit: Option<u32>,
+    pub limit: Option<i32>,
     /// Offset into the result set for pagination.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub offset: Option<u32>,
+    pub offset: Option<i32>,
     /// Maximum number of elements within internal arrays.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub internal_list_limit: Option<u32>,
+    pub internal_list_limit: Option<i32>,
     /// Which backlinks to include: `all`, `live`, or `lost`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub backlinks_status_type: Option<String>,
@@ -677,10 +677,10 @@ pub struct BacklinksApiCompetitorsPost {
     pub target: String,
     /// Maximum number of returned elements.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub limit: Option<u32>,
+    pub limit: Option<i32>,
     /// Offset into the result set for pagination.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub offset: Option<u32>,
+    pub offset: Option<i32>,
     /// Result filtering conditions (max 8).
     #[serde(skip_serializing_if = "Option::is_none")]
     pub filters: Option<Vec<Value>>,
@@ -730,13 +730,13 @@ pub struct BacklinksApiDomainIntersectionPost {
     pub order_by: Option<Vec<String>>,
     /// Offset into the result set for pagination.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub offset: Option<u32>,
+    pub offset: Option<i32>,
     /// Maximum number of returned elements.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub limit: Option<u32>,
+    pub limit: Option<i32>,
     /// Maximum number of elements within internal arrays.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub internal_list_limit: Option<u32>,
+    pub internal_list_limit: Option<i32>,
     /// Which backlinks to include: `all`, `live`, or `lost`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub backlinks_status_type: Option<String>,
@@ -792,13 +792,13 @@ pub struct BacklinksApiPageIntersectionPost {
     pub order_by: Option<Vec<String>>,
     /// Offset into the result set for pagination.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub offset: Option<u32>,
+    pub offset: Option<i32>,
     /// Maximum number of returned elements.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub limit: Option<u32>,
+    pub limit: Option<i32>,
     /// Maximum number of elements within internal arrays.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub internal_list_limit: Option<u32>,
+    pub internal_list_limit: Option<i32>,
     /// Whether to include the target's subdomains in the search.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub include_subdomains: Option<bool>,
@@ -1056,10 +1056,10 @@ impl BacklinksApiBulkPagesSummaryPost {
 pub struct BacklinksApiErrorsPost {
     /// Maximum number of returned elements.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub limit: Option<u32>,
+    pub limit: Option<i32>,
     /// Offset into the result set for pagination.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub offset: Option<u32>,
+    pub offset: Option<i32>,
     /// Restrict results to errors of the given API function.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub filtered_function: Option<String>,
@@ -1087,10 +1087,10 @@ pub struct BacklinksApiIdListPost {
     pub datetime_to: String,
     /// Maximum number of returned elements.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub limit: Option<u32>,
+    pub limit: Option<i32>,
     /// Offset into the result set for pagination.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub offset: Option<u32>,
+    pub offset: Option<i32>,
     /// Sort order by task execution time: `asc` or `desc`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub sort: Option<String>,

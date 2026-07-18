@@ -36,9 +36,9 @@ pub struct MerchantApiGoogleProductInfoItem {
     #[serde(rename = "type")]
     pub item_type: Option<String>,
     /// Rank of the element within its own `item_type`.
-    pub rank_group: Option<i32>,
+    pub rank_group: Option<i64>,
     /// Absolute rank of the element across all items.
-    pub rank_absolute: Option<i32>,
+    pub rank_absolute: Option<i64>,
     /// Position of the element on the page (e.g. `left`).
     pub position: Option<String>,
     /// Google Shopping product identifier.

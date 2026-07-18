@@ -16,11 +16,11 @@ pub struct KeywordsDataApiBingKeyword {
     /// Device filter applied, e.g. "all", "mobile", "desktop" or "tablet".
     pub device: Option<String>,
     /// Relative competition from 0.0 (low) to 1.0 (high).
-    pub competition: Option<f32>,
+    pub competition: Option<f64>,
     /// Average cost per click, in USD.
-    pub cpc: Option<f32>,
+    pub cpc: Option<f64>,
     /// Average monthly search volume.
-    pub search_volume: Option<i32>,
+    pub search_volume: Option<i64>,
     /// Product/service category identifiers (legacy, usually null).
     pub categories: Option<Vec<i64>>,
     /// Search volume broken down by month.
@@ -35,5 +35,5 @@ pub struct KeywordsDataApiBingMonthlySearch {
     /// Calendar month (1-12).
     pub month: Option<i32>,
     /// Search volume for the month.
-    pub search_volume: Option<i32>,
+    pub search_volume: Option<i64>,
 }

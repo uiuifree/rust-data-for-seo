@@ -137,11 +137,11 @@ pub struct ContentGenerationApiGeneratePost {
     /// Maximum new tokens to generate (max 300); required unless `max_tokens`
     /// is set.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub max_new_tokens: Option<u32>,
+    pub max_new_tokens: Option<i64>,
     /// Maximum total tokens including the input (max 1024); required unless
     /// `max_new_tokens` is set.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub max_tokens: Option<u32>,
+    pub max_tokens: Option<i64>,
     /// Randomness of token selection, 0–1 (default 0.8); overrides
     /// top_k/top_p/temperature.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -152,7 +152,7 @@ pub struct ContentGenerationApiGeneratePost {
     /// Number of top tokens shortlisted per step, 1–100 (default 40); ignored
     /// when `creativity_index` is set.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub top_k: Option<u32>,
+    pub top_k: Option<i64>,
     /// Nucleus sampling probability cutoff, 0–1 (default 0.9); ignored when
     /// `creativity_index` is set.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -194,7 +194,7 @@ pub struct ContentGenerationApiGenerateTextPost {
     /// Main topic of the content (1–50 tokens).
     pub topic: String,
     /// Target number of words, 1–1000.
-    pub word_count: u32,
+    pub word_count: i64,
     /// Up to 10 secondary topics to cover.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub sub_topics: Option<Vec<String>>,
@@ -220,7 +220,7 @@ pub struct ContentGenerationApiGenerateTextPost {
 
 impl ContentGenerationApiGenerateTextPost {
     /// Creates a request for the given topic and target word count.
-    pub fn new(topic: &str, word_count: u32) -> ContentGenerationApiGenerateTextPost {
+    pub fn new(topic: &str, word_count: i64) -> ContentGenerationApiGenerateTextPost {
         ContentGenerationApiGenerateTextPost {
             topic: topic.to_string(),
             word_count,
@@ -341,7 +341,7 @@ pub struct ContentGenerationApiTextSummaryPost {
     pub language_code: Option<String>,
     /// Maximum elements in the keyword_density array (default 10).
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub internal_list_limit: Option<u32>,
+    pub internal_list_limit: Option<i32>,
     /// User-defined task identifier (max 255 characters).
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tag: Option<String>,

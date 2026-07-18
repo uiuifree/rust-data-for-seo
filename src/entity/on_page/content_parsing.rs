@@ -11,7 +11,7 @@ pub struct OnPageDataApiContentParsing {
     /// Details of the crawling session.
     pub crawl_status: Option<OnPageDataApiCrawlStatus>,
     /// Number of items in the `items` array.
-    pub items_count: Option<i32>,
+    pub items_count: Option<i64>,
     /// Array of parsed pages.
     pub items: Option<Vec<OnPageDataApiContentParsingItem>>,
 }
@@ -134,7 +134,7 @@ pub struct OnPageDataApiContentRating {
     /// Maximum possible rating value.
     pub max_rating_value: Option<f64>,
     /// Number of ratings received.
-    pub rating_count: Option<i32>,
+    pub rating_count: Option<i64>,
     /// Normalized rating score, from 0 to 1.
     pub relative_rating: Option<f64>,
 }

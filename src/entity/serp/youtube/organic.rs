@@ -35,11 +35,11 @@ pub struct SerpApiElementYoutubeVideo {
     #[serde(rename = "type")]
     pub type_of_element: Option<String>,
     /// Rank of the element among elements of the same type.
-    pub rank_group: Option<i32>,
+    pub rank_group: Option<i64>,
     /// Absolute rank of the element across the whole SERP.
-    pub rank_absolute: Option<i32>,
+    pub rank_absolute: Option<i64>,
     /// Rank of the element among result blocks.
-    pub block_rank: Option<i32>,
+    pub block_rank: Option<i64>,
     /// Name of the result block the element belongs to.
     pub block_name: Option<String>,
     /// Title of the result.
@@ -79,7 +79,7 @@ pub struct SerpApiElementYoutubeVideo {
     /// Duration as a formatted string.
     pub duration_time: Option<String>,
     /// Duration in seconds.
-    pub duration_time_seconds: Option<i32>,
+    pub duration_time_seconds: Option<i64>,
 }
 
 /// `youtube_channel` organic item.
@@ -89,11 +89,11 @@ pub struct SerpApiElementYoutubeChannel {
     #[serde(rename = "type")]
     pub type_of_element: Option<String>,
     /// Rank of the element among elements of the same type.
-    pub rank_group: Option<i32>,
+    pub rank_group: Option<i64>,
     /// Absolute rank of the element across the whole SERP.
-    pub rank_absolute: Option<i32>,
+    pub rank_absolute: Option<i64>,
     /// Rank of the element among result blocks.
-    pub block_rank: Option<i32>,
+    pub block_rank: Option<i64>,
     /// Name of the result block the element belongs to.
     pub block_name: Option<String>,
     /// YouTube channel identifier.
@@ -121,11 +121,11 @@ pub struct SerpApiElementYoutubePlaylist {
     #[serde(rename = "type")]
     pub type_of_element: Option<String>,
     /// Rank of the element among elements of the same type.
-    pub rank_group: Option<i32>,
+    pub rank_group: Option<i64>,
     /// Absolute rank of the element across the whole SERP.
-    pub rank_absolute: Option<i32>,
+    pub rank_absolute: Option<i64>,
     /// Rank of the element among result blocks.
-    pub block_rank: Option<i32>,
+    pub block_rank: Option<i64>,
     /// Name of the result block the element belongs to.
     pub block_name: Option<String>,
     /// Title of the result.
@@ -162,5 +162,5 @@ pub struct SerpApiElementYoutubePreviewVideo {
     /// Duration as a formatted string.
     pub duration_time: Option<String>,
     /// Duration in seconds.
-    pub duration_time_second: Option<i32>,
+    pub duration_time_second: Option<i64>,
 }

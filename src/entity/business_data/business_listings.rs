@@ -124,7 +124,7 @@ pub struct BusinessDataApiBusinessListingsSearchResult {
     /// Number of results returned in this response.
     pub count: Option<i64>,
     /// Offset applied to this response.
-    pub offset: Option<i64>,
+    pub offset: Option<i32>,
     /// Token to pass in the next request to fetch the following page.
     pub offset_token: Option<String>,
     /// Number of elements in `items`.
@@ -148,7 +148,7 @@ pub struct BusinessDataApiCategoriesAggregationResult {
     /// Number of results returned in this response.
     pub count: Option<i64>,
     /// Offset applied to this response.
-    pub offset: Option<i64>,
+    pub offset: Option<i32>,
     /// Token to pass in the next request to fetch the following page.
     pub offset_token: Option<String>,
     /// Number of elements in `items`.

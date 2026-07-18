@@ -14,7 +14,7 @@ pub struct AiOptimizationMentionMetric {
     /// Number of mentions within the group.
     pub mentions: Option<i64>,
     /// Aggregate AI search volume within the group.
-    pub ai_search_volume: Option<i64>,
+    pub ai_search_volume: Option<f64>,
 }
 
 /// Aggregate totals for a group of mentions.
@@ -23,7 +23,7 @@ pub struct AiOptimizationMentionTotal {
     /// Total number of mentions.
     pub mentions: Option<i64>,
     /// Total AI search volume.
-    pub ai_search_volume: Option<i64>,
+    pub ai_search_volume: Option<f64>,
 }
 
 /// Mention metrics grouped along every available dimension.
@@ -64,7 +64,7 @@ pub struct AiOptimizationMentionSource {
     /// Source content rendered as markdown.
     pub markdown: Option<String>,
     /// Position of the source within the answer.
-    pub position: Option<i32>,
+    pub position: Option<i64>,
     /// Title of the source page.
     pub title: Option<String>,
     /// Domain of the source.
@@ -95,7 +95,7 @@ pub struct AiOptimizationLlmMention {
     /// Web search results attached to the answer (raw JSON).
     pub search_results: Option<Value>,
     /// AI search volume associated with the mention.
-    pub ai_search_volume: Option<i64>,
+    pub ai_search_volume: Option<f64>,
     /// Monthly AI search-volume history for the mention.
     pub monthly_searches: Option<Vec<AiOptimizationMonthlySearch>>,
     /// UTC timestamp of the first recorded response.
@@ -114,11 +114,11 @@ pub struct AiOptimizationLlmMentionsSearch {
     /// Total number of mentions matching the request.
     pub total_count: Option<i64>,
     /// Offset of the first returned item.
-    pub current_offset: Option<i64>,
+    pub current_offset: Option<i32>,
     /// Token used to page beyond 20,000 results.
     pub search_after_token: Option<String>,
     /// Number of items in [`items`](Self::items).
-    pub items_count: Option<i32>,
+    pub items_count: Option<i64>,
     /// The mentions returned for this page.
     pub items: Option<Vec<AiOptimizationLlmMention>>,
 }
@@ -168,11 +168,11 @@ pub struct AiOptimizationLlmMentionsMetrics {
     /// Total number of items matching the request.
     pub total_count: Option<i64>,
     /// Offset of the first returned item.
-    pub offset: Option<i64>,
+    pub offset: Option<i32>,
     /// Offset of the first returned item (alternate field name).
-    pub current_offset: Option<i64>,
+    pub current_offset: Option<i32>,
     /// Number of items in [`items`](Self::items).
-    pub items_count: Option<i32>,
+    pub items_count: Option<i64>,
     /// Metrics aggregated across every returned item.
     pub aggregated_metrics: Option<AiOptimizationAggregatedMetrics>,
     /// Per-item metric breakdowns.
@@ -194,19 +194,19 @@ pub struct AiOptimizationMentionTimeseriesItem {
     /// Number of mentions in the period (`historical`).
     pub mentions: Option<i64>,
     /// AI search volume in the period (`historical`).
-    pub ai_search_volume: Option<i64>,
+    pub ai_search_volume: Option<f64>,
     /// Mentions gained in the period (`timeseries_new_lost`).
     pub new_mentions: Option<i64>,
     /// Mentions lost in the period (`timeseries_new_lost`).
     pub lost_mentions: Option<i64>,
     /// AI search volume gained in the period (`timeseries_new_lost`).
-    pub new_ai_search_volume: Option<i64>,
+    pub new_ai_search_volume: Option<f64>,
     /// AI search volume lost in the period (`timeseries_new_lost`).
-    pub lost_ai_search_volume: Option<i64>,
+    pub lost_ai_search_volume: Option<f64>,
     /// Mention count difference from the previous period (`timeseries_delta`).
     pub delta_mentions: Option<i64>,
     /// AI search volume difference from the previous period (`timeseries_delta`).
-    pub delta_ai_search_volume: Option<i64>,
+    pub delta_ai_search_volume: Option<f64>,
 }
 
 /// Result shared by the `historical`, `timeseries_delta` and
@@ -214,7 +214,7 @@ pub struct AiOptimizationMentionTimeseriesItem {
 #[derive(Debug, Default, Serialize, Deserialize, Clone)]
 pub struct AiOptimizationLlmMentionsTimeseries {
     /// Number of items in [`items`](Self::items).
-    pub items_count: Option<i32>,
+    pub items_count: Option<i64>,
     /// The timeseries data points.
     pub items: Option<Vec<AiOptimizationMentionTimeseriesItem>>,
     /// Start date of the series (`yyyy-mm-dd`).

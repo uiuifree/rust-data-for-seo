@@ -10,7 +10,7 @@ pub struct OnPageDataApiRawHtml {
     /// Statistics on the crawling session.
     pub crawl_status: Option<OnPageDataApiCrawlStatus>,
     /// Number of items returned in this response.
-    pub items_count: Option<i32>,
+    pub items_count: Option<i64>,
     /// Raw HTML item returned in this response.
     pub items: Option<OnPageDataApiRawHtmlItem>,
 }

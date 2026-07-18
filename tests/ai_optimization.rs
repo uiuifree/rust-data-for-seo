@@ -60,10 +60,10 @@ mod deserialize {
         assert_eq!(result.location_code, Some(2840));
         let items = result.items.as_ref().expect("items");
         assert_eq!(items[0].keyword.as_deref(), Some("best crm software"));
-        assert_eq!(items[0].ai_search_volume, Some(1200));
+        assert_eq!(items[0].ai_search_volume, Some(1200.0));
         assert_eq!(
             items[0].ai_monthly_searches.as_ref().unwrap()[1].ai_search_volume,
-            Some(1200)
+            Some(1200.0)
         );
     }
 
@@ -178,7 +178,7 @@ mod deserialize {
         assert_eq!(result.search_after_token.as_deref(), Some("tok_123"));
         let mention = &result.items.as_ref().unwrap()[0];
         assert_eq!(mention.platform.as_deref(), Some("chat_gpt"));
-        assert_eq!(mention.ai_search_volume, Some(800));
+        assert_eq!(mention.ai_search_volume, Some(800.0));
         assert_eq!(
             mention.sources.as_ref().unwrap()[0].domain.as_deref(),
             Some("dataforseo.com")

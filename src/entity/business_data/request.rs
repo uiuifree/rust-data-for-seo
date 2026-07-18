@@ -14,7 +14,7 @@ pub struct BusinessDataApiGoogleTaskPost {
     pub location_name: Option<String>,
     /// Location code from the `locations` endpoint.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub location_code: Option<i64>,
+    pub location_code: Option<i32>,
     /// GPS coordinates as `"latitude,longitude"` or `"latitude,longitude,radius"`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub location_coordinate: Option<String>,
@@ -59,7 +59,7 @@ pub struct BusinessDataApiReviewsTaskPost {
     pub location_name: Option<String>,
     /// Location code from the `locations` endpoint.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub location_code: Option<i64>,
+    pub location_code: Option<i32>,
     /// GPS coordinates as `"latitude,longitude"` or `"latitude,longitude,radius"`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub location_coordinate: Option<String>,
@@ -110,7 +110,7 @@ pub struct BusinessDataApiHotelSearchesTaskPost {
     pub location_name: Option<String>,
     /// Location code from the `locations` endpoint.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub location_code: Option<i64>,
+    pub location_code: Option<i32>,
     /// GPS coordinates as `"latitude,longitude"` or `"latitude,longitude,radius"`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub location_coordinate: Option<String>,
@@ -170,7 +170,7 @@ pub struct BusinessDataApiHotelInfoTaskPost {
     pub location_name: Option<String>,
     /// Location code from the `locations` endpoint.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub location_code: Option<i64>,
+    pub location_code: Option<i32>,
     /// Full language name, e.g. `"English"`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub language_name: Option<String>,

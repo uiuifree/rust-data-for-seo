@@ -154,7 +154,7 @@ pub struct AiOptimizationLlmResponsesPost {
     pub model_name: String,
     /// Maximum tokens to generate (16–4096, default: 2048).
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub max_output_tokens: Option<u32>,
+    pub max_output_tokens: Option<i64>,
     /// Sampling temperature (0–2, default: 0.94; unsupported by reasoning models).
     #[serde(skip_serializing_if = "Option::is_none")]
     pub temperature: Option<f64>,

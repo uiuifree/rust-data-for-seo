@@ -41,7 +41,7 @@ pub struct KeywordsDataApiBingSearchVolumeHistoryRecord {
     /// Day of the month.
     pub day: Option<i32>,
     /// Search volume for the record.
-    pub search_volume: Option<i32>,
+    pub search_volume: Option<i64>,
 }
 
 /// A language with its available locations, returned by the Bing

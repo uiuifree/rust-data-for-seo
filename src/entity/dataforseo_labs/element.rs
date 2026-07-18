@@ -225,7 +225,7 @@ pub struct DataForSeoLabsKeywordData {
     /// Keyword the data relates to.
     pub keyword: Option<String>,
     /// Location code (e.g. `2840`); alternative to `location_name`.
-    pub location_code: Option<i64>,
+    pub location_code: Option<i32>,
     /// Language code (e.g. `"en"`); alternative to `language_name`.
     pub language_code: Option<String>,
     /// Google Ads keyword metrics.
@@ -397,7 +397,7 @@ pub struct DataForSeoLabsSerpItem {
     /// Estimated monthly cost (USD) to obtain this traffic via paid search.
     pub estimated_paid_traffic_cost: Option<f64>,
     /// Estimated traffic volume derived from clickstream data.
-    pub clickstream_etv: Option<i64>,
+    pub clickstream_etv: Option<f64>,
     /// How the element's rank changed since the previous check.
     pub rank_changes: Option<DataForSeoLabsRankChanges>,
     /// Backlink counters of the ranking page.
@@ -477,7 +477,7 @@ pub struct DataForSeoLabsResult<T> {
     /// Seed keywords the results were expanded from.
     pub seed_keywords: Option<Vec<String>>,
     /// Location code (e.g. `2840`); alternative to `location_name`.
-    pub location_code: Option<i64>,
+    pub location_code: Option<i32>,
     /// Language code (e.g. `"en"`); alternative to `language_name`.
     pub language_code: Option<String>,
     /// Total number of matching results in the database.
@@ -485,7 +485,7 @@ pub struct DataForSeoLabsResult<T> {
     /// Number of items returned in `items`.
     pub items_count: Option<i64>,
     /// Offset into the result set, for pagination.
-    pub offset: Option<i64>,
+    pub offset: Option<i32>,
     /// Token used to page beyond the standard offset limit.
     pub offset_token: Option<String>,
     /// Ranking and traffic metrics, grouped by SERP feature type.

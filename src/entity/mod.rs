@@ -43,15 +43,15 @@ pub struct DataForSeoApiResponseData<R> {
     /// Total execution time.
     pub time: String,
     /// Total cost of the request in USD.
-    pub cost: f32,
+    pub cost: f64,
     /// Number of tasks in the `tasks` array.
     pub tasks_count: i32,
     /// Number of tasks that returned an error.
     pub tasks_error: i32,
     /// Echo of the `limit` request parameter, where applicable.
-    pub limit: Option<u32>,
+    pub limit: Option<i32>,
     /// Echo of the `offset` request parameter, where applicable.
-    pub offset: Option<u32>,
+    pub offset: Option<i32>,
     /// Echo of the `sort` request parameter, where applicable.
     pub sort: Option<String>,
     /// Echo of the `include_metadata` request parameter, where applicable.
@@ -103,7 +103,7 @@ pub struct DataForSeoApiTask<R> {
     /// Execution time of this task.
     pub time: String,
     /// Cost of this task in USD.
-    pub cost: f32,
+    pub cost: f64,
     /// URL path segments of the executed function (e.g. `["v3", "serp", ...]`).
     pub path: Vec<String>,
     /// Echo of the parameters submitted when the task was created.
@@ -176,9 +176,9 @@ pub struct SerpApiTaskResult<T> {
     /// Element types present in `items` (e.g. `organic`, `people_also_ask`).
     pub item_types: Option<Vec<String>>,
     /// Total number of results the search engine reported.
-    pub se_results_count: Option<i32>,
+    pub se_results_count: Option<i64>,
     /// Number of items returned in `items`.
-    pub items_count: Option<i32>,
+    pub items_count: Option<i64>,
     /// Elements of the search results page.
     pub items: Option<Vec<T>>,
 }

@@ -13,9 +13,9 @@ pub struct BacklinksApiBacklinks {
     /// Custom grouping definition with `field` and `value`.
     pub custom_mode: Option<Value>,
     /// Total number of relevant elements in the database.
-    pub total_count: Option<i32>,
+    pub total_count: Option<i64>,
     /// Number of elements in the `items` array.
-    pub items_count: Option<i32>,
+    pub items_count: Option<i64>,
     /// Pagination token for retrieving results beyond the offset limit.
     pub search_after_token: Option<String>,
     /// Elements returned for this result.

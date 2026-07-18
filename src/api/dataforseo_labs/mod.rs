@@ -95,10 +95,10 @@ pub struct DataForSeoLabsIdListRequest {
     pub datetime_to: String,
     /// Maximum number of returned items (default 100, max 1000).
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub limit: Option<i64>,
+    pub limit: Option<i32>,
     /// Offset into the result set, for pagination.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub offset: Option<i64>,
+    pub offset: Option<i32>,
     /// Sort order of the returned ids: `"asc"` or `"desc"`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub sort: Option<String>,

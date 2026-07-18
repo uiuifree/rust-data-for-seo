@@ -29,9 +29,9 @@ pub struct SerpApiElementYoutubeComment {
     #[serde(rename = "type")]
     pub type_of_element: Option<String>,
     /// Rank of the element among elements of the same type.
-    pub rank_group: Option<i32>,
+    pub rank_group: Option<i64>,
     /// Absolute rank of the element across the whole SERP.
-    pub rank_absolute: Option<i32>,
+    pub rank_absolute: Option<i64>,
     /// Display name of the comment author.
     pub author_name: Option<String>,
     /// URL of the author's avatar image.

@@ -50,9 +50,9 @@ pub struct MerchantApiGoogleReviewItem {
     #[serde(rename = "type")]
     pub item_type: Option<String>,
     /// Rank of the review within its own `item_type`.
-    pub rank_group: Option<i32>,
+    pub rank_group: Option<i64>,
     /// Absolute rank of the review across all items.
-    pub rank_absolute: Option<i32>,
+    pub rank_absolute: Option<i64>,
     /// Position of the review on the page (e.g. `left`).
     pub position: Option<String>,
     /// URLs of images attached to the review.

@@ -12,7 +12,7 @@ pub struct OnPageDataApiPageScreensShot {
     /// Error message returned if the screenshot could not be captured.
     pub error_message: Option<String>,
     /// Number of items returned in this response.
-    pub items_count: Option<i32>,
+    pub items_count: Option<i64>,
     /// Screenshot items returned in this response.
     pub items: Option<Vec<OnPageDataApiPageScreensShotItem>>,
 }

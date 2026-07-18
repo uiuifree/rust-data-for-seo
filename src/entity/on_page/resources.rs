@@ -80,11 +80,11 @@ pub struct OnPageResourceItemMeta {
 #[derive(Debug, Default, Serialize, Deserialize, Clone)]
 pub struct OnPageResourceItemFetchTiming {
     /// Total time to fetch the resource, in milliseconds.
-    pub duration_time: Option<i32>,
+    pub duration_time: Option<i64>,
     /// Offset from crawl start when fetching began, in milliseconds.
-    pub fetch_start: Option<i32>,
+    pub fetch_start: Option<i64>,
     /// Offset from crawl start when fetching ended, in milliseconds.
-    pub fetch_end: Option<i32>,
+    pub fetch_end: Option<i64>,
 }
 
 /// Cache-control settings reported for a resource.
@@ -93,7 +93,7 @@ pub struct OnPageResourceItemCacheControl {
     /// Whether the resource can be cached.
     pub cachable: Option<bool>,
     /// Time the resource stays valid in cache, in seconds.
-    pub ttl: Option<i32>,
+    pub ttl: Option<i64>,
 }
 
 /// Last-modified dates reported for a resource from various sources.

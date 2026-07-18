@@ -12,9 +12,9 @@ pub struct BacklinksApiPageIntersection {
     /// Targets to analyze (domains, subdomains, or webpages).
     pub targets: Option<Value>,
     /// Total number of relevant elements in the database.
-    pub total_count: Option<i32>,
+    pub total_count: Option<i64>,
     /// Number of elements in the `items` array.
-    pub items_count: Option<i32>,
+    pub items_count: Option<i64>,
     /// Elements returned for this result.
     pub items: Option<Vec<BacklinksApiPageIntersectionItem>>,
 }

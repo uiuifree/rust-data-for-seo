@@ -28,9 +28,9 @@ pub struct SerpApiGoogleJob<T> {
     /// Distinct element types present in the returned SERP.
     pub item_types: Option<Vec<String>>,
     /// Total number of results reported by the search engine.
-    pub se_results_count: Option<i32>,
+    pub se_results_count: Option<i64>,
     /// Number of items returned in this result.
-    pub items_count: Option<i32>,
+    pub items_count: Option<i64>,
     /// Parsed elements of the result.
     pub items: Option<Vec<T>>,
 }

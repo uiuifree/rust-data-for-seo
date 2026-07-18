@@ -28,9 +28,9 @@ pub struct SerpApiBingOrganicTaskRegular {
     /// Distinct element types present in the returned SERP.
     pub item_types: Option<Vec<String>>,
     /// Total number of results reported by the search engine.
-    pub se_results_count: Option<i32>,
+    pub se_results_count: Option<i64>,
     /// Number of items returned in this result.
-    pub items_count: Option<i32>,
+    pub items_count: Option<i64>,
     // pub items: Option<Vec<Value>>,
     /// Parsed elements of the result.
     pub items: Option<Vec<SerpApiGoogleOrganicItem>>,
@@ -60,9 +60,9 @@ pub struct SerpApiBingOrganicTaskAdvanced {
     /// Distinct element types present in the returned SERP.
     pub item_types: Option<Vec<String>>,
     /// Total number of results reported by the search engine.
-    pub se_results_count: Option<i32>,
+    pub se_results_count: Option<i64>,
     /// Number of items returned in this result.
-    pub items_count: Option<i32>,
+    pub items_count: Option<i64>,
     // pub items: Option<Vec<Value>>,
     /// Parsed elements of the result.
     pub items: Option<Vec<SerpApiGoogleOrganicItem>>,

@@ -26,7 +26,7 @@ pub struct AppDataApiRating {
     /// Number of votes the rating is based on.
     pub votes_count: Option<i64>,
     /// Maximum value of the rating scale.
-    pub rating_max: Option<i32>,
+    pub rating_max: Option<i64>,
 }
 
 /// Price block shared by app search, listing and info items.

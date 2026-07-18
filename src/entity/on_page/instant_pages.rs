@@ -15,7 +15,7 @@ pub struct OnPageDataApiInstantPages {
     /// Total number of relevant items in the database.
     pub total_items_count: Option<i64>,
     /// Number of items in the `items` array.
-    pub items_count: Option<i32>,
+    pub items_count: Option<i64>,
     /// Array of analyzed pages.
     pub items: Option<Vec<OnPageDataApiInstantPagesItem>>,
 }
@@ -109,21 +109,21 @@ pub struct OnPageDataApiInstantPagesMeta {
     /// Canonical page URL.
     pub canonical: Option<String>,
     /// Number of internal links on the page.
-    pub internal_links_count: Option<i32>,
+    pub internal_links_count: Option<i64>,
     /// Number of external links on the page.
-    pub external_links_count: Option<i32>,
+    pub external_links_count: Option<i64>,
     /// Number of internal links pointing to the page.
-    pub inbound_links_count: Option<i32>,
+    pub inbound_links_count: Option<i64>,
     /// Number of images on the page.
-    pub images_count: Option<i32>,
+    pub images_count: Option<i64>,
     /// Total size of images on the page, in bytes.
     pub images_size: Option<i64>,
     /// Number of scripts on the page.
-    pub scripts_count: Option<i32>,
+    pub scripts_count: Option<i64>,
     /// Total size of scripts on the page, in bytes.
     pub scripts_size: Option<i64>,
     /// Number of stylesheets on the page.
-    pub stylesheets_count: Option<i32>,
+    pub stylesheets_count: Option<i64>,
     /// Total size of stylesheets on the page, in bytes.
     pub stylesheets_size: Option<i64>,
     /// Title tag length, in characters.
@@ -131,9 +131,9 @@ pub struct OnPageDataApiInstantPagesMeta {
     /// Description tag length, in characters.
     pub description_length: Option<i32>,
     /// Number of scripts that block page rendering.
-    pub render_blocking_scripts_count: Option<i32>,
+    pub render_blocking_scripts_count: Option<i64>,
     /// Number of stylesheets that block page rendering.
-    pub render_blocking_stylesheets_count: Option<i32>,
+    pub render_blocking_stylesheets_count: Option<i64>,
     /// Cumulative Layout Shift (CLS) Core Web Vitals metric.
     pub cumulative_layout_shift: Option<f64>,
     /// Content of the meta title tag in the head section.
@@ -159,7 +159,7 @@ pub struct OnPageDataApiInstantPagesContent {
     /// Ratio of `plain_text_size` to overall page `size`.
     pub plain_text_rate: Option<f64>,
     /// Number of words in the page text.
-    pub plain_text_word_count: Option<i32>,
+    pub plain_text_word_count: Option<i64>,
     /// Automated Readability Index score for the page text.
     pub automated_readability_index: Option<f64>,
     /// Coleman-Liau readability index for the page text.
@@ -183,29 +183,29 @@ pub struct OnPageDataApiInstantPagesContent {
 #[derive(Debug, Default, Serialize, Deserialize, Clone)]
 pub struct OnPageDataApiInstantPagesPageTiming {
     /// Time until the user can interact with the page, in milliseconds.
-    pub time_to_interactive: Option<i32>,
+    pub time_to_interactive: Option<i64>,
     /// Time until the page and its subresources finish loading, in milliseconds.
-    pub dom_complete: Option<i32>,
+    pub dom_complete: Option<i64>,
     /// Largest Contentful Paint Core Web Vitals metric, in milliseconds.
     pub largest_contentful_paint: Option<f64>,
     /// First Input Delay Core Web Vitals metric, in milliseconds.
     pub first_input_delay: Option<f64>,
     /// Time to establish a connection to the server, in milliseconds.
-    pub connection_time: Option<i32>,
+    pub connection_time: Option<i64>,
     /// Time to establish a secure connection, in milliseconds.
-    pub time_to_secure_connection: Option<i32>,
+    pub time_to_secure_connection: Option<i64>,
     /// Time to send the request to the server, in milliseconds.
-    pub request_sent_time: Option<i32>,
+    pub request_sent_time: Option<i64>,
     /// Time to first byte (TTFB), in milliseconds.
-    pub waiting_time: Option<i32>,
+    pub waiting_time: Option<i64>,
     /// Time for the browser to receive the response, in milliseconds.
-    pub download_time: Option<i32>,
+    pub download_time: Option<i64>,
     /// Total time for the complete response from the server, in milliseconds.
-    pub duration_time: Option<i32>,
+    pub duration_time: Option<i64>,
     /// Time to start downloading the HTML resource, in milliseconds.
-    pub fetch_start: Option<i32>,
+    pub fetch_start: Option<i64>,
     /// Time to finish downloading the HTML resource, in milliseconds.
-    pub fetch_end: Option<i32>,
+    pub fetch_end: Option<i64>,
 }
 
 /// Cache-control directives for an analyzed page.

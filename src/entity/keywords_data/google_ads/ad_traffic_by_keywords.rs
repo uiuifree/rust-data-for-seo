@@ -7,7 +7,7 @@ pub struct KeywordsDataApiGoogleAdsAdTrafficByKeywordsTask {
     /// The keyword this estimate refers to.
     pub keyword: Option<String>,
     /// Location code echoed from the request.
-    pub location_code: Option<u32>,
+    pub location_code: Option<i32>,
     /// Language code echoed from the request.
     pub language_code: Option<String>,
     /// Forecast interval, e.g. "next_week", "next_month" or "next_quarter".
@@ -15,18 +15,18 @@ pub struct KeywordsDataApiGoogleAdsAdTrafficByKeywordsTask {
     /// Whether search/partner network data was included.
     pub search_partners: Option<bool>,
     /// Maximum custom bid used for the estimate, in USD.
-    pub bid: Option<f32>,
+    pub bid: Option<f64>,
     /// Match type: "exact", "broad" or "phrase".
     #[serde(rename = "match")]
     pub match_type: Option<String>,
     /// Estimated ad impressions.
-    pub impressions: Option<f32>,
+    pub impressions: Option<f64>,
     /// Estimated click-through rate.
-    pub ctr: Option<f32>,
+    pub ctr: Option<f64>,
     /// Estimated average cost per click, in USD.
-    pub average_cpc: Option<f32>,
+    pub average_cpc: Option<f64>,
     /// Estimated total ad spend, in USD.
-    pub cost: Option<f32>,
+    pub cost: Option<f64>,
     /// Estimated number of ad clicks.
-    pub clicks: Option<f32>,
+    pub clicks: Option<f64>,
 }

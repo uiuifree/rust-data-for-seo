@@ -18,7 +18,7 @@ pub struct KeywordsDataApiGoogleTrendsExplore {
     /// UTC timestamp when the data was collected.
     pub datetime: Option<String>,
     /// Number of elements in `items`.
-    pub items_count: Option<i32>,
+    pub items_count: Option<i64>,
     /// Trends elements returned for the request.
     pub items: Option<Vec<KeywordsDataApiGoogleTrendsItem>>,
 }

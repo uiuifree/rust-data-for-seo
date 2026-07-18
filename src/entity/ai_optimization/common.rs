@@ -53,7 +53,7 @@ pub struct AiOptimizationMonthlySearch {
     /// Month the data point refers to (`1`–`12`).
     pub month: Option<i32>,
     /// AI search volume for the month.
-    pub ai_search_volume: Option<i64>,
+    pub ai_search_volume: Option<f64>,
     /// Classic search volume for the month, when provided.
     pub search_volume: Option<i64>,
 }

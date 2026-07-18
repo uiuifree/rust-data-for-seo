@@ -28,11 +28,11 @@ pub struct DataForSeoLabsIdListItem {
 #[derive(Debug, Default, Serialize, Deserialize, Clone)]
 pub struct DataForSeoLabsLocation {
     /// Location code (e.g. `2840`); alternative to `location_name`.
-    pub location_code: Option<i64>,
+    pub location_code: Option<i32>,
     /// Full location name (e.g. `"United States"`); alternative to `location_code`.
     pub location_name: Option<String>,
     /// Code of the parent location.
-    pub location_code_parent: Option<i64>,
+    pub location_code_parent: Option<i32>,
     /// ISO country code of the location.
     pub country_iso_code: Option<String>,
     /// Type of the location (e.g. `"Country"`, `"City"`).

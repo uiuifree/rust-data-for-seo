@@ -35,15 +35,15 @@ pub struct KeywordsDataApiBingKpiItem {
     /// Ad position the estimate applies to.
     pub ad_position: Option<String>,
     /// Estimated number of clicks.
-    pub clicks: Option<f32>,
+    pub clicks: Option<f64>,
     /// Estimated number of impressions.
-    pub impressions: Option<f32>,
+    pub impressions: Option<f64>,
     /// Estimated average cost per click, in USD.
-    pub average_cpc: Option<f32>,
+    pub average_cpc: Option<f64>,
     /// Estimated click-through rate.
-    pub ctr: Option<f32>,
+    pub ctr: Option<f64>,
     /// Estimated total cost, in USD.
-    pub total_cost: Option<f32>,
+    pub total_cost: Option<f64>,
     /// Estimated average bid, in USD.
-    pub average_bid: Option<f32>,
+    pub average_bid: Option<f64>,
 }

@@ -10,11 +10,11 @@ pub struct BacklinksApiElementBulkReferringDomains {
     /// Target the metrics refer to (domain, subdomain, or webpage).
     pub target: Option<String>,
     /// Number of referring domains pointing to the target.
-    pub referring_domains: Option<i32>,
+    pub referring_domains: Option<i64>,
     /// Number of referring domains with at least one nofollow link.
-    pub referring_domains_nofollow: Option<i32>,
+    pub referring_domains_nofollow: Option<i64>,
     /// Number of referring main (root) domains.
-    pub referring_main_domains: Option<i32>,
+    pub referring_main_domains: Option<i64>,
     /// Number of referring main domains with at least one nofollow link.
-    pub referring_main_domains_nofollow: Option<i32>,
+    pub referring_main_domains_nofollow: Option<i64>,
 }

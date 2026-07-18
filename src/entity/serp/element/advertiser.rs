@@ -13,5 +13,5 @@ pub struct SerpApiElementAdvertiser {
     /// `true` if the advertiser is verified.
     pub verified: Option<bool>,
     /// Approximate number of ads for the advertiser.
-    pub approx_ads_count: Option<i32>,
+    pub approx_ads_count: Option<i64>,
 }

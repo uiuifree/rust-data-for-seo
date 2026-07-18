@@ -96,9 +96,9 @@ pub struct SerpApiElementGoogleNewsSearch {
     #[serde(rename = "type")]
     pub type_of_element: Option<String>,
     /// Rank of the element among elements of the same type.
-    pub rank_group: Option<i32>,
+    pub rank_group: Option<i64>,
     /// Absolute rank of the element across the whole SERP.
-    pub rank_absolute: Option<i32>,
+    pub rank_absolute: Option<i64>,
     /// XPath of the element within the page.
     pub xpath: Option<String>,
     /// Domain of the result.
@@ -122,9 +122,9 @@ pub struct SerpApiElementGoogleNewsSearch {
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct SerpApiGoogleOrganicItemTopStories {
     /// Rank of the element among elements of the same type.
-    pub rank_group: Option<i32>,
+    pub rank_group: Option<i64>,
     /// Absolute rank of the element across the whole SERP.
-    pub rank_absolute: Option<i32>,
+    pub rank_absolute: Option<i64>,
     /// Alignment of the element within the SERP, `left` or `right`.
     pub position: Option<String>,
     /// XPath of the element within the page.
@@ -143,9 +143,9 @@ pub struct SerpApiElementEventItem {
     #[serde(rename = "type")]
     pub type_of_element: Option<String>,
     /// Rank of the element among elements of the same type.
-    pub rank_group: Option<i32>,
+    pub rank_group: Option<i64>,
     /// Absolute rank of the element across the whole SERP.
-    pub rank_absolute: Option<i32>,
+    pub rank_absolute: Option<i64>,
     /// Alignment of the element within the SERP, `left` or `right`.
     pub position: Option<String>,
     /// XPath of the element within the page.
@@ -211,9 +211,9 @@ pub struct SerpApiElementGoogleJobsItem {
     #[serde(rename = "type")]
     pub type_of_element: Option<String>,
     /// Rank of the element among elements of the same type.
-    pub rank_group: Option<i32>,
+    pub rank_group: Option<i64>,
     /// Absolute rank of the element across the whole SERP.
-    pub rank_absolute: Option<i32>,
+    pub rank_absolute: Option<i64>,
     /// Alignment of the element within the SERP, `left` or `right`.
     pub position: Option<String>,
     /// XPath of the element within the page.
@@ -250,11 +250,11 @@ pub struct SerpApiElementAutocomplete {
     #[serde(rename = "type")]
     pub type_of_element: Option<String>,
     /// Rank of the element among elements of the same type.
-    pub rank_group: Option<i32>,
+    pub rank_group: Option<i64>,
     /// Absolute rank of the element across the whole SERP.
-    pub rank_absolute: Option<i32>,
+    pub rank_absolute: Option<i64>,
     /// Relevance score of the suggestion.
-    pub relevance: Option<i32>,
+    pub relevance: Option<i64>,
     /// Suggested search query.
     pub suggestion: Option<String>,
     /// Type of the autocomplete suggestion.
@@ -273,9 +273,9 @@ pub struct SerpApiElementDataset {
     #[serde(rename = "type")]
     pub type_of_element: Option<String>,
     /// Rank of the element among elements of the same type.
-    pub rank_group: Option<i32>,
+    pub rank_group: Option<i64>,
     /// Absolute rank of the element across the whole SERP.
-    pub rank_absolute: Option<i32>,
+    pub rank_absolute: Option<i64>,
     /// Alignment of the element within the SERP, `left` or `right`.
     pub position: Option<String>,
     /// XPath of the element within the page.
@@ -287,7 +287,7 @@ pub struct SerpApiElementDataset {
     /// URL of the image.
     pub image_url: Option<String>,
     /// Number of scholarly citations.
-    pub scholarly_citations_count: Option<i32>,
+    pub scholarly_citations_count: Option<i64>,
     /// URL listing scholarly articles.
     pub scholarly_articles_url: Option<String>,
     /// Unique identifier of the dataset.

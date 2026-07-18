@@ -10,7 +10,7 @@ pub struct OnPageDataApiWaterfall {
     /// Statistics on the crawling session.
     pub crawl_status: Option<OnPageDataApiCrawlStatus>,
     /// Number of items returned in this response.
-    pub items_count: Option<i32>,
+    pub items_count: Option<i64>,
     /// Waterfall timing entries, one per requested page.
     pub items: Option<Vec<OnPageDataApiWaterfallItem>>,
 }
@@ -21,25 +21,25 @@ pub struct OnPageDataApiWaterfallItem {
     /// Absolute URL of the analyzed page.
     pub page_url: Option<String>,
     /// Time until the page became interactive, in milliseconds.
-    pub time_to_interactive: Option<i32>,
+    pub time_to_interactive: Option<i64>,
     /// Time until the DOM finished loading, in milliseconds.
-    pub dom_complete: Option<i32>,
+    pub dom_complete: Option<i64>,
     /// Time to establish the connection, in milliseconds.
-    pub connection_time: Option<i32>,
+    pub connection_time: Option<i64>,
     /// Time to establish a secure (TLS) connection, in milliseconds.
-    pub time_to_secure_connection: Option<i32>,
+    pub time_to_secure_connection: Option<i64>,
     /// Time until the request was sent, in milliseconds.
-    pub request_sent_time: Option<i32>,
+    pub request_sent_time: Option<i64>,
     /// Time spent waiting for the first response byte, in milliseconds.
-    pub waiting_time: Option<i32>,
+    pub waiting_time: Option<i64>,
     /// Time spent downloading the response, in milliseconds.
-    pub download_time: Option<i32>,
+    pub download_time: Option<i64>,
     /// Total time to load the page, in milliseconds.
-    pub duration_time: Option<i32>,
+    pub duration_time: Option<i64>,
     /// Offset from navigation start when fetching began, in milliseconds.
-    pub fetch_start: Option<i32>,
+    pub fetch_start: Option<i64>,
     /// Offset from navigation start when fetching ended, in milliseconds.
-    pub fetch_end: Option<i32>,
+    pub fetch_end: Option<i64>,
     /// Resources loaded by the page, each with its own timings.
     pub resources: Option<Vec<OnPageDataApiWaterfallItemResource>>,
 }
@@ -54,11 +54,11 @@ pub struct OnPageDataApiWaterfallItemResource {
     /// URL or entity that initiated the request for the resource.
     pub initiator: Option<String>,
     /// Total time to load the resource, in milliseconds.
-    pub duration_time: Option<i32>,
+    pub duration_time: Option<i64>,
     /// Offset from page navigation start when fetching began, in milliseconds.
-    pub fetch_start: Option<i32>,
+    pub fetch_start: Option<i64>,
     /// Offset from page navigation start when fetching ended, in milliseconds.
-    pub fetch_end: Option<i32>,
+    pub fetch_end: Option<i64>,
     /// Position in the source where the resource is referenced.
     pub location: Option<OnPageDataApiWaterfallItemResourceLocation>,
     /// Whether the resource blocks rendering of the page.

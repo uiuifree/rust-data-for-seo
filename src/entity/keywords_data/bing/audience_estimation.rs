@@ -19,7 +19,7 @@ pub struct KeywordsDataApiBingAudienceEstimation {
     /// Recommended bid, in USD.
     pub suggested_bid: Option<f64>,
     /// Recommended daily budget, in USD.
-    pub suggested_budget: Option<i64>,
+    pub suggested_budget: Option<f64>,
     /// Events lost due to an insufficient bid.
     pub events_lost_to_bid: Option<i64>,
     /// Events lost due to an insufficient budget.

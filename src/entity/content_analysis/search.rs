@@ -118,7 +118,7 @@ pub struct ContentAnalysisContentInfo {
     /// (`yyyy-mm-dd hh-mm-ss +00:00`).
     pub date_published: Option<String>,
     /// Quality score derived from word, sentence, and character counts.
-    pub content_quality_score: Option<i64>,
+    pub content_quality_score: Option<f64>,
     /// HTML semantic element the citation sits in (e.g. `article`, `header`).
     pub semantic_location: Option<String>,
     /// Content rating related to this citation.

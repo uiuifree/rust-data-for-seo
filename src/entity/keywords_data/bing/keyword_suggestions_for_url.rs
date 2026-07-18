@@ -7,5 +7,5 @@ pub struct KeywordsDataApiBingKeywordSuggestionForUrl {
     /// The suggested keyword phrase.
     pub keyword: Option<String>,
     /// Relevance probability from 0.0 to 1.0; higher is more relevant.
-    pub confidence_score: Option<f32>,
+    pub confidence_score: Option<f64>,
 }

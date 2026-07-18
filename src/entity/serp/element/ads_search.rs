@@ -7,9 +7,9 @@ pub struct SerpApiElementAdsSearch {
     #[serde(rename = "type")]
     pub type_of_element: Option<String>,
     /// Rank of the element among elements of the same type.
-    pub rank_group: Option<i32>,
+    pub rank_group: Option<i64>,
     /// Absolute rank of the element across the whole SERP.
-    pub rank_absolute: Option<i32>,
+    pub rank_absolute: Option<i64>,
     /// Google Ads advertiser identifier.
     pub advertiser_id: Option<String>,
     /// Google Ads creative identifier.
@@ -37,7 +37,7 @@ pub struct SerpApiElementAdsSearchPreviewImage {
     /// URL of the result.
     pub url: Option<String>,
     /// Height of the bounding box, in pixels.
-    pub height: Option<i32>,
+    pub height: Option<i64>,
     /// Width of the bounding box, in pixels.
-    pub width: Option<i32>,
+    pub width: Option<i64>,
 }

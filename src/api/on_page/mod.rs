@@ -340,7 +340,7 @@ pub struct OnPageApiTaskPost {
     pub browser_screen_height: Option<i32>,
     /// Device pixel ratio used for rendering.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub browser_screen_scale_factor: Option<f32>,
+    pub browser_screen_scale_factor: Option<f64>,
     /// Crawl following the site's XML sitemap.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub respect_sitemap: Option<bool>,
@@ -828,7 +828,7 @@ pub struct OnPageApiPageScreenshotPost {
     pub browser_screen_height: Option<i32>,
     /// Device pixel ratio used for rendering.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub browser_screen_scale_factor: Option<f32>,
+    pub browser_screen_scale_factor: Option<f64>,
     /// Capture the entire scrollable page rather than just the viewport.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub full_page_screenshot: Option<bool>,
@@ -897,7 +897,7 @@ pub struct OnPageApiContentParsingLivePost {
     pub browser_screen_height: Option<i32>,
     /// Device pixel ratio used for rendering.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub browser_screen_scale_factor: Option<f32>,
+    pub browser_screen_scale_factor: Option<f64>,
     /// Store the raw HTML for later retrieval.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub store_raw_html: Option<bool>,
@@ -957,7 +957,7 @@ pub struct OnPageApiInstantPagesPost {
     pub browser_screen_height: Option<i32>,
     /// Device pixel ratio used for rendering.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub browser_screen_scale_factor: Option<f32>,
+    pub browser_screen_scale_factor: Option<f64>,
     /// Store the raw HTML for later retrieval.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub store_raw_html: Option<bool>,
@@ -1161,13 +1161,13 @@ pub struct OnPageApiLighthouseLivePost {
     pub browser_screen_height: Option<i32>,
     /// Device pixel ratio used for rendering.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub browser_screen_scale_factor: Option<f32>,
+    pub browser_screen_scale_factor: Option<f64>,
     /// Network throttling method: "provided", "devtools", or "simulate".
     #[serde(skip_serializing_if = "Option::is_none")]
     pub browser_network_throttling_method: Option<String>,
     /// CPU slowdown multiplier applied during the audit.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub browser_cpu_throttling_multiplier: Option<f32>,
+    pub browser_cpu_throttling_multiplier: Option<f64>,
     /// Network throttling preset applied during the audit.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub browser_network_throttling: Option<String>,

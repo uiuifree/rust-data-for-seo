@@ -10,9 +10,9 @@ pub struct SerpApiElementMapsSearch {
     #[serde(rename = "type")]
     pub type_of_element: Option<String>,
     /// Rank of the element among elements of the same type.
-    pub rank_group: Option<i32>,
+    pub rank_group: Option<i64>,
     /// Absolute rank of the element across the whole SERP.
-    pub rank_absolute: Option<i32>,
+    pub rank_absolute: Option<i64>,
     /// Alignment of the element within the SERP, `left` or `right`.
     pub position: Option<String>,
     /// XPath of the element within the page.
@@ -52,7 +52,7 @@ pub struct SerpApiElementMapsSearch {
     /// URL of the entity's primary image.
     pub main_image: Option<String>,
     /// Total number of photos on the profile.
-    pub total_photos: Option<i32>,
+    pub total_photos: Option<i64>,
     /// Snippet text of the result.
     pub snippet: Option<String>,
     /// Latitude of the entity.

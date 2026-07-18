@@ -25,7 +25,7 @@ pub struct AppDataApiAppListResult {
     /// Total number of results the app store reported for the listing.
     pub se_results_count: Option<i64>,
     /// Number of elements returned in `items`.
-    pub items_count: Option<i32>,
+    pub items_count: Option<i64>,
     /// Applications returned for the listing.
     pub items: Option<Vec<AppDataApiAppListItem>>,
 }
@@ -38,9 +38,9 @@ pub struct AppDataApiAppListItem {
     #[serde(rename = "type")]
     pub item_type: Option<String>,
     /// Position among items of the same `type`.
-    pub rank_group: Option<i32>,
+    pub rank_group: Option<i64>,
     /// Absolute position among all returned items.
-    pub rank_absolute: Option<i32>,
+    pub rank_absolute: Option<i64>,
     /// Alignment of the element within the results (e.g. `left`).
     pub position: Option<String>,
     /// Store identifier of the application.

@@ -16,7 +16,7 @@ pub struct BusinessDataApiMyBusinessInfoResult {
     /// Search engine domain the data was collected from (e.g. `"google.com"`).
     pub se_domain: Option<String>,
     /// Location code the task was run for.
-    pub location_code: Option<i64>,
+    pub location_code: Option<i32>,
     /// Language code the task was run for.
     pub language_code: Option<String>,
     /// URL of the Google results page the data was parsed from.

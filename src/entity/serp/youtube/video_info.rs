@@ -34,9 +34,9 @@ pub struct SerpApiElementYoutubeVideoInfo {
     #[serde(rename = "type")]
     pub type_of_element: Option<String>,
     /// Rank of the element among elements of the same type.
-    pub rank_group: Option<i32>,
+    pub rank_group: Option<i64>,
     /// Absolute rank of the element across the whole SERP.
-    pub rank_absolute: Option<i32>,
+    pub rank_absolute: Option<i64>,
     /// YouTube video identifier.
     pub video_id: Option<String>,
     /// Title of the result.
@@ -76,7 +76,7 @@ pub struct SerpApiElementYoutubeVideoInfo {
     /// Duration as a formatted string.
     pub duration_time: Option<String>,
     /// Duration in seconds.
-    pub duration_time_seconds: Option<i32>,
+    pub duration_time_seconds: Option<i64>,
     /// Keywords.
     pub keywords: Option<Vec<String>>,
     /// Subtitle tracks available for the video.
@@ -111,13 +111,13 @@ pub struct SerpApiYoutubeStreamingQuality {
     /// Human-readable label.
     pub label: Option<String>,
     /// Width of the bounding box, in pixels.
-    pub width: Option<i32>,
+    pub width: Option<i64>,
     /// Height of the bounding box, in pixels.
-    pub height: Option<i32>,
+    pub height: Option<i64>,
     /// Bitrate of the stream, in bits per second.
     pub bitrate: Option<i64>,
     /// MIME type of the stream.
     pub mime_type: Option<String>,
     /// Frames per second of the stream.
-    pub fps: Option<i32>,
+    pub fps: Option<i64>,
 }

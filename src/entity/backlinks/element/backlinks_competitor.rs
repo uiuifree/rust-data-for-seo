@@ -10,7 +10,7 @@ pub struct BacklinksApiElementBacklinksCompetitor {
     /// Target the metrics refer to (domain, subdomain, or webpage).
     pub target: Option<String>,
     /// Rank of this element on the configured scale (0-1000 by default).
-    pub rank: Option<i32>,
+    pub rank: Option<i64>,
     /// Number of backlinks shared with the target.
-    pub intersections: Option<i32>,
+    pub intersections: Option<i64>,
 }

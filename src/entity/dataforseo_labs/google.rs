@@ -79,7 +79,7 @@ pub struct DataForSeoLabsHistoricalKeywordDataItem {
     /// Keyword the data relates to.
     pub keyword: Option<String>,
     /// Location code (e.g. `2840`); alternative to `location_name`.
-    pub location_code: Option<i64>,
+    pub location_code: Option<i32>,
     /// Language code (e.g. `"en"`); alternative to `language_name`.
     pub language_code: Option<String>,
     /// Metrics for each historical month.
@@ -153,7 +153,7 @@ pub struct DataForSeoLabsDomainMetricsItem {
     /// Search engine type (e.g. `"google"`).
     pub se_type: Option<String>,
     /// Location code (e.g. `2840`); alternative to `location_name`.
-    pub location_code: Option<i64>,
+    pub location_code: Option<i32>,
     /// Language code (e.g. `"en"`); alternative to `language_name`.
     pub language_code: Option<String>,
     /// Ranking and traffic metrics, grouped by SERP feature type.
@@ -250,7 +250,7 @@ pub struct DataForSeoLabsHistoricalSerpItem {
     /// Search-engine domain the SERP was collected from (e.g. `"google.com"`).
     pub se_domain: Option<String>,
     /// Location code (e.g. `2840`); alternative to `location_name`.
-    pub location_code: Option<i64>,
+    pub location_code: Option<i32>,
     /// Language code (e.g. `"en"`); alternative to `language_name`.
     pub language_code: Option<String>,
     /// URL used to check the SERP.

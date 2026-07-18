@@ -10,9 +10,9 @@ pub struct OnPageDataApiPage {
     /// Statistics on the crawling session.
     pub crawl_status: Option<OnPageDataApiCrawlStatus>,
     /// Total number of matching items in the database.
-    pub total_items_count: Option<i32>,
+    pub total_items_count: Option<i64>,
     /// Number of items returned in this response.
-    pub items_count: Option<i32>,
+    pub items_count: Option<i64>,
     /// Page resource items returned in this response.
     pub items: Option<Vec<OnPageResourceHtml>>,
 }

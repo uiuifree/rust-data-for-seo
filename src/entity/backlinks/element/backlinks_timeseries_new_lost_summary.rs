@@ -10,15 +10,15 @@ pub struct BacklinksApiElementBacklinksTimeseriesNewLostSummary {
     /// Date and time of this data point (UTC).
     pub date: Option<String>,
     /// Number of newly discovered backlinks.
-    pub new_backlinks: Option<i32>,
+    pub new_backlinks: Option<i64>,
     /// Number of backlinks that were lost.
-    pub lost_backlinks: Option<i32>,
+    pub lost_backlinks: Option<i64>,
     /// Number of newly discovered referring domains.
-    pub new_referring_domains: Option<i32>,
+    pub new_referring_domains: Option<i64>,
     /// Number of referring domains that were lost.
-    pub lost_referring_domains: Option<i32>,
+    pub lost_referring_domains: Option<i64>,
     /// Number of newly discovered referring main domains.
-    pub new_referring_main_domains: Option<i32>,
+    pub new_referring_main_domains: Option<i64>,
     /// Number of referring main domains that were lost.
-    pub lost_referring_main_domains: Option<i32>,
+    pub lost_referring_main_domains: Option<i64>,
 }

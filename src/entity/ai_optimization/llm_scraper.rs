@@ -38,7 +38,7 @@ pub struct AiOptimizationLlmScraper {
     /// Types of items present in [`items`](Self::items).
     pub item_types: Option<Vec<String>>,
     /// Number of items in [`items`](Self::items).
-    pub items_count: Option<i32>,
+    pub items_count: Option<i64>,
     /// Parsed response items (heterogeneous, raw JSON per element).
     pub items: Option<Vec<Value>>,
 }
@@ -71,7 +71,7 @@ pub struct AiOptimizationLlmScraperHtml {
     /// UTC timestamp the scrape was performed.
     pub datetime: Option<String>,
     /// Number of items in [`items`](Self::items).
-    pub items_count: Option<i32>,
+    pub items_count: Option<i64>,
     /// Raw-HTML response items.
     pub items: Option<Vec<AiOptimizationLlmScraperHtmlItem>>,
 }

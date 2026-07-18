@@ -154,11 +154,11 @@ pub struct SerpApiGoogleOrganicItemPaidExtra {
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct SerpApiElementHotelsPackElementPrice {
     /// Current price.
-    pub current: Option<f32>,
+    pub current: Option<f64>,
     /// Regular (non-discounted) price.
-    pub regular: Option<f32>,
+    pub regular: Option<f64>,
     /// Upper bound of the price range.
-    pub max_value: Option<f32>,
+    pub max_value: Option<f64>,
     /// ISO currency code of the price.
     pub currency: Option<String>,
     /// `true` if the price represents a range.

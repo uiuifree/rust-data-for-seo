@@ -83,9 +83,9 @@ pub struct SerpApiElementFinanceHeroGroups {
     #[serde(rename = "type")]
     pub type_of_element: Option<String>,
     /// Rank of the element among elements of the same type.
-    pub rank_group: Option<i32>,
+    pub rank_group: Option<i64>,
     /// Absolute rank of the element across the whole SERP.
-    pub rank_absolute: Option<i32>,
+    pub rank_absolute: Option<i64>,
     /// Market groups contained in the block.
     pub markets: Option<Vec<Value>>,
 }
@@ -97,9 +97,9 @@ pub struct SerpApiElementFinanceNews {
     #[serde(rename = "type")]
     pub type_of_element: Option<String>,
     /// Rank of the element among elements of the same type.
-    pub rank_group: Option<i32>,
+    pub rank_group: Option<i64>,
     /// Absolute rank of the element across the whole SERP.
-    pub rank_absolute: Option<i32>,
+    pub rank_absolute: Option<i64>,
     /// Title of the result.
     pub title: Option<String>,
     /// Secondary title of the result.
@@ -117,9 +117,9 @@ pub struct SerpApiElementFinanceMarketTrends {
     #[serde(rename = "type")]
     pub type_of_element: Option<String>,
     /// Rank of the element among elements of the same type.
-    pub rank_group: Option<i32>,
+    pub rank_group: Option<i64>,
     /// Absolute rank of the element across the whole SERP.
-    pub rank_absolute: Option<i32>,
+    pub rank_absolute: Option<i64>,
     /// Parsed elements of the result.
     pub items: Option<Value>,
 }
@@ -131,9 +131,9 @@ pub struct SerpApiElementFinanceList {
     #[serde(rename = "type")]
     pub type_of_element: Option<String>,
     /// Rank of the element among elements of the same type.
-    pub rank_group: Option<i32>,
+    pub rank_group: Option<i64>,
     /// Absolute rank of the element across the whole SERP.
-    pub rank_absolute: Option<i32>,
+    pub rank_absolute: Option<i64>,
     /// Parsed elements of the result.
     pub items: Option<Vec<Value>>,
 }
@@ -145,9 +145,9 @@ pub struct SerpApiElementFinanceQuote {
     #[serde(rename = "type")]
     pub type_of_element: Option<String>,
     /// Rank of the element among elements of the same type.
-    pub rank_group: Option<i32>,
+    pub rank_group: Option<i64>,
     /// Absolute rank of the element across the whole SERP.
-    pub rank_absolute: Option<i32>,
+    pub rank_absolute: Option<i64>,
     /// Quote data for the financial instrument.
     pub quote: Option<Value>,
     /// Chart data points for the quote.
@@ -161,9 +161,9 @@ pub struct SerpApiElementFinanceFinancial {
     #[serde(rename = "type")]
     pub type_of_element: Option<String>,
     /// Rank of the element among elements of the same type.
-    pub rank_group: Option<i32>,
+    pub rank_group: Option<i64>,
     /// Absolute rank of the element across the whole SERP.
-    pub rank_absolute: Option<i32>,
+    pub rank_absolute: Option<i64>,
     /// Quarterly financial metrics.
     pub quarterly_metrics: Option<Vec<Value>>,
     /// Annual financial metrics.
@@ -177,9 +177,9 @@ pub struct SerpApiElementFinanceDetails {
     #[serde(rename = "type")]
     pub type_of_element: Option<String>,
     /// Rank of the element among elements of the same type.
-    pub rank_group: Option<i32>,
+    pub rank_group: Option<i64>,
     /// Absolute rank of the element across the whole SERP.
-    pub rank_absolute: Option<i32>,
+    pub rank_absolute: Option<i64>,
     /// Badges shown on the result.
     pub badges: Option<Vec<Value>>,
     /// Previous closing price.
@@ -209,9 +209,9 @@ pub struct SerpApiElementFinanceAbout {
     #[serde(rename = "type")]
     pub type_of_element: Option<String>,
     /// Rank of the element among elements of the same type.
-    pub rank_group: Option<i32>,
+    pub rank_group: Option<i64>,
     /// Absolute rank of the element across the whole SERP.
-    pub rank_absolute: Option<i32>,
+    pub rank_absolute: Option<i64>,
     /// Name as displayed in the SERP.
     pub displayed_name: Option<String>,
     /// Snippet / description text of the result.
@@ -254,9 +254,9 @@ pub struct SerpApiElementFinanceMarketIndex {
     #[serde(rename = "type")]
     pub type_of_element: Option<String>,
     /// Rank of the element among elements of the same type.
-    pub rank_group: Option<i32>,
+    pub rank_group: Option<i64>,
     /// Absolute rank of the element across the whole SERP.
-    pub rank_absolute: Option<i32>,
+    pub rank_absolute: Option<i64>,
     /// Ticker symbol of the instrument.
     pub ticker: Option<String>,
     /// Market identifier of the instrument.
@@ -288,9 +288,9 @@ pub struct SerpApiElementFinanceAssetPair {
     #[serde(rename = "type")]
     pub type_of_element: Option<String>,
     /// Rank of the element among elements of the same type.
-    pub rank_group: Option<i32>,
+    pub rank_group: Option<i64>,
     /// Absolute rank of the element across the whole SERP.
-    pub rank_absolute: Option<i32>,
+    pub rank_absolute: Option<i64>,
     /// Symbol of the base asset in the pair.
     pub base_symbol: Option<String>,
     /// Symbol of the quote asset in the pair.
@@ -326,9 +326,9 @@ pub struct SerpApiElementFinanceMarketInstrument {
     #[serde(rename = "type")]
     pub type_of_element: Option<String>,
     /// Rank of the element among elements of the same type.
-    pub rank_group: Option<i32>,
+    pub rank_group: Option<i64>,
     /// Absolute rank of the element across the whole SERP.
-    pub rank_absolute: Option<i32>,
+    pub rank_absolute: Option<i64>,
     /// Ticker symbol of the instrument.
     pub ticker: Option<String>,
     /// Price information shown for the result.

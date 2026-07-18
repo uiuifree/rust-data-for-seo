@@ -8,7 +8,7 @@ pub struct KeywordsDataApiClickstreamMonthlySearch {
     /// Calendar month (1-12).
     pub month: Option<i32>,
     /// Search volume for the month.
-    pub search_volume: Option<i32>,
+    pub search_volume: Option<i64>,
 }
 
 /// A result item from the Clickstream `dataforseo_search_volume` endpoint.
@@ -49,7 +49,7 @@ pub struct KeywordsDataApiClickstreamCountryDistribution {
     /// Search volume attributed to the country.
     pub search_volume: Option<i64>,
     /// Percentage of the worldwide search volume from this country.
-    pub percentage: Option<f32>,
+    pub percentage: Option<f64>,
 }
 
 /// A result item from the Clickstream `bulk_search_volume` endpoint.

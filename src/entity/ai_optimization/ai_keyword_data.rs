@@ -15,7 +15,7 @@ pub struct AiOptimizationKeywordDataSearchVolume {
     /// Language code the volumes were computed for.
     pub language_code: Option<String>,
     /// Number of items in [`items`](Self::items).
-    pub items_count: Option<i32>,
+    pub items_count: Option<i64>,
     /// Per-keyword AI search-volume data points.
     pub items: Option<Vec<AiOptimizationKeywordDataItem>>,
 }
@@ -26,7 +26,7 @@ pub struct AiOptimizationKeywordDataItem {
     /// The keyword the metrics refer to.
     pub keyword: Option<String>,
     /// Current AI search volume rate for the keyword.
-    pub ai_search_volume: Option<i64>,
+    pub ai_search_volume: Option<f64>,
     /// Monthly AI search-volume history for the keyword.
     pub ai_monthly_searches: Option<Vec<AiOptimizationMonthlySearch>>,
 }

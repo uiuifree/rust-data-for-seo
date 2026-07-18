@@ -7,7 +7,7 @@ pub struct KeywordsDataApiGoogleAdsKeywordsForSiteTask {
     /// The keyword this result refers to.
     pub keyword: Option<String>,
     /// Location code echoed from the request.
-    pub location_code: Option<u32>,
+    pub location_code: Option<i32>,
     /// Language code echoed from the request.
     pub language_code: Option<String>,
     /// Whether search/partner network data was included.
@@ -17,13 +17,13 @@ pub struct KeywordsDataApiGoogleAdsKeywordsForSiteTask {
     /// Competition as an index from 0 to 100.
     pub competition_index: Option<i32>,
     /// Average monthly search volume over the last 12 months.
-    pub search_volume: Option<i32>,
+    pub search_volume: Option<i64>,
     /// Lower range of the top-of-page bid, in USD.
-    pub low_top_of_page_bid: Option<f32>,
+    pub low_top_of_page_bid: Option<f64>,
     /// Upper range of the top-of-page bid, in USD.
-    pub high_top_of_page_bid: Option<f32>,
+    pub high_top_of_page_bid: Option<f64>,
     /// Average cost per click, in USD.
-    pub cpc: Option<f32>,
+    pub cpc: Option<f64>,
     /// Search volume broken down by month.
     pub monthly_searches: Option<Vec<KeywordsDataApiGoogleAdsKeywordsForSiteTaskMonthlySearch>>,
     /// Concept groupings Google associates with the keyword.
@@ -38,7 +38,7 @@ pub struct KeywordsDataApiGoogleAdsKeywordsForSiteTaskMonthlySearch {
     /// Calendar month (1-12).
     pub month: Option<i32>,
     /// Search volume for the month.
-    pub search_volume: Option<i32>,
+    pub search_volume: Option<i64>,
 }
 
 /// Concept annotations Google attaches to a keyword.

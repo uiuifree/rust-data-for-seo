@@ -33,9 +33,9 @@ pub enum SerpApiGoogleImagesItem {
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct SerpApiGoogleImagesItemCarousel {
     /// Rank of the element among elements of the same type.
-    pub rank_group: Option<i32>,
+    pub rank_group: Option<i64>,
     /// Absolute rank of the element across the whole SERP.
-    pub rank_absolute: Option<i32>,
+    pub rank_absolute: Option<i64>,
     /// Alignment of the element within the SERP, `left` or `right`.
     pub position: Option<String>,
     /// XPath of the element within the page.
@@ -51,9 +51,9 @@ pub struct SerpApiGoogleImagesItemCarousel {
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct SerpApiGoogleImagesItemImageSearch {
     /// Rank of the element among elements of the same type.
-    pub rank_group: Option<i32>,
+    pub rank_group: Option<i64>,
     /// Absolute rank of the element across the whole SERP.
-    pub rank_absolute: Option<i32>,
+    pub rank_absolute: Option<i64>,
     /// Alignment of the element within the SERP, `left` or `right`.
     pub position: Option<String>,
     /// XPath of the element within the page.

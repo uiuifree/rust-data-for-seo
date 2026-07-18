@@ -151,7 +151,7 @@ pub struct ContentAnalysisApiSearchPost {
     pub search_mode: Option<String>,
     /// Maximum citations to return (default 100, max 1000).
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub limit: Option<u32>,
+    pub limit: Option<i32>,
     /// Up to 8 filtering conditions joined by `and`/`or`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub filters: Option<Vec<Value>>,
@@ -160,7 +160,7 @@ pub struct ContentAnalysisApiSearchPost {
     pub order_by: Option<Vec<String>>,
     /// Number of leading citations to skip; use for up to 10,000 results.
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub offset: Option<u32>,
+    pub offset: Option<i32>,
     /// Token from a previous response to page beyond 10,000 results.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub offset_token: Option<String>,
@@ -199,7 +199,7 @@ pub struct ContentAnalysisApiSummaryPost {
     /// Maximum elements within internal arrays like top_domains and countries
     /// (default 1, max 20).
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub internal_list_limit: Option<u32>,
+    pub internal_list_limit: Option<i32>,
     /// Minimum positive-sentiment probability for a citation to count
     /// (0–1, default 0.4).
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -246,7 +246,7 @@ pub struct ContentAnalysisApiSentimentAnalysisPost {
     /// Maximum elements within internal arrays like top_domains and countries
     /// (default 1, max 20).
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub internal_list_limit: Option<u32>,
+    pub internal_list_limit: Option<i32>,
     /// Minimum positive-sentiment probability for a citation to count
     /// (0–1, default 0.4).
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -293,7 +293,7 @@ pub struct ContentAnalysisApiRatingDistributionPost {
     /// Maximum elements within internal arrays like top_domains and countries
     /// (default 1, max 20).
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub internal_list_limit: Option<u32>,
+    pub internal_list_limit: Option<i32>,
     /// Results grouping: `as_is` (default) or `one_per_domain`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub search_mode: Option<String>,
@@ -354,7 +354,7 @@ pub struct ContentAnalysisApiPhraseTrendsPost {
     /// Maximum elements within internal arrays like top_domains and countries
     /// (default 1, max 20).
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub internal_list_limit: Option<u32>,
+    pub internal_list_limit: Option<i32>,
     /// Up to 8 filtering conditions applied to Search fields before aggregation.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub initial_dataset_filters: Option<Vec<Value>>,
@@ -400,7 +400,7 @@ pub struct ContentAnalysisApiCategoryTrendsPost {
     /// Maximum elements within internal arrays like top_domains and countries
     /// (default 1, max 20).
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub internal_list_limit: Option<u32>,
+    pub internal_list_limit: Option<i32>,
     /// Up to 8 filtering conditions applied to Search fields before aggregation.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub initial_dataset_filters: Option<Vec<Value>>,
@@ -432,10 +432,10 @@ pub struct ContentAnalysisApiIdListPost {
     pub datetime_to: String,
     /// Maximum task IDs to return (default 1000, max 1000).
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub limit: Option<u32>,
+    pub limit: Option<i32>,
     /// Number of leading task IDs to skip (default 0).
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub offset: Option<u32>,
+    pub offset: Option<i32>,
     /// Sort by task execution time: `asc` (default) or `desc`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub sort: Option<String>,

@@ -10,7 +10,7 @@ pub struct OnPageDataApiKeywordDensity {
     /// Statistics on the crawling session.
     pub crawl_status: Option<OnPageDataApiCrawlStatus>,
     /// Number of items returned in this response.
-    pub items_count: Option<i32>,
+    pub items_count: Option<i64>,
     /// Keyword density items returned in this response.
     pub items: Option<Vec<OnPageDataApiKeywordDensityItem>>,
 }
@@ -22,7 +22,7 @@ pub struct OnPageDataApiKeywordDensityItem {
     /// The keyword or phrase measured.
     pub keyword: Option<String>,
     /// Number of times the keyword appears on the page.
-    pub frequency: Option<i32>,
+    pub frequency: Option<i64>,
     /// Keyword density as a fraction of total words (0.0-1.0).
-    pub density: Option<f32>,
+    pub density: Option<f64>,
 }

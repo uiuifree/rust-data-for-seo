@@ -44,9 +44,9 @@ pub struct MerchantApiGoogleSellerItem {
     #[serde(rename = "type")]
     pub item_type: Option<String>,
     /// Rank of the listing within its own `item_type`.
-    pub rank_group: Option<i32>,
+    pub rank_group: Option<i64>,
     /// Absolute rank of the listing across all items.
-    pub rank_absolute: Option<i32>,
+    pub rank_absolute: Option<i64>,
     /// Position of the listing on the page (e.g. `left`).
     pub position: Option<String>,
     /// XPath of the element in the page markup.
@@ -60,13 +60,13 @@ pub struct MerchantApiGoogleSellerItem {
     /// Additional seller-provided details.
     pub details: Option<String>,
     /// Base product price before tax and shipping, in the units of `currency`.
-    pub base_price: Option<f32>,
+    pub base_price: Option<f64>,
     /// Tax added to the base price, in the units of `currency`.
-    pub tax: Option<f32>,
+    pub tax: Option<f64>,
     /// Shipping cost, in the units of `currency`.
-    pub shipping_price: Option<f32>,
+    pub shipping_price: Option<f64>,
     /// Total price including tax and shipping, in the units of `currency`.
-    pub total_price: Option<f32>,
+    pub total_price: Option<f64>,
     /// ISO 4217 currency code of the price values.
     pub currency: Option<String>,
     /// Display name of the seller.

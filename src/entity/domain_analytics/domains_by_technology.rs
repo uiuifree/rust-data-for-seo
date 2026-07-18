@@ -10,7 +10,7 @@ pub struct DomainAnalyticsApiDomainsByTechnology {
     /// Number of domains returned in this response.
     pub items_count: Option<i64>,
     /// Offset applied to the returned results.
-    pub offset: Option<i64>,
+    pub offset: Option<i32>,
     /// Pagination token to fetch the next batch of results.
     pub offset_token: Option<String>,
     /// The matching domain profiles.

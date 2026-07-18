@@ -10,5 +10,5 @@ pub struct BacklinksApiElementBulkSpamScore {
     /// Target the metrics refer to (domain, subdomain, or webpage).
     pub target: Option<String>,
     /// Spam score of the target (0-100).
-    pub spam_score: Option<i32>,
+    pub spam_score: Option<i64>,
 }

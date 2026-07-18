@@ -27,13 +27,13 @@ pub struct BacklinksApiElementBacklinksPageIntersection {
     /// Whether the backlink has been lost.
     pub is_lost: Option<bool>,
     /// Spam score of the backlink (0-100).
-    pub backlink_spam_score: Option<i32>,
+    pub backlink_spam_score: Option<i64>,
     /// Rank of this element on the configured scale (0-1000 by default).
-    pub rank: Option<i32>,
+    pub rank: Option<i64>,
     /// Rank of the referring page.
-    pub page_from_rank: Option<i32>,
+    pub page_from_rank: Option<i64>,
     /// Rank of the referring domain.
-    pub domain_from_rank: Option<i32>,
+    pub domain_from_rank: Option<i64>,
     /// Platform types detected for the referring domain.
     pub domain_from_platform_type: Option<Vec<String>>,
     /// Whether the referring domain is an IP address.
@@ -43,11 +43,11 @@ pub struct BacklinksApiElementBacklinksPageIntersection {
     /// Country of the referring domain.
     pub domain_from_country: Option<String>,
     /// Number of external links on the referring page.
-    pub page_from_external_links: Option<i32>,
+    pub page_from_external_links: Option<i64>,
     /// Number of internal links on the referring page.
-    pub page_from_internal_links: Option<i32>,
+    pub page_from_internal_links: Option<i64>,
     /// Size of the referring page in bytes.
-    pub page_from_size: Option<i32>,
+    pub page_from_size: Option<i64>,
     /// Character encoding of the referring page.
     pub page_from_encoding: Option<String>,
     /// Language of the referring page.
@@ -81,15 +81,15 @@ pub struct BacklinksApiElementBacklinksPageIntersection {
     /// HTML semantic location of the backlink on the referring page.
     pub semantic_location: Option<String>,
     /// Number of links from the referring page to the target.
-    pub links_count: Option<i32>,
+    pub links_count: Option<i64>,
     /// Number of grouped backlinks represented by this item.
-    pub group_count: Option<i32>,
+    pub group_count: Option<i64>,
     /// Whether the backlink is broken.
     pub is_broken: Option<bool>,
     /// HTTP status code returned by the `url_to` page.
     pub url_to_status_code: Option<i32>,
     /// Spam score of the `url_to` page (0-100).
-    pub url_to_spam_score: Option<i32>,
+    pub url_to_spam_score: Option<i64>,
     /// Redirect target of the `url_to` page, if any.
     pub url_to_redirect_target: Option<String>,
     /// Whether the backlink reaches the target through a redirect or canonical chain.

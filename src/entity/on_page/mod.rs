@@ -46,9 +46,9 @@ pub use waterfall::*;
 #[derive(Debug, Default, Serialize, Deserialize, Clone)]
 pub struct OnPageDataApiCrawlStatus {
     /// Maximum number of pages set to be crawled.
-    pub max_crawl_pages: Option<i32>,
+    pub max_crawl_pages: Option<i64>,
     /// Number of pages still queued to be crawled.
-    pub pages_in_queue: Option<i32>,
+    pub pages_in_queue: Option<i64>,
     /// Number of pages crawled so far.
-    pub pages_crawled: Option<i32>,
+    pub pages_crawled: Option<i64>,
 }
