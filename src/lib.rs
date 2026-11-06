@@ -73,7 +73,10 @@ pub const SANDBOX_BASE_URL: &str = "https://sandbox.dataforseo.com";
 ///
 /// Holds a shared [`reqwest::Client`] (connection pool) and the Basic-auth
 /// token. Cloning is cheap and clones share the connection pool.
-#[derive(Debug, Clone)]
+///
+/// The [`Debug`] output redacts the Basic-auth token so that logging the
+/// client never exposes the API login and password.
+#[derive(Clone)]
 pub struct DataForSeoClient {
     http: reqwest::Client,
     base_url: String,
@@ -117,6 +120,16 @@ impl DataForSeoClient {
     pub fn with_http_client(mut self, http: reqwest::Client) -> Self {
         self.http = http;
         self
+    }
+}
+
+impl std::fmt::Debug for DataForSeoClient {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.debug_struct("DataForSeoClient")
+            .field("http", &self.http)
+            .field("base_url", &self.base_url)
+            .field("token", &"<redacted>")
+            .finish()
     }
 }
 
