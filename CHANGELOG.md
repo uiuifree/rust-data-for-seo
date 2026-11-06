@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.1 (2026-11-07)
+
+### Security
+
+- `DataForSeoClient`'s `Debug` output no longer contains the Basic-auth token. The derived implementation printed the Base64-encoded `login:password`, so logging the client with `{:?}` exposed the API credentials. The token is now shown as `<redacted>`.
+
 ## 0.3.0 (2026-07-18)
 
 ### Breaking changes
