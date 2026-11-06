@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.4.0 (2026-11-07)
+
+### Breaking changes
+
+- Upgraded `reqwest` from 0.12 to 0.13. `DataForSeoClient::with_http_client` now takes a `reqwest` 0.13 `Client`. reqwest 0.13 uses rustls with the platform certificate verifier as its default TLS backend.
+- Declared `rust-version = "1.85"` (the minimum required by edition 2024, `reqwest` 0.13, and `tokio`).
+
+### Changed
+
+- Upgraded `base64` to 0.23.
+- Replaced the unmaintained dev-dependency `dotenv` (RUSTSEC-2021-0141) with `dotenvy`.
+
 ## 0.3.1 (2026-11-07)
 
 ### Security
