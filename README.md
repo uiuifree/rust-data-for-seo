@@ -8,7 +8,7 @@
 
 ```toml
 [dependencies]
-data-for-seo = "0.3"
+data-for-seo = "0.4"
 ```
 
 ## Quick start

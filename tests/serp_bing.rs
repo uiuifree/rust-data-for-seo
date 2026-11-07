@@ -7,7 +7,7 @@ use data_for_seo::{DataForSeoClient, SerpApiBingOrganicTaskPostRequest};
 use std::env;
 
 fn client() -> DataForSeoClient {
-    dotenv::dotenv().ok();
+    dotenvy::dotenv().ok();
     let id = env::var("ID").unwrap();
     let pass = env::var("PASSWORD").unwrap();
     DataForSeoClient::new(id, pass)
