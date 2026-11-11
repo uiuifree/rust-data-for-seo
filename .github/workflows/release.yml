@@ -1,0 +1,44 @@
+name: Release
+
+# v* タグの push で crates.io に公開する。
+# 公開ジョブは Environment `release` の承認を待ってから走る。
+# 認証は crates.io の Trusted Publishing（OIDC）で、トークンは置かない。
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: read
+
+jobs:
+  # タグと Cargo.toml の version がずれていれば公開しない（版上げ忘れの防止）
+  check-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - run: |
+          version=$(cargo metadata --no-deps --format-version 1 | jq -r '.packages[0].version')
+          if [ "v$version" != "$GITHUB_REF_NAME" ]; then
+            echo "::error::タグ $GITHUB_REF_NAME と Cargo.toml の version $version が一致しません"
+            exit 1
+          fi
+
+  ci:
+    uses: ./.github/workflows/ci.yml
+
+  publish:
+    needs: [check-version, ci]
+    runs-on: ubuntu-latest
+    environment: release
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: rust-lang/crates-io-auth-action@v1
+        id: auth
+      - run: cargo publish
+        env:
+          CARGO_REGISTRY_TOKEN: ${{ steps.auth.outputs.token }}
