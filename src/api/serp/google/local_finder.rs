@@ -49,6 +49,25 @@ impl SerpApiGoogle<'_> {
             .http_post("/v3/serp/google/local_finder/live/advanced", &data)
             .await
     }
+    /// <https://docs.dataforseo.com/v3/serp/google/local_finder/live/html/>
+    pub async fn local_finder_live_html(
+        &self,
+        data: Vec<SerpApiGoogleLocalFinderTaskPostRequest>,
+    ) -> crate::DataForSeoApiResponse<
+        crate::entity::SerpApiSearchResult<crate::entity::SerpApiHtmlItem>,
+    > {
+        self.client
+            .http_post("/v3/serp/google/local_finder/live/html", &data)
+            .await
+    }
+    /// <https://docs.dataforseo.com/v3/serp/google/local_finder/tasks_fixed/>
+    pub async fn local_finder_tasks_fixed(
+        &self,
+    ) -> crate::DataForSeoApiResponse<crate::SerpApiTaskReadyResult> {
+        self.client
+            .http_get("/v3/serp/google/local_finder/tasks_fixed")
+            .await
+    }
 }
 
 /// Request body for Google Local Finder task_post / live.

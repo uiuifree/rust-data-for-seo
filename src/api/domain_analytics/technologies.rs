@@ -117,6 +117,26 @@ impl DomainAnalyticsApiTechnologies<'_> {
             )
             .await
     }
+    /// <https://docs.dataforseo.com/v3/domain_analytics/technologies/available_filters/>
+    pub async fn available_filters(&self) -> crate::DataForSeoApiResponse<serde_json::Value> {
+        self.client
+            .http_get("/v3/domain_analytics/technologies/available_filters")
+            .await
+    }
+    /// <https://docs.dataforseo.com/v3/domain_analytics/technologies/languages/>
+    pub async fn languages(&self) -> crate::DataForSeoApiResponse<crate::entity::SerpApiLanguage> {
+        self.client
+            .http_get("/v3/domain_analytics/technologies/languages")
+            .await
+    }
+    /// <https://docs.dataforseo.com/v3/domain_analytics/technologies/locations/>
+    pub async fn locations(
+        &self,
+    ) -> crate::DataForSeoApiResponse<crate::entity::DomainAnalyticsApiTechnologiesLocation> {
+        self.client
+            .http_get("/v3/domain_analytics/technologies/locations")
+            .await
+    }
 }
 
 /// A target technology path (`$group_id.$category_id`) with an optional display name.

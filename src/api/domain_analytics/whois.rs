@@ -29,6 +29,12 @@ impl DomainAnalyticsApiWhois<'_> {
             .http_post("/v3/domain_analytics/whois/overview/live", &data)
             .await
     }
+    /// <https://docs.dataforseo.com/v3/domain_analytics/whois/available_filters/>
+    pub async fn available_filters(&self) -> crate::DataForSeoApiResponse<serde_json::Value> {
+        self.client
+            .http_get("/v3/domain_analytics/whois/available_filters")
+            .await
+    }
 }
 
 /// Request body for the Whois `overview` endpoint.

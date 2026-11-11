@@ -53,7 +53,7 @@ pub struct KeywordsDataApiGoogleTrendsGraph {
     /// Interest data points over time.
     pub data: Option<Vec<KeywordsDataApiGoogleTrendsGraphData>>,
     /// Average interest per keyword over the whole period.
-    pub averages: Option<Vec<i64>>,
+    pub averages: Option<Vec<Option<i64>>>,
 }
 
 /// A single data point of a `google_trends_graph`.
@@ -68,7 +68,7 @@ pub struct KeywordsDataApiGoogleTrendsGraphData {
     /// Whether interest data is missing for this point.
     pub missing_data: Option<bool>,
     /// Relative interest (0-100) per keyword.
-    pub values: Option<Vec<i64>>,
+    pub values: Option<Vec<Option<i64>>>,
 }
 
 /// `google_trends_map` — interest by region.
@@ -92,7 +92,7 @@ pub struct KeywordsDataApiGoogleTrendsMapData {
     /// Human-readable region name.
     pub geo_name: Option<String>,
     /// Relative interest (0-100) per keyword.
-    pub values: Option<Vec<i64>>,
+    pub values: Option<Vec<Option<i64>>>,
     /// Index into `values` of the keyword with the highest interest.
     pub max_value_index: Option<i32>,
 }

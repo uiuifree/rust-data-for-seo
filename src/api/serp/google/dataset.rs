@@ -77,6 +77,22 @@ impl SerpApiGoogle<'_> {
             .http_post("/v3/serp/google/dataset_info/live/advanced", &data)
             .await
     }
+    /// <https://docs.dataforseo.com/v3/serp/google/dataset_search/tasks_fixed/>
+    pub async fn dataset_search_tasks_fixed(
+        &self,
+    ) -> crate::DataForSeoApiResponse<crate::SerpApiTaskReadyResult> {
+        self.client
+            .http_get("/v3/serp/google/dataset_search/tasks_fixed")
+            .await
+    }
+    /// <https://docs.dataforseo.com/v3/serp/google/dataset_info/tasks_fixed/>
+    pub async fn dataset_info_tasks_fixed(
+        &self,
+    ) -> crate::DataForSeoApiResponse<crate::SerpApiTaskReadyResult> {
+        self.client
+            .http_get("/v3/serp/google/dataset_info/tasks_fixed")
+            .await
+    }
 }
 
 /// Request body for Google Dataset Search task_post / live.

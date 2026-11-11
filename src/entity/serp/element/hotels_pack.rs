@@ -20,7 +20,7 @@ pub struct SerpApiElementHotelsPack {
     /// Date to.
     pub date_to: Option<String>,
     /// Parsed elements of the result.
-    pub items: Option<SerpApiElementHotelsPackElement>,
+    pub items: Option<Vec<SerpApiElementHotelsPackElement>>,
     /// Pixel bounding box of the element (when `calculate_rectangles` is set).
     pub rectangle: Option<SerpApiRectangle>,
 }

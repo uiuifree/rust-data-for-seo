@@ -89,6 +89,8 @@ pub struct DataForSeoLabsAmazonSearchVolumeItem {
     pub keyword: Option<String>,
     /// Google Ads keyword metrics.
     pub keyword_info: Option<DataForSeoLabsAmazonKeywordInfo>,
+    /// Search volume of the keyword.
+    pub search_volume: Option<i64>,
 }
 
 /// Amazon keyword metrics (a reduced set compared to Google).
@@ -151,6 +153,8 @@ pub struct DataForSeoLabsAmazonProductRankOverviewItem {
     pub language_code: Option<String>,
     /// Ranking and traffic metrics, grouped by SERP feature type.
     pub metrics: Option<DataForSeoLabsAmazonMetrics>,
+    /// Amazon product identifier (ASIN).
+    pub asin: Option<String>,
 }
 
 /// Amazon ranking metrics grouped by SERP feature type.

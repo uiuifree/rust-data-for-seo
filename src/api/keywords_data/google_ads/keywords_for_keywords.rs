@@ -26,7 +26,7 @@ impl KeywordsDataApiGoogle<'_> {
     ) -> DataForSeoApiResponse<KeywordsDataApiTaskReadyResult> {
         self.client
             .keywords_data()
-            .task_ready_se("google/keywords_for_keywords")
+            .task_ready_se("google_ads/keywords_for_keywords")
             .await
     }
     /// Lists Keywords For Keywords tasks that were re-run after an error.
@@ -35,7 +35,7 @@ impl KeywordsDataApiGoogle<'_> {
     ) -> DataForSeoApiResponse<KeywordsDataApiTaskReadyResult> {
         self.client
             .keywords_data()
-            .task_fixed_se("google/keywords_for_keywords")
+            .task_fixed_se("google_ads/keywords_for_keywords")
             .await
     }
     /// Collects the result of a previously posted Keywords For Keywords task.

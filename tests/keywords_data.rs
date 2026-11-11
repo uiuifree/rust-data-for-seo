@@ -189,7 +189,7 @@ fn deserialize_google_trends_explore() {
     match &items[0] {
         KeywordsDataApiGoogleTrendsItem::GoogleTrendsGraph(graph) => {
             let point = &graph.data.as_ref().unwrap()[0];
-            assert_eq!(point.values.as_ref().unwrap()[0], 72);
+            assert_eq!(point.values.as_ref().unwrap()[0], Some(72));
         }
         other => panic!("expected graph, got {other:?}"),
     }

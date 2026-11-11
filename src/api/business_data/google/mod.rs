@@ -347,4 +347,13 @@ impl BusinessDataApiGoogle<'_> {
             .http_post("/v3/business_data/google/questions_and_answers/live", &data)
             .await
     }
+    /// <https://docs.dataforseo.com/v3/business_data/google/locations/>
+    pub async fn locations_country(
+        &self,
+        country: &str,
+    ) -> crate::DataForSeoApiResponse<crate::SerpApiLocation> {
+        self.client
+            .http_get(&format!("/v3/business_data/google/locations/{country}"))
+            .await
+    }
 }

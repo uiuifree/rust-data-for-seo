@@ -27,23 +27,10 @@ impl DataForSeoClient {
 }
 
 impl KeywordsDataApi<'_> {
-    /// Lists all locations supported across the Keywords Data sub-APIs.
-    pub async fn locations(&self) -> DataForSeoApiResponse<KeywordsDataApiLocation> {
-        self.client.http_get("/v3/keywords_data/locations").await
-    }
     /// Lists locations supported by a given search engine path, e.g. "google_ads".
     pub async fn locations_se(&self, se: &str) -> DataForSeoApiResponse<KeywordsDataApiLocation> {
         self.client
             .http_get(format!("/v3/keywords_data/{}/locations", se).as_str())
-            .await
-    }
-    /// Lists locations within a country (by ISO code).
-    pub async fn locations_country(
-        &self,
-        country: &str,
-    ) -> DataForSeoApiResponse<KeywordsDataApiLocation> {
-        self.client
-            .http_get(format!("/v3/keywords_data/locations/{}", country).as_str())
             .await
     }
     /// Lists locations within a country for a given search engine path.
@@ -69,10 +56,6 @@ impl KeywordsDataApi<'_> {
             .http_get(format!("/v3/keywords_data/{}/tasks_ready", se).as_str())
             .await
     }
-    /// Lists tasks that were re-run after an error across all sub-APIs.
-    pub async fn task_fixed(&self) -> DataForSeoApiResponse<KeywordsDataApiTaskReadyResult> {
-        self.client.http_get("/v3/keywords_data/tasks_fixed").await
-    }
     /// Lists tasks that were re-run after an error for a given search engine path.
     pub async fn task_fixed_se(
         &self,
@@ -80,6 +63,26 @@ impl KeywordsDataApi<'_> {
     ) -> DataForSeoApiResponse<KeywordsDataApiTaskReadyResult> {
         self.client
             .http_get(format!("/v3/keywords_data/{}/tasks_fixed", se).as_str())
+            .await
+    }
+    /// Lists the Keywords Data tasks created within a time range.
+    /// See <https://docs.dataforseo.com/v3/keywords_data/id_list/>.
+    pub async fn id_list(
+        &self,
+        data: Vec<crate::entity::DataForSeoIdListRequest>,
+    ) -> crate::DataForSeoApiResponse<crate::entity::DataForSeoIdListItem> {
+        self.client
+            .http_post("/v3/keywords_data/id_list", &data)
+            .await
+    }
+    /// Lists the Keywords Data tasks that returned an error in the last 7 days.
+    /// See <https://docs.dataforseo.com/v3/keywords_data/errors/>.
+    pub async fn errors(
+        &self,
+        data: Vec<crate::entity::DataForSeoErrorsRequest>,
+    ) -> crate::DataForSeoApiResponse<crate::entity::DataForSeoErrorItem> {
+        self.client
+            .http_post("/v3/keywords_data/errors", &data)
             .await
     }
 }

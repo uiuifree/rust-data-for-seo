@@ -31,7 +31,7 @@ impl SerpApiNaver<'_> {
     }
     /// <https://docs.dataforseo.com/v3/serp/naver/organic/tasks_ready/>
     pub async fn organic_tasks_ready(&self) -> DataForSeoApiResponse<SerpApiTaskReadyResult> {
-        self.client.serp().task_ready_se("naver").await
+        self.client.serp().task_ready_se("naver/organic").await
     }
     /// <https://docs.dataforseo.com/v3/serp/naver/organic/task_get/advanced/>
     pub async fn organic_task_get_advanced(
@@ -49,6 +49,25 @@ impl SerpApiNaver<'_> {
     ) -> DataForSeoApiResponse<SerpApiNaverOrganicTaskHtml> {
         self.client
             .http_get(format!("/v3/serp/naver/organic/task_get/html/{id}").as_str())
+            .await
+    }
+    /// <https://docs.dataforseo.com/v3/serp/naver/organic/tasks_fixed/>
+    pub async fn organic_tasks_fixed(
+        &self,
+    ) -> crate::DataForSeoApiResponse<crate::SerpApiTaskReadyResult> {
+        self.client
+            .http_get("/v3/serp/naver/organic/tasks_fixed")
+            .await
+    }
+    /// <https://docs.dataforseo.com/v3/serp/naver/organic/task_get/regular/>
+    pub async fn organic_task_get_regular(
+        &self,
+        id: &str,
+    ) -> crate::DataForSeoApiResponse<
+        crate::entity::SerpApiSearchResult<crate::entity::SerpApiGoogleOrganicItem>,
+    > {
+        self.client
+            .http_get(&format!("/v3/serp/naver/organic/task_get/regular/{id}"))
             .await
     }
 }

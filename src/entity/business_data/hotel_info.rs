@@ -33,6 +33,28 @@ pub struct BusinessDataApiHotelInfoResult {
     pub items_count: Option<i64>,
     /// Parsed hotel detail elements.
     pub items: Option<Vec<BusinessDataApiHotelInfoItem>>,
+    /// Unique Google identifier for the hotel.
+    pub hotel_identifier: Option<String>,
+    /// Hotel name.
+    pub title: Option<String>,
+    /// Star classification of the hotel.
+    pub stars: Option<i64>,
+    /// Textual description of the star rating.
+    pub stars_description: Option<String>,
+    /// Full postal address of the hotel.
+    pub address: Option<String>,
+    /// Hotel phone number.
+    pub phone: Option<String>,
+    /// Descriptive information and amenities (raw object).
+    pub about: Option<Value>,
+    /// Geographic details and location scores (raw object).
+    pub location: Option<Value>,
+    /// Aggregated review data and rating breakdown (raw object).
+    pub reviews: Option<Value>,
+    /// Preview images of the hotel (raw objects).
+    pub overview_images: Option<Vec<Value>>,
+    /// Pricing details across booking providers (raw object).
+    pub prices: Option<Value>,
 }
 
 impl BusinessDataApiHotelInfoResult {

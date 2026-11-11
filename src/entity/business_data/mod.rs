@@ -11,7 +11,6 @@ mod my_business_updates;
 mod questions_and_answers;
 mod request;
 mod reviews;
-mod social_media;
 mod tripadvisor;
 mod trustpilot;
 
@@ -24,6 +23,5 @@ pub use my_business_updates::*;
 pub use questions_and_answers::*;
 pub use request::*;
 pub use reviews::*;
-pub use social_media::*;
 pub use tripadvisor::*;
 pub use trustpilot::*;

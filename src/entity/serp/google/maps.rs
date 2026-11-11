@@ -1,13 +1,10 @@
-use crate::entity::{SerpApiElementMapsSearch, SerpApiHtmlItem, SerpApiSearchResult};
+use crate::entity::{SerpApiElementMapsSearch, SerpApiSearchResult};
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 
 /// Google Maps advanced result.
 /// See <https://docs.dataforseo.com/v3/serp/google/maps/task_get/advanced/>.
 pub type SerpApiGoogleMapsTaskAdvanced = SerpApiSearchResult<SerpApiGoogleMapsItem>;
-/// Google Maps raw-HTML result.
-/// See <https://docs.dataforseo.com/v3/serp/google/maps/task_get/html/>.
-pub type SerpApiGoogleMapsTaskHtml = SerpApiSearchResult<SerpApiHtmlItem>;
 
 /// A single item in a Google Maps SERP, tagged by the DataForSEO `type` field.
 /// Unrecognized `type` values fall back to [`SerpApiGoogleMapsItem::Unknown`].

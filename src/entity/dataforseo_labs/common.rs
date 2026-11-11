@@ -16,7 +16,7 @@ pub struct DataForSeoLabsIdListItem {
     /// URL of the result (for an id-list entry, the endpoint the task was posted to).
     pub url: Option<String>,
     /// Task status.
-    pub status: Option<String>,
+    pub status: Option<serde_json::Value>,
     /// Cost of the task (USD).
     pub cost: Option<f64>,
     /// Original POST parameters of the task.
@@ -77,4 +77,12 @@ pub struct DataForSeoLabsStatus {
     pub rates: Option<Value>,
     /// Available metric types and their limits.
     pub metric_types: Option<Value>,
+}
+
+/// A date available in the Labs historical datasets.
+/// See <https://docs.dataforseo.com/v3/dataforseo_labs/google/available_history/live/>.
+#[derive(Debug, Default, serde::Serialize, serde::Deserialize, Clone)]
+pub struct DataForSeoLabsAvailableHistory {
+    /// Available date.
+    pub date: Option<String>,
 }

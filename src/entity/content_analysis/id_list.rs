@@ -16,7 +16,7 @@ pub struct ContentAnalysisApiIdList {
     /// UTC datetime the task completed (`yyyy-mm-dd hh-mm-ss +00:00`).
     pub datetime_done: Option<String>,
     /// Task informational status message.
-    pub status: Option<String>,
+    pub status: Option<serde_json::Value>,
     /// Cost of the task, in USD.
     pub cost: Option<f64>,
     /// Parameters supplied in the original POST request.

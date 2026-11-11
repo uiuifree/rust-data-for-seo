@@ -80,7 +80,7 @@ pub struct OnPageDataApiContentTopic {
     /// Language of the content.
     pub language: Option<String>,
     /// HTML heading level of the block.
-    pub level: Option<String>,
+    pub level: Option<i32>,
     /// Primary content elements of the topic.
     pub primary_content: Option<Vec<OnPageDataApiContentElement>>,
     /// Secondary content elements of the topic.

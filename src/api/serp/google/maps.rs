@@ -1,4 +1,4 @@
-use crate::entity::{SerpApiGoogleMapsTaskAdvanced, SerpApiGoogleMapsTaskHtml};
+use crate::entity::SerpApiGoogleMapsTaskAdvanced;
 use crate::{DataForSeoApiResponse, SerpApiGoogle, SerpApiTaskReadyResult};
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
@@ -28,15 +28,6 @@ impl SerpApiGoogle<'_> {
             .http_get(format!("/v3/serp/google/maps/task_get/advanced/{id}").as_str())
             .await
     }
-    /// <https://docs.dataforseo.com/v3/serp/google/maps/task_get/html/>
-    pub async fn maps_task_get_html(
-        &self,
-        id: &str,
-    ) -> DataForSeoApiResponse<SerpApiGoogleMapsTaskHtml> {
-        self.client
-            .http_get(format!("/v3/serp/google/maps/task_get/html/{id}").as_str())
-            .await
-    }
     /// <https://docs.dataforseo.com/v3/serp/google/maps/live/advanced/>
     pub async fn maps_live_advanced(
         &self,
@@ -44,6 +35,14 @@ impl SerpApiGoogle<'_> {
     ) -> DataForSeoApiResponse<SerpApiGoogleMapsTaskAdvanced> {
         self.client
             .http_post("/v3/serp/google/maps/live/advanced", &data)
+            .await
+    }
+    /// <https://docs.dataforseo.com/v3/serp/google/maps/tasks_fixed/>
+    pub async fn maps_tasks_fixed(
+        &self,
+    ) -> crate::DataForSeoApiResponse<crate::SerpApiTaskReadyResult> {
+        self.client
+            .http_get("/v3/serp/google/maps/tasks_fixed")
             .await
     }
 }

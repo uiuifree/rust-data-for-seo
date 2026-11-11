@@ -39,6 +39,13 @@ impl AppDataApi<'_> {
     ) -> DataForSeoApiResponse<AppDataApiError> {
         self.client.http_post("/v3/app_data/errors", &data).await
     }
+    /// Lists completed App Data tasks that have not been collected.
+    /// See <https://docs.dataforseo.com/v3/app_data/tasks_ready/>.
+    pub async fn tasks_ready(
+        &self,
+    ) -> crate::DataForSeoApiResponse<crate::entity::AppDataApiTaskReadyResult> {
+        self.client.http_get("/v3/app_data/tasks_ready").await
+    }
 }
 
 /// Request body for the App Data `id_list` endpoint.
@@ -299,4 +306,37 @@ impl AppDataApiAppReviewsTaskPostRequest {
             ..AppDataApiAppReviewsTaskPostRequest::default()
         }
     }
+}
+
+/// Request body for the App Listings Search endpoints.
+/// See <https://docs.dataforseo.com/v3/app_data/google/app_listings/search/live/>.
+#[derive(Debug, Default, Serialize, Deserialize, Clone)]
+pub struct AppDataApiAppListingsSearchPost {
+    /// App categories to search in.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub categories: Option<Vec<String>>,
+    /// Keywords occurring in the app description.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub description: Option<String>,
+    /// Keywords occurring in the app title.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub title: Option<String>,
+    /// Result filters, as DataForSEO filter expressions.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub filters: Option<Vec<serde_json::Value>>,
+    /// Sorting rules, each `"field,direction"`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub order_by: Option<Vec<String>>,
+    /// Maximum number of returned apps.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub limit: Option<i32>,
+    /// Offset in the results array.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub offset: Option<i32>,
+    /// Token for subsequent requests.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub offset_token: Option<String>,
+    /// User-defined task identifier.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub tag: Option<String>,
 }

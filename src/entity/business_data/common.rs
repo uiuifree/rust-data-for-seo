@@ -99,7 +99,7 @@ pub struct BusinessDataApiIdList {
     /// UTC time the task finished processing.
     pub datetime_done: Option<String>,
     /// Current processing status of the task.
-    pub status: Option<String>,
+    pub status: Option<serde_json::Value>,
     /// Money charged for the task, in USD.
     pub cost: Option<f64>,
     /// Per-task metadata, present when `include_metadata` was requested.

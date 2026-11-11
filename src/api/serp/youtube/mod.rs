@@ -36,4 +36,13 @@ impl SerpApiYoutube<'_> {
     pub async fn languages(&self) -> DataForSeoApiResponse<SerpApiLanguage> {
         self.client.http_get("/v3/serp/youtube/languages").await
     }
+    /// <https://docs.dataforseo.com/v3/serp/youtube/locations/>
+    pub async fn locations_country(
+        &self,
+        country: &str,
+    ) -> crate::DataForSeoApiResponse<crate::SerpApiLocation> {
+        self.client
+            .http_get(&format!("/v3/serp/youtube/locations/{country}"))
+            .await
+    }
 }

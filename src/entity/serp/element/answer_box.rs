@@ -13,7 +13,7 @@ pub struct SerpApiElementAnswerBox {
     /// XPath of the element within the page.
     pub xpath: Option<String>,
     /// Text content.
-    pub text: Option<String>,
+    pub text: Option<Vec<String>>,
     /// Links associated with the result.
     pub links: Option<Vec<SerpApiElementLinkElement>>,
     /// Pixel bounding box of the element (when `calculate_rectangles` is set).

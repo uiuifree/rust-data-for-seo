@@ -552,7 +552,7 @@ mod deserialize {
         let parsed: DataForSeoApiResponseData<DataForSeoLabsIdListItem> =
             serde_json::from_str(json).expect("id_list should deserialize");
         let item = parsed.first_result().expect("one result");
-        assert_eq!(item.status.as_deref(), Some("ok"));
+        assert_eq!(item.status.as_ref().unwrap(), "ok");
         assert_eq!(item.cost, Some(0.02));
         assert_eq!(
             item.metadata.as_ref().unwrap().get("target").unwrap(),

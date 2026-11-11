@@ -82,3 +82,16 @@ pub struct KeywordsDataApiClickstreamLocation {
     /// Languages available for this location.
     pub available_languages: Option<Vec<crate::entity::KeywordsDataApiLanguage>>,
 }
+
+/// Result wrapper of the Clickstream search volume endpoints.
+#[derive(Debug, Default, Serialize, Deserialize, Clone)]
+pub struct KeywordsDataApiClickstreamResult<T> {
+    /// Location code echoed from the request.
+    pub location_code: Option<i32>,
+    /// Language code echoed from the request.
+    pub language_code: Option<String>,
+    /// Number of items in `items`.
+    pub items_count: Option<i64>,
+    /// Keywords and their search volume.
+    pub items: Option<Vec<T>>,
+}

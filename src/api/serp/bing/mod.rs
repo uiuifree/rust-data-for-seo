@@ -46,7 +46,7 @@ impl SerpApiBing<'_> {
     }
     /// <https://docs.dataforseo.com/v3/serp/bing/organic/tasks_ready/>
     pub async fn organic_tasks_ready(&self) -> DataForSeoApiResponse<SerpApiTaskReadyResult> {
-        self.client.serp().task_ready_se("bing").await
+        self.client.serp().task_ready_se("bing/organic").await
     }
     /// <https://docs.dataforseo.com/v3/serp/bing/organic/tasks_fixed/>
     pub async fn organic_tasks_fixed(&self) -> DataForSeoApiResponse<SerpApiTaskReadyResult> {
@@ -70,6 +70,46 @@ impl SerpApiBing<'_> {
     ) -> DataForSeoApiResponse<SerpApiBingOrganicTaskAdvanced> {
         self.client
             .http_post("/v3/serp/bing/organic/live/advanced", &data)
+            .await
+    }
+    /// <https://docs.dataforseo.com/v3/serp/bing/organic/live/regular/>
+    pub async fn organic_live_regular(
+        &self,
+        data: Vec<SerpApiBingOrganicTaskPostRequest>,
+    ) -> crate::DataForSeoApiResponse<crate::entity::SerpApiBingOrganicTaskRegular> {
+        self.client
+            .http_post("/v3/serp/bing/organic/live/regular", &data)
+            .await
+    }
+    /// <https://docs.dataforseo.com/v3/serp/bing/organic/live/html/>
+    pub async fn organic_live_html(
+        &self,
+        data: Vec<SerpApiBingOrganicTaskPostRequest>,
+    ) -> crate::DataForSeoApiResponse<
+        crate::entity::SerpApiSearchResult<crate::entity::SerpApiHtmlItem>,
+    > {
+        self.client
+            .http_post("/v3/serp/bing/organic/live/html", &data)
+            .await
+    }
+    /// <https://docs.dataforseo.com/v3/serp/bing/organic/task_get/regular/>
+    pub async fn organic_task_get_regular(
+        &self,
+        id: &str,
+    ) -> crate::DataForSeoApiResponse<crate::entity::SerpApiBingOrganicTaskRegular> {
+        self.client
+            .http_get(&format!("/v3/serp/bing/organic/task_get/regular/{id}"))
+            .await
+    }
+    /// <https://docs.dataforseo.com/v3/serp/bing/organic/task_get/html/>
+    pub async fn organic_task_get_html(
+        &self,
+        id: &str,
+    ) -> crate::DataForSeoApiResponse<
+        crate::entity::SerpApiSearchResult<crate::entity::SerpApiHtmlItem>,
+    > {
+        self.client
+            .http_get(&format!("/v3/serp/bing/organic/task_get/html/{id}"))
             .await
     }
 }

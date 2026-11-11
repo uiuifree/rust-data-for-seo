@@ -7,5 +7,5 @@ pub struct SerpApiElementFaqBox {
     #[serde(rename = "type")]
     pub type_of_element: Option<String>,
     /// Parsed elements of the result.
-    pub items: Option<String>,
+    pub items: Option<Vec<crate::entity::SerpApiElementFaqBoxElement>>,
 }

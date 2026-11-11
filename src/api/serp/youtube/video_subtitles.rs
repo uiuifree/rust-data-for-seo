@@ -43,6 +43,14 @@ impl SerpApiYoutube<'_> {
             .http_post("/v3/serp/youtube/video_subtitles/live/advanced", &data)
             .await
     }
+    /// <https://docs.dataforseo.com/v3/serp/youtube/video_subtitles/tasks_fixed/>
+    pub async fn video_subtitles_tasks_fixed(
+        &self,
+    ) -> crate::DataForSeoApiResponse<crate::SerpApiTaskReadyResult> {
+        self.client
+            .http_get("/v3/serp/youtube/video_subtitles/tasks_fixed")
+            .await
+    }
 }
 
 /// Request body for YouTube Video Subtitles task_post / live.

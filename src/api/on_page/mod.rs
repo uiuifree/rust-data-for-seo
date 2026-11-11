@@ -283,6 +283,38 @@ impl OnPageApi<'_> {
             .http_post("/v3/on_page/lighthouse/live/json", &data)
             .await
     }
+    /// Lists resources that could not be crawled.
+    /// See <https://docs.dataforseo.com/v3/on_page/uncrawlable_resources/>.
+    pub async fn uncrawlable_resources(
+        &self,
+        data: Vec<OnPageApiUncrawlableResourcesPost>,
+    ) -> crate::DataForSeoApiResponse<crate::entity::OnPageDataApiUncrawlableResources> {
+        self.client
+            .http_post("/v3/on_page/uncrawlable_resources", &data)
+            .await
+    }
+    /// <https://docs.dataforseo.com/v3/on_page/lighthouse/audits/>
+    pub async fn lighthouse_audits(
+        &self,
+    ) -> crate::DataForSeoApiResponse<crate::entity::OnPageDataApiLighthouseAudits> {
+        self.client.http_get("/v3/on_page/lighthouse/audits").await
+    }
+    /// <https://docs.dataforseo.com/v3/on_page/lighthouse/versions/>
+    pub async fn lighthouse_versions(
+        &self,
+    ) -> crate::DataForSeoApiResponse<crate::entity::OnPageDataApiLighthouseVersions> {
+        self.client
+            .http_get("/v3/on_page/lighthouse/versions")
+            .await
+    }
+    /// <https://docs.dataforseo.com/v3/on_page/lighthouse/languages/>
+    pub async fn lighthouse_languages(
+        &self,
+    ) -> crate::DataForSeoApiResponse<crate::entity::SerpApiLanguage> {
+        self.client
+            .http_get("/v3/on_page/lighthouse/languages")
+            .await
+    }
 }
 
 /// Request for [`OnPageApi::task_post`].
@@ -1182,6 +1214,36 @@ impl OnPageApiLighthouseLivePost {
         OnPageApiLighthouseLivePost {
             url,
             ..OnPageApiLighthouseLivePost::default()
+        }
+    }
+}
+
+/// Request for [`OnPageApi::uncrawlable_resources`].
+/// See <https://docs.dataforseo.com/v3/on_page/uncrawlable_resources/>.
+#[derive(Debug, Default, Serialize, Deserialize, Clone)]
+pub struct OnPageApiUncrawlableResourcesPost {
+    /// Identifier of the crawl task.
+    pub id: String,
+    /// Maximum number of returned resources.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub limit: Option<i32>,
+    /// Offset in the results array.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub offset: Option<i32>,
+    /// Sorting rules, each `"field,direction"`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub order_by: Option<Vec<String>>,
+    /// Result filters, as DataForSEO filter expressions.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub filters: Option<Vec<serde_json::Value>>,
+}
+
+impl OnPageApiUncrawlableResourcesPost {
+    /// Creates a request for the given crawl task.
+    pub fn new<T: Into<String>>(id: T) -> Self {
+        OnPageApiUncrawlableResourcesPost {
+            id: id.into(),
+            ..Default::default()
         }
     }
 }

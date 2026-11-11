@@ -9,13 +9,11 @@ use crate::{DataForSeoApiResponse, DataForSeoClient};
 
 mod business_listings;
 mod google;
-mod social_media;
 mod tripadvisor;
 mod trustpilot;
 
 pub use business_listings::*;
 pub use google::*;
-pub use social_media::*;
 pub use tripadvisor::*;
 pub use trustpilot::*;
 
@@ -54,5 +52,12 @@ impl BusinessDataApi<'_> {
         self.client
             .http_post("/v3/business_data/errors", &data)
             .await
+    }
+    /// Lists completed Business Data tasks that have not been collected.
+    /// See <https://docs.dataforseo.com/v3/business_data/tasks_ready/>.
+    pub async fn tasks_ready(
+        &self,
+    ) -> crate::DataForSeoApiResponse<crate::entity::BusinessDataApiTaskReady> {
+        self.client.http_get("/v3/business_data/tasks_ready").await
     }
 }

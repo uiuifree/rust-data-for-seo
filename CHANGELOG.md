@@ -1,5 +1,34 @@
 # Changelog
 
+## 0.5.0 (2026-11-11)
+
+### Breaking changes
+
+- Removed the Google Events SERP endpoints, retired by DataForSEO on 2026-09-15.
+- Removed the Pinterest endpoint and `BusinessDataApi::social_media`. DataForSEO retired the Social Media API on 2026-09-16.
+- Removed `jobs_live_advanced` and `maps_task_get_html`, which are not part of the API.
+
+- Removed `SerpApi::locations`, `SerpApi::locations_country`, `KeywordsDataApi::locations`, `KeywordsDataApi::locations_country` and the top-level Keywords Data `tasks_fixed`, which return HTTP 404.
+- Corrected response types found to differ from live API responses: OnPage `certificate_version` and topic `level`; Backlinks Domain Pages `h1`-`h3`, `technologies`, `page_summary`; LLM Mentions `key` and the `_lite` results; Content Analysis nullable maps and ratings; Technologies list; `id_list` `status`; SERP `local_pack`, `hotels_pack`, `answer_box`, `organic`, `paid`, `faq` fields; Dataset `size`.
+- Clickstream endpoints now return `KeywordsDataApiClickstreamResult`, matching the `items` array of the API.
+- `DataForSeoLabsAmazonProductRankOverviewRequest` now takes `asins`.
+
+### Added
+
+- SERP: `screenshot`, `ai_summary`, `id_list`, `errors`, the Standard method and HTML results of Google AI Mode, Live and HTML variants of Finance, Images, Local Finder, News, Organic, Bing and Yahoo, Regular results of Baidu, Bing, Naver, Seznam and Yahoo, Ads Search and Ads Advertisers `locations` and Live, and the remaining `tasks_fixed`, `languages` and per-country `locations` endpoints.
+- DataForSEO Labs: `historical_search_volume`, `available_history`, `available_filters`, `errors`, `categories_for_keywords_languages`.
+- AI Optimization: `search_mentions`, `available_filters`, per-country LLM Scraper locations.
+- OnPage: `uncrawlable_resources`, Lighthouse `audits`, `versions`, `languages`.
+- App Data: App Listings search and categories, `tasks_ready`, Google App Reviews HTML, per-country locations.
+- Appendix: `errors`, `status`, `webhook_resend`.
+- Keywords Data and Merchant: `id_list`, `errors`; Merchant and Business Data: `tasks_ready`; per-country locations; Bing Keyword Performance locations and languages.
+- Domain Analytics and Business Listings: `available_filters`, Technologies `languages` and `locations`.
+
+### Fixed
+
+- Google Ads `tasks_ready` and `tasks_fixed` now use the `google_ads` path.
+- `organic_tasks_ready` for Google, Bing, Yahoo, Baidu, Naver and Seznam now only lists organic tasks.
+
 ## 0.4.0 (2026-11-07)
 
 ### Breaking changes

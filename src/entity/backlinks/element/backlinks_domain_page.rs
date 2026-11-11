@@ -40,6 +40,8 @@ pub struct BacklinksApiElementBacklinksDomainPage {
     pub server: Option<String>,
     /// Metadata about the page (title, headings, links, technologies).
     pub meta: Option<BacklinksApiElementBacklinksDomainPageMeta>,
+    /// Backlink summary of the page.
+    pub page_summary: Option<BacklinksApiElementBacklinksDomainPagePageSummary>,
 }
 /// Page metadata (title, headings, link counts, technologies) for a crawled page.
 #[derive(Debug, Default, Serialize, Deserialize, Clone)]
@@ -60,12 +62,12 @@ pub struct BacklinksApiElementBacklinksDomainPageMeta {
     pub page_spam_score: Option<i64>,
     /// Social media tags found on the page with their values.
     pub social_media_tags: Option<HashMap<String, String>>,
-    /// First `h1` heading on the page.
-    pub h1: Option<String>,
-    /// First `h2` heading on the page.
-    pub h2: Option<String>,
-    /// First `h3` heading on the page.
-    pub h3: Option<String>,
+    /// `h1` headings on the page.
+    pub h1: Option<Vec<String>>,
+    /// `h2` headings on the page.
+    pub h2: Option<Vec<String>>,
+    /// `h3` headings on the page.
+    pub h3: Option<Vec<String>>,
     /// Alt texts of images on the page.
     pub images_alt: Option<Vec<String>>,
     /// `powered-by` technologies declared by the page.
@@ -77,20 +79,7 @@ pub struct BacklinksApiElementBacklinksDomainPageMeta {
     /// Platform types detected for the target.
     pub platform_type: Option<Vec<String>>,
     /// Technologies detected on the page.
-    pub technologies: Option<Vec<BacklinksApiElementBacklinksDomainPageWebpageTechnologies>>,
-    /// Backlink summary metrics for the page.
-    pub page_summary: Option<Vec<BacklinksApiElementBacklinksDomainPagePageSummary>>,
-}
-/// Technologies detected on a crawled page.
-#[derive(Debug, Default, Serialize, Deserialize, Clone)]
-pub struct BacklinksApiElementBacklinksDomainPageWebpageTechnologies {
-    /// Content management system detected for the target.
-    pub cms: Option<String>,
-    /// Blog engine detected on the page.
-    pub blogs: Option<String>,
-    /// Web server technology detected on the page.
-    #[serde(rename = "web-server")]
-    pub web_servers: Option<String>,
+    pub technologies: Option<serde_json::Value>,
 }
 /// Backlink summary metrics for a crawled page.
 #[derive(Debug, Default, Serialize, Deserialize, Clone)]

@@ -376,6 +376,36 @@ impl DataForSeoLabsApiGoogle<'_> {
             .http_post("/v3/dataforseo_labs/google/bulk_app_metrics/live", &data)
             .await
     }
+    /// <https://docs.dataforseo.com/v3/dataforseo_labs/google/available_history/live/>
+    pub async fn available_history(
+        &self,
+    ) -> crate::DataForSeoApiResponse<crate::entity::DataForSeoLabsAvailableHistory> {
+        self.client
+            .http_get("/v3/dataforseo_labs/google/available_history")
+            .await
+    }
+    /// <https://docs.dataforseo.com/v3/dataforseo_labs/google/categories_for_keywords/languages/>
+    pub async fn categories_for_keywords_languages(
+        &self,
+    ) -> crate::DataForSeoApiResponse<crate::entity::SerpApiLanguage> {
+        self.client
+            .http_get("/v3/dataforseo_labs/google/categories_for_keywords/languages")
+            .await
+    }
+    /// <https://docs.dataforseo.com/v3/dataforseo_labs/google/historical_search_volume/live/>
+    pub async fn historical_search_volume(
+        &self,
+        data: Vec<DataForSeoLabsHistoricalSearchVolumeRequest>,
+    ) -> crate::DataForSeoApiResponse<
+        crate::entity::DataForSeoLabsResult<crate::entity::DataForSeoLabsKeywordData>,
+    > {
+        self.client
+            .http_post(
+                "/v3/dataforseo_labs/google/historical_search_volume/live",
+                &data,
+            )
+            .await
+    }
 }
 
 /// Request body for `ranked_keywords`.
@@ -1802,6 +1832,45 @@ impl DataForSeoLabsBulkAppMetricsRequest {
     pub fn new(app_ids: Vec<String>) -> DataForSeoLabsBulkAppMetricsRequest {
         DataForSeoLabsBulkAppMetricsRequest {
             app_ids,
+            ..Default::default()
+        }
+    }
+}
+
+/// Request body for `historical_search_volume`.
+/// See <https://docs.dataforseo.com/v3/dataforseo_labs/google/historical_search_volume/live/>.
+#[derive(Debug, Default, Serialize, Deserialize, Clone)]
+pub struct DataForSeoLabsHistoricalSearchVolumeRequest {
+    /// Keywords to analyze (up to 700).
+    pub keywords: Vec<String>,
+    /// Full location name; alternative to `location_code`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub location_name: Option<String>,
+    /// Location code; alternative to `location_name`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub location_code: Option<i32>,
+    /// Full language name; alternative to `language_code`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub language_name: Option<String>,
+    /// Language code; alternative to `language_name`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub language_code: Option<String>,
+    /// Include SERP data for each keyword.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub include_serp_info: Option<bool>,
+    /// Include clickstream-based metrics.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub include_clickstream_data: Option<bool>,
+    /// User-defined task identifier.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub tag: Option<String>,
+}
+
+impl DataForSeoLabsHistoricalSearchVolumeRequest {
+    /// Creates a request for the given keywords.
+    pub fn new(keywords: Vec<String>) -> Self {
+        DataForSeoLabsHistoricalSearchVolumeRequest {
+            keywords,
             ..Default::default()
         }
     }

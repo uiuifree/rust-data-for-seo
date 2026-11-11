@@ -26,7 +26,7 @@ impl KeywordsDataApiGoogle<'_> {
     ) -> DataForSeoApiResponse<KeywordsDataApiTaskReadyResult> {
         self.client
             .keywords_data()
-            .task_ready_se("google/search_volume")
+            .task_ready_se("google_ads/search_volume")
             .await
     }
     /// Lists Search Volume tasks that were re-run after an error.
@@ -35,7 +35,7 @@ impl KeywordsDataApiGoogle<'_> {
     ) -> DataForSeoApiResponse<KeywordsDataApiTaskReadyResult> {
         self.client
             .keywords_data()
-            .task_fixed_se("google/search_volume")
+            .task_fixed_se("google_ads/search_volume")
             .await
     }
     /// Collects the result of a previously posted Search Volume task.

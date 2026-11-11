@@ -228,8 +228,8 @@ impl DataForSeoLabsAmazonRankedKeywordsRequest {
 /// See <https://docs.dataforseo.com/v3/dataforseo_labs/amazon/product_rank_overview/live/>.
 #[derive(Debug, Default, Serialize, Deserialize, Clone)]
 pub struct DataForSeoLabsAmazonProductRankOverviewRequest {
-    /// Amazon product identifier (ASIN).
-    pub asin: String,
+    /// Amazon product identifiers (ASINs) to compare.
+    pub asins: Vec<String>,
     /// Full location name (e.g. `"United States"`); alternative to `location_code`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub location_name: Option<String>,
@@ -248,10 +248,10 @@ pub struct DataForSeoLabsAmazonProductRankOverviewRequest {
 }
 
 impl DataForSeoLabsAmazonProductRankOverviewRequest {
-    /// Creates a request for the given product ASIN.
-    pub fn new(asin: &str) -> DataForSeoLabsAmazonProductRankOverviewRequest {
+    /// Creates a request for the given product ASINs.
+    pub fn new(asins: Vec<String>) -> DataForSeoLabsAmazonProductRankOverviewRequest {
         DataForSeoLabsAmazonProductRankOverviewRequest {
-            asin: asin.to_string(),
+            asins,
             ..Default::default()
         }
     }

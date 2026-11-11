@@ -61,7 +61,7 @@ pub struct OnPageSummarySslInfo {
     /// Subject the certificate was issued to.
     pub certificate_subject: Option<String>,
     /// Version of the certificate.
-    pub certificate_version: Option<String>,
+    pub certificate_version: Option<i64>,
     /// Hash of the certificate.
     pub certificate_hash: Option<String>,
     /// Expiration date of the certificate (UTC).

@@ -352,7 +352,8 @@ pub struct DataForSeoLabsDomainMetricsByCategoriesItem {
     /// Primary (registrable) domain.
     pub main_domain: Option<String>,
     /// Historical ranking metrics keyed by date and SERP feature type.
-    pub metrics_history: Option<HashMap<String, HashMap<String, DataForSeoLabsMetricsInfo>>>,
+    pub metrics_history:
+        Option<HashMap<String, HashMap<String, Option<DataForSeoLabsMetricsInfo>>>>,
     /// Change in metrics between the two compared dates, by SERP feature type.
-    pub metrics_difference: Option<HashMap<String, DataForSeoLabsMetricsInfo>>,
+    pub metrics_difference: Option<HashMap<String, Option<DataForSeoLabsMetricsInfo>>>,
 }

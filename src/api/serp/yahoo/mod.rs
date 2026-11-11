@@ -35,7 +35,7 @@ impl SerpApiYahoo<'_> {
     }
     /// <https://docs.dataforseo.com/v3/serp/yahoo/organic/tasks_ready/>
     pub async fn organic_tasks_ready(&self) -> DataForSeoApiResponse<SerpApiTaskReadyResult> {
-        self.client.serp().task_ready_se("yahoo").await
+        self.client.serp().task_ready_se("yahoo/organic").await
     }
     /// <https://docs.dataforseo.com/v3/serp/yahoo/organic/task_get/advanced/>
     pub async fn organic_task_get_advanced(
@@ -62,6 +62,60 @@ impl SerpApiYahoo<'_> {
     ) -> DataForSeoApiResponse<SerpApiYahooOrganicTaskAdvanced> {
         self.client
             .http_post("/v3/serp/yahoo/organic/live/advanced", &data)
+            .await
+    }
+    /// <https://docs.dataforseo.com/v3/serp/yahoo/languages/>
+    pub async fn languages(&self) -> crate::DataForSeoApiResponse<crate::entity::SerpApiLanguage> {
+        self.client.http_get("/v3/serp/yahoo/languages").await
+    }
+    /// <https://docs.dataforseo.com/v3/serp/yahoo/locations/>
+    pub async fn locations_country(
+        &self,
+        country: &str,
+    ) -> crate::DataForSeoApiResponse<crate::SerpApiLocation> {
+        self.client
+            .http_get(&format!("/v3/serp/yahoo/locations/{country}"))
+            .await
+    }
+    /// <https://docs.dataforseo.com/v3/serp/yahoo/organic/tasks_fixed/>
+    pub async fn organic_tasks_fixed(
+        &self,
+    ) -> crate::DataForSeoApiResponse<crate::SerpApiTaskReadyResult> {
+        self.client
+            .http_get("/v3/serp/yahoo/organic/tasks_fixed")
+            .await
+    }
+    /// <https://docs.dataforseo.com/v3/serp/yahoo/organic/task_get/regular/>
+    pub async fn organic_task_get_regular(
+        &self,
+        id: &str,
+    ) -> crate::DataForSeoApiResponse<
+        crate::entity::SerpApiSearchResult<crate::entity::SerpApiGoogleOrganicItem>,
+    > {
+        self.client
+            .http_get(&format!("/v3/serp/yahoo/organic/task_get/regular/{id}"))
+            .await
+    }
+    /// <https://docs.dataforseo.com/v3/serp/yahoo/organic/live/regular/>
+    pub async fn organic_live_regular(
+        &self,
+        data: Vec<SerpApiYahooOrganicTaskPostRequest>,
+    ) -> crate::DataForSeoApiResponse<
+        crate::entity::SerpApiSearchResult<crate::entity::SerpApiGoogleOrganicItem>,
+    > {
+        self.client
+            .http_post("/v3/serp/yahoo/organic/live/regular", &data)
+            .await
+    }
+    /// <https://docs.dataforseo.com/v3/serp/yahoo/organic/live/html/>
+    pub async fn organic_live_html(
+        &self,
+        data: Vec<SerpApiYahooOrganicTaskPostRequest>,
+    ) -> crate::DataForSeoApiResponse<
+        crate::entity::SerpApiSearchResult<crate::entity::SerpApiHtmlItem>,
+    > {
+        self.client
+            .http_post("/v3/serp/yahoo/organic/live/html", &data)
             .await
     }
 }
