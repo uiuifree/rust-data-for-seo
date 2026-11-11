@@ -52,3 +52,70 @@ pub struct OnPageDataApiCrawlStatus {
     /// Number of pages crawled so far.
     pub pages_crawled: Option<i64>,
 }
+
+/// Result of `on_page/uncrawlable_resources`.
+/// See <https://docs.dataforseo.com/v3/on_page/uncrawlable_resources/>.
+#[derive(Debug, Default, serde::Serialize, serde::Deserialize, Clone)]
+pub struct OnPageDataApiUncrawlableResources {
+    /// Status of the crawling session.
+    pub crawl_progress: Option<String>,
+    /// Details of the crawling session.
+    pub crawl_status: Option<serde_json::Value>,
+    /// Current offset.
+    pub current_offset: Option<i64>,
+    /// Total number of uncrawlable resources found.
+    pub total_items_count: Option<i64>,
+    /// Number of resources in the `items` array.
+    pub items_count: Option<i64>,
+    /// Uncrawlable resources.
+    pub items: Option<Vec<OnPageDataApiUncrawlableResourceItem>>,
+}
+
+/// A resource that could not be crawled.
+#[derive(Debug, Default, serde::Serialize, serde::Deserialize, Clone)]
+pub struct OnPageDataApiUncrawlableResourceItem {
+    /// URL of the resource.
+    pub url: Option<String>,
+    /// Reason the resource is uncrawlable.
+    pub reason: Option<String>,
+    /// HTTP status code.
+    pub status_code: Option<i32>,
+    /// UTC time the resource was fetched.
+    pub fetch_time: Option<String>,
+    /// Metadata of the resource.
+    pub meta: Option<OnPageDataApiUncrawlableResourceMeta>,
+}
+
+/// Metadata of an uncrawlable resource.
+#[derive(Debug, Default, serde::Serialize, serde::Deserialize, Clone)]
+pub struct OnPageDataApiUncrawlableResourceMeta {
+    /// Actual content type.
+    pub content_type: Option<String>,
+    /// Expected content types.
+    pub expected_content_types: Option<Vec<String>>,
+}
+
+/// Result of `on_page/lighthouse/audits`.
+/// See <https://docs.dataforseo.com/v3/on_page/lighthouse/audits/>.
+#[derive(Debug, Default, serde::Serialize, serde::Deserialize, Clone)]
+pub struct OnPageDataApiLighthouseAudits {
+    /// Available audits.
+    pub audits: Option<Vec<String>>,
+}
+
+/// Result of `on_page/lighthouse/versions`.
+/// See <https://docs.dataforseo.com/v3/on_page/lighthouse/versions/>.
+#[derive(Debug, Default, serde::Serialize, serde::Deserialize, Clone)]
+pub struct OnPageDataApiLighthouseVersions {
+    /// Available versions (the field is spelled this way by the API).
+    pub availible_versions: Option<Vec<OnPageDataApiLighthouseVersion>>,
+}
+
+/// A Lighthouse version.
+#[derive(Debug, Default, serde::Serialize, serde::Deserialize, Clone)]
+pub struct OnPageDataApiLighthouseVersion {
+    /// Lighthouse version.
+    pub version: Option<String>,
+    /// `true` when the version is used by default.
+    pub default: Option<bool>,
+}

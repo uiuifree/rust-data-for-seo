@@ -310,12 +310,16 @@ fn deserialize_available_technologies() {
             "path": ["v3", "domain_analytics", "technologies", "technologies"],
             "data": {"api": "domain_analytics"},
             "result": [{
-                "sales": {
-                    "ecommerce": ["Shopify", "Magento", "WooCommerce"]
-                },
-                "marketing": {
-                    "crm": ["Salesforce", "HubSpot"]
-                }
+                "groups": [{
+                    "id": "sales",
+                    "title": "Sales",
+                    "categories": [{
+                        "id": "ecommerce",
+                        "path": "sales.ecommerce",
+                        "title": "Ecommerce",
+                        "technologies": ["Shopify", "Magento", "WooCommerce"]
+                    }]
+                }]
             }]
         }]
     }"#;
@@ -325,16 +329,20 @@ fn deserialize_available_technologies() {
 
     assert_eq!(response.status_code, 20000);
     let result = response.first_result().expect("one result expected");
-    let sales = result.groups.get("sales").expect("sales group expected");
+    let group = &result.groups.as_ref().expect("groups expected")[0];
+    assert_eq!(group.id.as_deref(), Some("sales"));
+    let category = &group.categories.as_ref().expect("categories expected")[0];
     assert_eq!(
-        sales.get("ecommerce").expect("ecommerce category expected"),
+        category
+            .technologies
+            .as_ref()
+            .expect("technologies expected"),
         &vec![
             "Shopify".to_string(),
             "Magento".to_string(),
             "WooCommerce".to_string()
         ]
     );
-    assert!(result.groups.contains_key("marketing"));
 }
 
 #[cfg(test)]

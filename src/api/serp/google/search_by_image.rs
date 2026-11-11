@@ -42,6 +42,14 @@ impl SerpApiGoogle<'_> {
             .http_get(format!("/v3/serp/google/search_by_image/task_get/html/{id}").as_str())
             .await
     }
+    /// <https://docs.dataforseo.com/v3/serp/google/search_by_image/tasks_fixed/>
+    pub async fn search_by_image_tasks_fixed(
+        &self,
+    ) -> crate::DataForSeoApiResponse<crate::SerpApiTaskReadyResult> {
+        self.client
+            .http_get("/v3/serp/google/search_by_image/tasks_fixed")
+            .await
+    }
 }
 
 /// Request body for Google Search By Image task_post.

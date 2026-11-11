@@ -56,7 +56,7 @@ pub struct MerchantApiGoogleReviewItem {
     /// Position of the review on the page (e.g. `left`).
     pub position: Option<String>,
     /// URLs of images attached to the review.
-    pub images: Option<Vec<String>>,
+    pub images: Option<Vec<serde_json::Value>>,
     /// Title / headline of the review.
     pub title: Option<String>,
     /// URL of the review source.

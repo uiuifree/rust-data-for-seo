@@ -14,7 +14,7 @@ pub struct BacklinksApiIdListItem {
     /// Date and time the task finished (UTC).
     pub datetime_done: Option<String>,
     /// Task status code as a string (e.g. "20000").
-    pub status: Option<String>,
+    pub status: Option<serde_json::Value>,
     /// Cost of the task in USD.
     pub cost: Option<f64>,
     /// Original POST request parameters of the task.

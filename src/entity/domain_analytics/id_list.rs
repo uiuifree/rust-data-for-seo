@@ -14,7 +14,7 @@ pub struct DomainAnalyticsApiIdList {
     /// Time the task finished (UTC).
     pub datetime_done: Option<String>,
     /// Task status code, as text.
-    pub status: Option<String>,
+    pub status: Option<serde_json::Value>,
     /// Cost of the task in USD.
     pub cost: Option<f64>,
     /// Original request parameters, present when metadata was requested.

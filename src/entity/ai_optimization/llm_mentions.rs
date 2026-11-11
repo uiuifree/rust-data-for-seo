@@ -10,7 +10,7 @@ use serde_json::Value;
 #[derive(Debug, Default, Serialize, Deserialize, Clone)]
 pub struct AiOptimizationMentionMetric {
     /// Identifier of the group (e.g. a location, language or domain).
-    pub key: Option<String>,
+    pub key: Option<Value>,
     /// Number of mentions within the group.
     pub mentions: Option<i64>,
     /// Aggregate AI search volume within the group.
@@ -162,7 +162,7 @@ pub struct AiOptimizationMentionItem {
 ///
 /// Covers `target_metrics`, `multi_target_metrics`, `top_mentioned_pages`,
 /// `top_mentioned_domains`, `top_mentioned_brands`,
-/// `top_mentioned_brand_categories` and their `_lite` variants.
+/// `top_mentioned_brand_categories`.
 #[derive(Debug, Default, Serialize, Deserialize, Clone)]
 pub struct AiOptimizationLlmMentionsMetrics {
     /// Total number of items matching the request.
@@ -207,6 +207,8 @@ pub struct AiOptimizationMentionTimeseriesItem {
     pub delta_mentions: Option<i64>,
     /// AI search volume difference from the previous period (`timeseries_delta`).
     pub delta_ai_search_volume: Option<f64>,
+    /// Metrics of the period (`historical`).
+    pub metrics: Option<AiOptimizationMentionTotal>,
 }
 
 /// Result shared by the `historical`, `timeseries_delta` and
@@ -223,4 +225,40 @@ pub struct AiOptimizationLlmMentionsTimeseries {
     pub date_to: Option<String>,
     /// Grouping range of the series (`day`, `week`, `month`, `year`).
     pub group_range: Option<String>,
+}
+
+/// Result shared by the `_lite` metrics and top-mentioned endpoints.
+#[derive(Debug, Default, Serialize, Deserialize, Clone)]
+pub struct AiOptimizationLlmMentionsMetricsLite {
+    /// Total number of items matching the request.
+    pub total_count: Option<i64>,
+    /// Offset of the first returned item.
+    pub offset: Option<i32>,
+    /// Number of items in [`items`](Self::items).
+    pub items_count: Option<i64>,
+    /// Metrics aggregated across every returned item.
+    pub aggregated_metrics: Option<Value>,
+    /// Returned items.
+    pub items: Option<Vec<AiOptimizationMentionLiteItem>>,
+}
+
+/// An item of the `_lite` metrics and top-mentioned endpoints.
+#[derive(Debug, Default, Serialize, Deserialize, Clone)]
+pub struct AiOptimizationMentionLiteItem {
+    /// Domain the item refers to.
+    pub domain: Option<String>,
+    /// Page URL the item refers to.
+    pub page: Option<String>,
+    /// Brand the item refers to.
+    pub brand: Option<String>,
+    /// Brand category the item refers to.
+    pub brand_category: Option<String>,
+    /// Location of the item, returned as a number or a string.
+    pub location: Option<Value>,
+    /// Language code of the item.
+    pub language: Option<String>,
+    /// Platform of the item.
+    pub platform: Option<String>,
+    /// Metrics of the item.
+    pub metrics: Option<AiOptimizationMentionTotal>,
 }

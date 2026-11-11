@@ -50,4 +50,13 @@ impl KeywordsDataApiGoogle<'_> {
             .http_get("/v3/keywords_data/google_ads/languages")
             .await
     }
+    /// <https://docs.dataforseo.com/v3/keywords_data/google_ads/locations/>
+    pub async fn locations_country(
+        &self,
+        country: &str,
+    ) -> crate::DataForSeoApiResponse<crate::KeywordsDataApiLocation> {
+        self.client
+            .http_get(&format!("/v3/keywords_data/google_ads/locations/{country}"))
+            .await
+    }
 }

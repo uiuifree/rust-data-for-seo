@@ -8,7 +8,7 @@
 
 ```toml
 [dependencies]
-data-for-seo = "0.4"
+data-for-seo = "0.5"
 ```
 
 ## Quick start
@@ -114,7 +114,7 @@ let client = DataForSeoClient::new("login", "password").sandbox();
 
 | Domain | Coverage |
 | --- | --- |
-| **SERP** | Google (Organic, AI Mode, Maps, Local Finder, News, Events, Images, Jobs, Autocomplete, Dataset Search/Info, Ads Advertisers, Ads Search), Bing, YouTube (Organic, Video Info/Subtitles/Comments), Baidu, Yahoo, Seznam, Naver |
+| **SERP** | Google (Organic, AI Mode, Maps, Local Finder, News, Images, Jobs, Autocomplete, Dataset Search/Info, Ads Advertisers, Ads Search), Bing, YouTube (Organic, Video Info/Subtitles/Comments), Baidu, Yahoo, Seznam, Naver |
 | **Keywords Data** | Google Ads (Search Volume, Keywords For Site/Keywords, Ad Traffic), Bing (Search Volume, Keyword Performance, Search Volume History, Keyword Suggestions For URL, Audience Estimation, ...), Google Trends, DataForSEO Trends, Clickstream Data |
 | **DataForSEO Labs** | Google (Ranked Keywords, Keyword Ideas/Suggestions, Related Keywords, Competitors, Domain/Page Intersection, Traffic Estimation, Search Intent, Historical data, ...), Amazon, Apple App Store |
 | **Backlinks** | Summary, History, Backlinks, Anchors, Domain Pages, Referring Domains/Networks, Competitors, Intersections, Timeseries, Bulk endpoints, Index |

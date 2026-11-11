@@ -49,6 +49,14 @@ impl KeywordsDataApiBing<'_> {
             .http_post("/v3/keywords_data/bing/keyword_performance/live", &data)
             .await
     }
+    /// <https://docs.dataforseo.com/v3/keywords_data/bing/keyword_performance/locations_and_languages/>
+    pub async fn keyword_performance_locations_and_languages(
+        &self,
+    ) -> crate::DataForSeoApiResponse<crate::entity::KeywordsDataApiBingLocationsAndLanguages> {
+        self.client
+            .http_get("/v3/keywords_data/bing/keyword_performance/locations_and_languages")
+            .await
+    }
 }
 
 /// Request body for the Bing Keyword Performance endpoints.

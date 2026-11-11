@@ -28,6 +28,23 @@ impl SerpApiGoogle<'_> {
             .http_get(format!("/v3/serp/google/ads_search/task_get/advanced/{id}").as_str())
             .await
     }
+    /// <https://docs.dataforseo.com/v3/serp/google/ads_search/locations/>
+    pub async fn ads_search_locations(
+        &self,
+    ) -> crate::DataForSeoApiResponse<crate::SerpApiLocation> {
+        self.client
+            .http_get("/v3/serp/google/ads_search/locations")
+            .await
+    }
+    /// <https://docs.dataforseo.com/v3/serp/google/ads_search/live/advanced/>
+    pub async fn ads_search_live_advanced(
+        &self,
+        data: Vec<SerpApiGoogleAdsSearchTaskPostRequest>,
+    ) -> crate::DataForSeoApiResponse<crate::entity::SerpApiGoogleAdsSearchTaskAdvanced> {
+        self.client
+            .http_post("/v3/serp/google/ads_search/live/advanced", &data)
+            .await
+    }
 }
 
 /// Request body for Google Ads Search task_post.

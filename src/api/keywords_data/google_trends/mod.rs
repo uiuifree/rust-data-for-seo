@@ -44,4 +44,15 @@ impl KeywordsDataApiGoogleTrends<'_> {
             .http_get("/v3/keywords_data/google_trends/categories")
             .await
     }
+    /// <https://docs.dataforseo.com/v3/keywords_data/google_trends/locations/>
+    pub async fn locations_country(
+        &self,
+        country: &str,
+    ) -> crate::DataForSeoApiResponse<crate::KeywordsDataApiLocation> {
+        self.client
+            .http_get(&format!(
+                "/v3/keywords_data/google_trends/locations/{country}"
+            ))
+            .await
+    }
 }

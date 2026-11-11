@@ -6,8 +6,8 @@
 
 use data_for_seo::entity::{
     BusinessDataApiBusinessListingsSearchResult, BusinessDataApiMyBusinessInfoResult,
-    BusinessDataApiPinterestItem, BusinessDataApiQuestionsAndAnswersResult,
-    BusinessDataApiReviewsResult, DataForSeoApiResponseData,
+    BusinessDataApiQuestionsAndAnswersResult, BusinessDataApiReviewsResult,
+    DataForSeoApiResponseData,
 };
 
 #[test]
@@ -272,43 +272,6 @@ fn deserialize_questions_and_answers() {
     assert_eq!(answers.len(), 1);
     assert_eq!(answers[0].answer_text.as_deref(), Some("Yes, we do!"));
     assert_eq!(answers[0].votes_count, Some(3));
-}
-
-#[test]
-fn deserialize_pinterest_live() {
-    let json = r#"{
-        "version": "0.1.20240101",
-        "status_code": 20000,
-        "status_message": "Ok.",
-        "time": "0.5 sec.",
-        "cost": 0.001,
-        "tasks_count": 1,
-        "tasks_error": 0,
-        "tasks": [{
-            "id": "01011234-1234-0123-0000-abcdef012349",
-            "status_code": 20000,
-            "status_message": "Ok.",
-            "time": "0.3 sec.",
-            "cost": 0.001,
-            "result_count": 1,
-            "path": ["v3", "business_data", "social_media", "pinterest", "live"],
-            "data": {"api": "business_data", "function": "pinterest"},
-            "result": [{
-                "type": "social_media_pinterest_item",
-                "page_url": "https://www.example.com/recipe",
-                "pins_count": 1280
-            }]
-        }]
-    }"#;
-
-    let parsed: DataForSeoApiResponseData<BusinessDataApiPinterestItem> =
-        serde_json::from_str(json).expect("pinterest live deserializes");
-    let item = parsed.first_result().expect("has a result");
-    assert_eq!(item.pins_count, Some(1280));
-    assert_eq!(
-        item.page_url.as_deref(),
-        Some("https://www.example.com/recipe")
-    );
 }
 
 /// Live tests hit the real DataForSEO API and require `ID` / `PASSWORD` in `.env`.

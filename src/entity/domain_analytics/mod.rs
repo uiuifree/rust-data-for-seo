@@ -21,3 +21,13 @@ pub use id_list::*;
 pub use technologies_summary::*;
 pub use technology_stats::*;
 pub use whois_overview::*;
+
+/// A location supported by the Technologies API.
+/// See <https://docs.dataforseo.com/v3/domain_analytics/technologies/locations/>.
+#[derive(Debug, Default, serde::Serialize, serde::Deserialize, Clone)]
+pub struct DomainAnalyticsApiTechnologiesLocation {
+    /// Full location name.
+    pub location_name: Option<String>,
+    /// ISO country code.
+    pub country_iso_code: Option<String>,
+}

@@ -136,59 +136,6 @@ pub struct SerpApiGoogleOrganicItemTopStories {
     /// Pixel bounding box of the element (when `calculate_rectangles` is set).
     pub rectangle: Option<SerpApiRectangle>,
 }
-/// EventItem
-#[derive(Debug, Serialize, Deserialize, Clone)]
-pub struct SerpApiElementEventItem {
-    /// Element type as reported by the DataForSEO API.
-    #[serde(rename = "type")]
-    pub type_of_element: Option<String>,
-    /// Rank of the element among elements of the same type.
-    pub rank_group: Option<i64>,
-    /// Absolute rank of the element across the whole SERP.
-    pub rank_absolute: Option<i64>,
-    /// Alignment of the element within the SERP, `left` or `right`.
-    pub position: Option<String>,
-    /// XPath of the element within the page.
-    pub xpath: Option<String>,
-    /// Title of the result.
-    pub title: Option<String>,
-    /// Snippet / description text of the result.
-    pub description: Option<String>,
-    /// URL of the result.
-    pub url: Option<String>,
-    /// URL of the image.
-    pub image_url: Option<String>,
-    /// Dates the event takes place.
-    pub event_dates: Option<Vec<SerpApiElementEventItemEventDate>>,
-    /// Venue and location details of the event.
-    pub location_info: Option<SerpApiElementEventItemLocationInfo>,
-    /// Links to event information and tickets.
-    pub information_and_tickets: Option<Vec<SerpApiElementInformationAndTicketsElement>>,
-}
-/// EventItemEventDate
-#[derive(Debug, Serialize, Deserialize, Clone)]
-pub struct SerpApiElementEventItemEventDate {
-    /// Start date and time of the event.
-    pub start_datetime: Option<String>,
-    /// End date and time of the event.
-    pub end_datetime: Option<String>,
-    /// Event dates as displayed in the SERP.
-    pub displayed_dates: Option<String>,
-}
-/// EventItemLocationInfo
-#[derive(Debug, Serialize, Deserialize, Clone)]
-pub struct SerpApiElementEventItemLocationInfo {
-    /// Name of the entity.
-    pub name: Option<String>,
-    /// Postal address of the entity.
-    pub address: Option<String>,
-    /// URL of the result.
-    pub url: Option<String>,
-    /// Google CID identifier of the entity.
-    pub cid: Option<String>,
-    /// Google feature identifier of the entity.
-    pub feature_id: Option<String>,
-}
 /// information_and_tickets_element
 #[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct SerpApiElementInformationAndTicketsElement {
@@ -355,7 +302,7 @@ pub struct SerpApiElementFormatsElement {
     /// Ad creative format.
     pub format: Option<String>,
     /// Size of the file.
-    pub size: Option<String>,
+    pub size: Option<i64>,
 }
 /// Authors Element SERP data model.
 #[derive(Debug, Serialize, Deserialize, Clone)]

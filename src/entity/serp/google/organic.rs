@@ -39,6 +39,8 @@ pub struct SerpApiGoogleOrganicTaskRegular {
     // pub items: Option<Vec<Value>>,
     /// Parsed elements of the result.
     pub items: Option<Vec<SerpApiGoogleOrganicItem>>,
+    /// Number of SERP pages crawled for the result.
+    pub pages_count: Option<i64>,
 }
 /// Google Organic Task Advanced SERP data model.
 #[derive(Debug, Default, Serialize, Deserialize, Clone)]
@@ -71,6 +73,8 @@ pub struct SerpApiGoogleOrganicTaskAdvanced {
     // pub items: Option<Vec<Value>>,
     /// Parsed elements of the result.
     pub items: Option<Vec<SerpApiGoogleOrganicItem>>,
+    /// Number of SERP pages crawled for the result.
+    pub pages_count: Option<i64>,
 }
 
 impl SerpApiGoogleOrganicTaskAdvanced {

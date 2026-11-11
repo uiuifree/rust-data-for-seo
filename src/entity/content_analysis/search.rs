@@ -63,13 +63,13 @@ pub struct ContentAnalysisRating {
     /// Rating name (e.g. `Max5`, `Percents`, `CustomMax`).
     pub name: Option<String>,
     /// The rating value.
-    pub rating_value: Option<String>,
+    pub rating_value: Option<serde_json::Value>,
     /// Number of votes.
-    pub rating_count: Option<String>,
+    pub rating_count: Option<serde_json::Value>,
     /// Maximum value for the rating name.
-    pub max_rating_value: Option<String>,
+    pub max_rating_value: Option<serde_json::Value>,
     /// Rating normalized relative to its maximum.
-    pub relative_rating: Option<String>,
+    pub relative_rating: Option<serde_json::Value>,
 }
 
 /// Social engagement metric for a citation.
@@ -109,9 +109,9 @@ pub struct ContentAnalysisContentInfo {
     pub language: Option<String>,
     /// Probability index per sentiment connotation (anger, happiness, love,
     /// sadness, share, fun).
-    pub sentiment_connotations: Option<HashMap<String, f64>>,
+    pub sentiment_connotations: Option<HashMap<String, Option<f64>>>,
     /// Probability index per sentiment polarity (positive, negative, neutral).
-    pub connotation_types: Option<HashMap<String, f64>>,
+    pub connotation_types: Option<HashMap<String, Option<f64>>>,
     /// Text category IDs of the content.
     pub text_category: Option<Vec<i64>>,
     /// UTC datetime the content was published

@@ -37,7 +37,9 @@ impl KeywordsDataApiClickstream<'_> {
     pub async fn dataforseo_search_volume_live(
         &self,
         data: Vec<KeywordsDataApiClickstreamSearchVolumeRequest>,
-    ) -> DataForSeoApiResponse<KeywordsDataApiClickstreamSearchVolume> {
+    ) -> DataForSeoApiResponse<
+        crate::entity::KeywordsDataApiClickstreamResult<KeywordsDataApiClickstreamSearchVolume>,
+    > {
         self.client
             .http_post(
                 "/v3/keywords_data/clickstream_data/dataforseo_search_volume/live",
@@ -50,7 +52,11 @@ impl KeywordsDataApiClickstream<'_> {
     pub async fn global_search_volume_live(
         &self,
         data: Vec<KeywordsDataApiClickstreamGlobalSearchVolumeRequest>,
-    ) -> DataForSeoApiResponse<KeywordsDataApiClickstreamGlobalSearchVolume> {
+    ) -> DataForSeoApiResponse<
+        crate::entity::KeywordsDataApiClickstreamResult<
+            KeywordsDataApiClickstreamGlobalSearchVolume,
+        >,
+    > {
         self.client
             .http_post(
                 "/v3/keywords_data/clickstream_data/global_search_volume/live",
@@ -63,7 +69,9 @@ impl KeywordsDataApiClickstream<'_> {
     pub async fn bulk_search_volume_live(
         &self,
         data: Vec<KeywordsDataApiClickstreamBulkSearchVolumeRequest>,
-    ) -> DataForSeoApiResponse<KeywordsDataApiClickstreamBulkSearchVolume> {
+    ) -> DataForSeoApiResponse<
+        crate::entity::KeywordsDataApiClickstreamResult<KeywordsDataApiClickstreamBulkSearchVolume>,
+    > {
         self.client
             .http_post(
                 "/v3/keywords_data/clickstream_data/bulk_search_volume/live",

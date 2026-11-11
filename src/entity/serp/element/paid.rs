@@ -37,11 +37,13 @@ pub struct SerpApiElementPaid {
     /// Snippet / description text of the result.
     pub description: Option<String>,
     /// Description rows.
-    pub description_rows: Option<String>,
+    pub description_rows: Option<Vec<String>>,
     /// Links associated with the result.
     pub links: Option<Vec<SerpApiElementLinkElement>>,
     /// Price information shown for the result.
     pub price: Option<SerpApiPrice>,
     /// Related result shown alongside this one.
     pub related_result: Option<SerpApiElementRelatedResult>,
+    /// Attributes that apply to the result.
+    pub checks: Option<Vec<String>>,
 }

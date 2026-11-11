@@ -165,6 +165,68 @@ impl SerpApiGoogle<'_> {
             .http_get(format!("/v3/serp/google/finance_quote/task_get/advanced/{id}").as_str())
             .await
     }
+    /// <https://docs.dataforseo.com/v3/serp/google/finance_explore/live/html/>
+    pub async fn finance_explore_live_html(
+        &self,
+        data: Vec<SerpApiGoogleFinanceExploreTaskPostRequest>,
+    ) -> crate::DataForSeoApiResponse<
+        crate::entity::SerpApiSearchResult<crate::entity::SerpApiHtmlItem>,
+    > {
+        self.client
+            .http_post("/v3/serp/google/finance_explore/live/html", &data)
+            .await
+    }
+    /// <https://docs.dataforseo.com/v3/serp/google/finance_markets/live/advanced/>
+    pub async fn finance_markets_live_advanced(
+        &self,
+        data: Vec<SerpApiGoogleFinanceMarketsTaskPostRequest>,
+    ) -> crate::DataForSeoApiResponse<crate::entity::SerpApiGoogleFinanceMarketsTaskAdvanced> {
+        self.client
+            .http_post("/v3/serp/google/finance_markets/live/advanced", &data)
+            .await
+    }
+    /// <https://docs.dataforseo.com/v3/serp/google/finance_markets/live/html/>
+    pub async fn finance_markets_live_html(
+        &self,
+        data: Vec<SerpApiGoogleFinanceMarketsTaskPostRequest>,
+    ) -> crate::DataForSeoApiResponse<
+        crate::entity::SerpApiSearchResult<crate::entity::SerpApiHtmlItem>,
+    > {
+        self.client
+            .http_post("/v3/serp/google/finance_markets/live/html", &data)
+            .await
+    }
+    /// <https://docs.dataforseo.com/v3/serp/google/finance_quote/live/advanced/>
+    pub async fn finance_quote_live_advanced(
+        &self,
+        data: Vec<SerpApiGoogleFinanceQuoteTaskPostRequest>,
+    ) -> crate::DataForSeoApiResponse<crate::entity::SerpApiGoogleFinanceQuoteTaskAdvanced> {
+        self.client
+            .http_post("/v3/serp/google/finance_quote/live/advanced", &data)
+            .await
+    }
+    /// <https://docs.dataforseo.com/v3/serp/google/finance_quote/live/html/>
+    pub async fn finance_quote_live_html(
+        &self,
+        data: Vec<SerpApiGoogleFinanceQuoteTaskPostRequest>,
+    ) -> crate::DataForSeoApiResponse<
+        crate::entity::SerpApiSearchResult<crate::entity::SerpApiHtmlItem>,
+    > {
+        self.client
+            .http_post("/v3/serp/google/finance_quote/live/html", &data)
+            .await
+    }
+    /// <https://docs.dataforseo.com/v3/serp/google/finance_quote/task_get/html/>
+    pub async fn finance_quote_task_get_html(
+        &self,
+        id: &str,
+    ) -> crate::DataForSeoApiResponse<
+        crate::entity::SerpApiSearchResult<crate::entity::SerpApiHtmlItem>,
+    > {
+        self.client
+            .http_get(&format!("/v3/serp/google/finance_quote/task_get/html/{id}"))
+            .await
+    }
 }
 
 /// Request body for Google Finance Explore task_post / live.

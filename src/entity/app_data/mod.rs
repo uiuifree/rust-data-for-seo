@@ -144,7 +144,52 @@ pub struct AppDataApiIdList {
     /// UTC timestamp when the task completed.
     pub datetime_done: Option<String>,
     /// Task status code.
-    pub status: Option<String>,
+    pub status: Option<serde_json::Value>,
     /// Cost of the task, in USD.
     pub cost: Option<f64>,
+}
+
+/// An app category of the App Listings database.
+/// See <https://docs.dataforseo.com/v3/app_data/google/app_listings/categories/>.
+#[derive(Debug, Default, Serialize, Deserialize, Clone)]
+pub struct AppDataApiAppListingsCategory {
+    /// Category name.
+    pub category: Option<String>,
+    /// Number of app listings in the category.
+    pub count: Option<i64>,
+}
+
+/// Result of the App Listings Search endpoints.
+/// See <https://docs.dataforseo.com/v3/app_data/google/app_listings/search/live/>.
+#[derive(Debug, Default, Serialize, Deserialize, Clone)]
+pub struct AppDataApiAppListingsSearchResult {
+    /// Total number of relevant results in the database.
+    pub total_count: Option<i64>,
+    /// Number of items in the `items` array.
+    pub count: Option<i64>,
+    /// Offset in the results array.
+    pub offset: Option<i32>,
+    /// Token for subsequent requests.
+    pub offset_token: Option<String>,
+    /// Returned apps.
+    pub items: Option<Vec<AppDataApiAppListingsSearchItem>>,
+}
+
+/// An app returned by the App Listings Search endpoints.
+#[derive(Debug, Default, Serialize, Deserialize, Clone)]
+pub struct AppDataApiAppListingsSearchItem {
+    /// App identifier.
+    pub app_id: Option<String>,
+    /// Search engine domain.
+    pub se_domain: Option<String>,
+    /// Location code.
+    pub location_code: Option<i32>,
+    /// Language code.
+    pub language_code: Option<String>,
+    /// Direct URL to the search engine results.
+    pub check_url: Option<String>,
+    /// Time the data was last updated.
+    pub time_update: Option<String>,
+    /// Detailed information about the app.
+    pub item: Option<serde_json::Value>,
 }

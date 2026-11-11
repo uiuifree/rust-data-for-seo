@@ -143,6 +143,19 @@ impl AiOptimizationApiLlmScraper<'_> {
             )
             .await
     }
+    /// Lists the locations of a country supported by this provider's scraper.
+    /// See <https://docs.dataforseo.com/v3/ai_optimization/chat_gpt/llm_scraper/locations/>.
+    pub async fn locations_country(
+        &self,
+        country: &str,
+    ) -> DataForSeoApiResponse<AiOptimizationScraperLocation> {
+        self.client
+            .http_get(&format!(
+                "/v3/ai_optimization/{}/llm_scraper/locations/{country}",
+                self.provider
+            ))
+            .await
+    }
 }
 
 /// Request body for the LLM Scraper `live/*` and `task_post` endpoints.

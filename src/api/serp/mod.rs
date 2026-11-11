@@ -3,6 +3,7 @@ use serde::{Deserialize, Serialize};
 
 mod baidu;
 mod bing;
+mod common;
 mod google;
 mod naver;
 mod seznam;
@@ -11,6 +12,7 @@ mod youtube;
 
 pub use baidu::*;
 pub use bing::*;
+pub use common::*;
 pub use google::*;
 pub use naver::*;
 pub use seznam::*;
@@ -31,20 +33,10 @@ impl DataForSeoClient {
 }
 
 impl SerpApi<'_> {
-    /// Lists all locations supported across the SERP engines.
-    pub async fn locations(&self) -> DataForSeoApiResponse<SerpApiLocation> {
-        self.client.http_get("/v3/serp/locations").await
-    }
     /// Lists locations supported by the given search engine.
     pub async fn locations_se(&self, se: &str) -> DataForSeoApiResponse<SerpApiLocation> {
         self.client
             .http_get(format!("/v3/serp/{}/locations", se).as_str())
-            .await
-    }
-    /// Lists supported locations within the given country.
-    pub async fn locations_country(&self, country: &str) -> DataForSeoApiResponse<SerpApiLocation> {
-        self.client
-            .http_get(format!("/v3/serp/locations/{}", country).as_str())
             .await
     }
     /// Lists locations within a country for the given search engine.
@@ -76,6 +68,38 @@ impl SerpApi<'_> {
         self.client
             .http_get(format!("/v3/serp/{}/tasks_fixed", se).as_str())
             .await
+    }
+    /// Captures a screenshot of the SERP of a completed task.
+    /// See <https://docs.dataforseo.com/v3/serp/screenshot/>.
+    pub async fn screenshot(
+        &self,
+        data: Vec<SerpApiScreenshotRequest>,
+    ) -> crate::DataForSeoApiResponse<crate::entity::SerpApiScreenshot> {
+        self.client.http_post("/v3/serp/screenshot", &data).await
+    }
+    /// Generates an AI summary of the SERP of a completed task.
+    /// See <https://docs.dataforseo.com/v3/serp/ai_summary/>.
+    pub async fn ai_summary(
+        &self,
+        data: Vec<SerpApiAiSummaryRequest>,
+    ) -> crate::DataForSeoApiResponse<crate::entity::SerpApiAiSummary> {
+        self.client.http_post("/v3/serp/ai_summary", &data).await
+    }
+    /// Lists the SERP tasks created within a time range.
+    /// See <https://docs.dataforseo.com/v3/serp/id_list/>.
+    pub async fn id_list(
+        &self,
+        data: Vec<crate::entity::DataForSeoIdListRequest>,
+    ) -> crate::DataForSeoApiResponse<crate::entity::DataForSeoIdListItem> {
+        self.client.http_post("/v3/serp/id_list", &data).await
+    }
+    /// Lists the SERP tasks that returned an error in the last 7 days.
+    /// See <https://docs.dataforseo.com/v3/serp/errors/>.
+    pub async fn errors(
+        &self,
+        data: Vec<crate::entity::DataForSeoErrorsRequest>,
+    ) -> crate::DataForSeoApiResponse<crate::entity::DataForSeoErrorItem> {
+        self.client.http_post("/v3/serp/errors", &data).await
     }
 }
 

@@ -39,6 +39,12 @@ impl AiOptimizationApiKeywordData<'_> {
             )
             .await
     }
+    /// <https://docs.dataforseo.com/v3/ai_optimization/ai_keyword_data/available_filters/>
+    pub async fn available_filters(&self) -> crate::DataForSeoApiResponse<serde_json::Value> {
+        self.client
+            .http_get("/v3/ai_optimization/ai_keyword_data/available_filters")
+            .await
+    }
 }
 
 /// Request body for `keywords_search_volume/live`.

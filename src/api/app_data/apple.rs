@@ -175,4 +175,21 @@ impl AppDataApiApple<'_> {
             ))
             .await
     }
+    /// <https://docs.dataforseo.com/v3/app_data/apple/app_listings/categories/>
+    pub async fn app_listings_categories(
+        &self,
+    ) -> crate::DataForSeoApiResponse<crate::entity::AppDataApiAppListingsCategory> {
+        self.client
+            .http_get("/v3/app_data/apple/app_listings/categories")
+            .await
+    }
+    /// <https://docs.dataforseo.com/v3/app_data/apple/app_listings/search/live/>
+    pub async fn app_listings_search(
+        &self,
+        data: Vec<crate::AppDataApiAppListingsSearchPost>,
+    ) -> crate::DataForSeoApiResponse<crate::entity::AppDataApiAppListingsSearchResult> {
+        self.client
+            .http_post("/v3/app_data/apple/app_listings/search/live", &data)
+            .await
+    }
 }

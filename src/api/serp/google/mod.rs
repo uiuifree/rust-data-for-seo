@@ -3,7 +3,6 @@ mod ads_search;
 mod ai_mode;
 mod autocomplete;
 mod dataset;
-mod event;
 mod finance;
 mod images;
 mod jobs;
@@ -17,7 +16,6 @@ pub use ads_search::*;
 pub use ai_mode::*;
 pub use autocomplete::*;
 pub use dataset::*;
-pub use event::*;
 pub use finance::*;
 pub use images::*;
 pub use jobs::*;
@@ -76,7 +74,7 @@ impl SerpApiGoogle<'_> {
     }
     /// <https://docs.dataforseo.com/v3/serp/google/organic/tasks_ready/>
     pub async fn organic_tasks_ready(&self) -> DataForSeoApiResponse<SerpApiTaskReadyResult> {
-        self.client.serp().task_ready_se("google").await
+        self.client.serp().task_ready_se("google/organic").await
     }
     /// <https://docs.dataforseo.com/v3/serp/google/organic/tasks_fixed/>
     pub async fn organic_tasks_fixed(&self) -> DataForSeoApiResponse<SerpApiTaskReadyResult> {
@@ -118,6 +116,28 @@ impl SerpApiGoogle<'_> {
     ) -> DataForSeoApiResponse<SerpApiGoogleOrganicTaskRegular> {
         self.client
             .http_post("/v3/serp/google/organic/live/regular", &data)
+            .await
+    }
+    /// <https://docs.dataforseo.com/v3/serp/google/organic/live/html/>
+    pub async fn organic_live_html(
+        &self,
+        data: Vec<SerpApiGoogleOrganicTaskPostRequest>,
+    ) -> crate::DataForSeoApiResponse<
+        crate::entity::SerpApiSearchResult<crate::entity::SerpApiHtmlItem>,
+    > {
+        self.client
+            .http_post("/v3/serp/google/organic/live/html", &data)
+            .await
+    }
+    /// <https://docs.dataforseo.com/v3/serp/google/organic/task_get/html/>
+    pub async fn organic_task_get_html(
+        &self,
+        id: &str,
+    ) -> crate::DataForSeoApiResponse<
+        crate::entity::SerpApiSearchResult<crate::entity::SerpApiHtmlItem>,
+    > {
+        self.client
+            .http_get(&format!("/v3/serp/google/organic/task_get/html/{id}"))
             .await
     }
 }

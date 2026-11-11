@@ -44,3 +44,34 @@ pub struct AppendixApiUserDataMoney {
     /// Spending breakdown per function; keys are dynamic, kept as raw JSON.
     pub statistics: Option<Value>,
 }
+
+/// An API error code.
+/// See <https://docs.dataforseo.com/v3/appendix/errors/>.
+#[derive(Debug, Default, serde::Serialize, serde::Deserialize, Clone)]
+pub struct AppendixApiError {
+    /// Error code.
+    pub code: Option<i32>,
+    /// Error message.
+    pub message: Option<String>,
+}
+
+/// Status of one API.
+/// See <https://docs.dataforseo.com/v3/appendix/status/>.
+#[derive(Debug, Default, serde::Serialize, serde::Deserialize, Clone)]
+pub struct AppendixApiStatus {
+    /// API name.
+    pub api: Option<String>,
+    /// Current status.
+    pub status: Option<String>,
+    /// Status of the API's endpoints.
+    pub endpoints: Option<Vec<AppendixApiEndpointStatus>>,
+}
+
+/// Status of one API endpoint type.
+#[derive(Debug, Default, serde::Serialize, serde::Deserialize, Clone)]
+pub struct AppendixApiEndpointStatus {
+    /// Endpoint name.
+    pub endpoint: Option<String>,
+    /// Current status.
+    pub status: Option<String>,
+}

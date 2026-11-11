@@ -39,7 +39,7 @@ client.domain_analytics().technologies() / .whois()
 client.content_analysis() client.content_generation()
 client.merchant().amazon() / .google()
 client.app_data().google() / .apple()
-client.business_data().google() / .trustpilot() / .tripadvisor() / .social_media() / .business_listings()
+client.business_data().google() / .trustpilot() / .tripadvisor() / .business_listings()
 client.ai_optimization().ai_keyword_data() / .llm_mentions() / .chat_gpt() / .claude() / .gemini() / .perplexity()
 ```
 
@@ -63,3 +63,8 @@ All calls return `DataForSeoApiResponse<R>` = `Result<DataForSeoApiResponseData<
 - Keep `cargo clippy --all-targets` warning-free
 - `cargo fmt` before finishing
 - Each new endpoint needs a doc comment with its docs URL and an offline deserialization test
+
+## Known API behavior
+
+- The Content Generation API currently answers `50304` (temporarily unavailable). The endpoints stay in the crate until DataForSEO announces their status.
+- `id_list` documents `status` as a string, but the API returns a number, so the field is `serde_json::Value`.

@@ -67,9 +67,11 @@ pub struct SerpApiElementOrganic {
     /// "About this result" panel data.
     pub about_this_result: Option<SerpApiElementAboutThisResultElement>,
     /// Related result shown alongside this one.
-    pub related_result: Option<SerpApiElementRelatedResult>,
+    pub related_result: Option<Vec<SerpApiElementRelatedResult>>,
     /// UTC timestamp associated with the result.
     pub timestamp: Option<String>,
     /// Pixel bounding box of the element (when `calculate_rectangles` is set).
     pub rectangle: Option<SerpApiRectangle>,
+    /// Attributes that apply to the result.
+    pub checks: Option<Vec<String>>,
 }

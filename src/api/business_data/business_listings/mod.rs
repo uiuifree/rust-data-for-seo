@@ -69,4 +69,10 @@ impl BusinessDataApiBusinessListings<'_> {
             )
             .await
     }
+    /// <https://docs.dataforseo.com/v3/business_data/business_listings/available_filters/>
+    pub async fn available_filters(&self) -> crate::DataForSeoApiResponse<serde_json::Value> {
+        self.client
+            .http_get("/v3/business_data/business_listings/available_filters")
+            .await
+    }
 }

@@ -201,4 +201,41 @@ impl AppDataApiGoogle<'_> {
             ))
             .await
     }
+    /// <https://docs.dataforseo.com/v3/app_data/google/locations/>
+    pub async fn locations_country(
+        &self,
+        country: &str,
+    ) -> crate::DataForSeoApiResponse<crate::entity::AppDataApiLocation> {
+        self.client
+            .http_get(&format!("/v3/app_data/google/locations/{country}"))
+            .await
+    }
+    /// <https://docs.dataforseo.com/v3/app_data/google/app_reviews/task_get/html/>
+    pub async fn app_reviews_task_get_html(
+        &self,
+        id: &str,
+    ) -> crate::DataForSeoApiResponse<serde_json::Value> {
+        self.client
+            .http_get(&format!(
+                "/v3/app_data/google/app_reviews/task_get/html/{id}"
+            ))
+            .await
+    }
+    /// <https://docs.dataforseo.com/v3/app_data/google/app_listings/categories/>
+    pub async fn app_listings_categories(
+        &self,
+    ) -> crate::DataForSeoApiResponse<crate::entity::AppDataApiAppListingsCategory> {
+        self.client
+            .http_get("/v3/app_data/google/app_listings/categories")
+            .await
+    }
+    /// <https://docs.dataforseo.com/v3/app_data/google/app_listings/search/live/>
+    pub async fn app_listings_search(
+        &self,
+        data: Vec<crate::AppDataApiAppListingsSearchPost>,
+    ) -> crate::DataForSeoApiResponse<crate::entity::AppDataApiAppListingsSearchResult> {
+        self.client
+            .http_post("/v3/app_data/google/app_listings/search/live", &data)
+            .await
+    }
 }

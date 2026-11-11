@@ -38,6 +38,14 @@ impl SerpApiYoutube<'_> {
             .http_post("/v3/serp/youtube/video_info/live/advanced", &data)
             .await
     }
+    /// <https://docs.dataforseo.com/v3/serp/youtube/video_info/tasks_fixed/>
+    pub async fn video_info_tasks_fixed(
+        &self,
+    ) -> crate::DataForSeoApiResponse<crate::SerpApiTaskReadyResult> {
+        self.client
+            .http_get("/v3/serp/youtube/video_info/tasks_fixed")
+            .await
+    }
 }
 
 /// Request body for YouTube Video Info task_post / live.

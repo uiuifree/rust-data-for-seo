@@ -13,6 +13,7 @@ mod keywords_data;
 mod merchant;
 mod on_page;
 mod serp;
+mod task_list;
 
 pub use ai_optimization::*;
 pub use app_data::*;
@@ -29,6 +30,7 @@ pub use on_page::*;
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 pub use serp::*;
+pub use task_list::*;
 
 /// Top-level response envelope shared by every DataForSEO endpoint.
 #[derive(Debug, Default, Serialize, Deserialize, Clone)]
@@ -155,14 +157,14 @@ pub enum TaskStatus {
 #[derive(Debug, Default, Serialize, Deserialize, Clone)]
 pub struct SerpApiTaskResult<T> {
     /// Keyword the search was performed for, UTF-8 decoded.
-    pub keyword: String,
+    pub keyword: Option<String>,
     /// Search engine type (e.g. `organic`, `maps`).
     #[serde(rename = "type")]
     pub search_engine_type: Option<String>,
     /// Search engine domain the request was made to (e.g. `google.co.jp`).
     pub se_domain: Option<String>,
     /// Location code used in the task.
-    pub location_code: i32,
+    pub location_code: Option<i32>,
     /// Language code used in the task.
     pub language_code: Option<String>,
     /// Direct URL of the search query.

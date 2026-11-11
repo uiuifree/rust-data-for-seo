@@ -34,6 +34,8 @@ pub struct SerpApiBingOrganicTaskRegular {
     // pub items: Option<Vec<Value>>,
     /// Parsed elements of the result.
     pub items: Option<Vec<SerpApiGoogleOrganicItem>>,
+    /// Number of SERP pages crawled for the result.
+    pub pages_count: Option<i64>,
 }
 /// Bing Organic Task Advanced SERP data model.
 #[derive(Debug, Default, Serialize, Deserialize, Clone)]
@@ -66,4 +68,6 @@ pub struct SerpApiBingOrganicTaskAdvanced {
     // pub items: Option<Vec<Value>>,
     /// Parsed elements of the result.
     pub items: Option<Vec<SerpApiGoogleOrganicItem>>,
+    /// Number of SERP pages crawled for the result.
+    pub pages_count: Option<i64>,
 }

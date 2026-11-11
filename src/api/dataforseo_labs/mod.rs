@@ -83,6 +83,22 @@ impl<'a> DataForSeoLabsApi<'a> {
     pub async fn status(&self) -> DataForSeoApiResponse<DataForSeoLabsStatus> {
         self.client.http_get("/v3/dataforseo_labs/status").await
     }
+    /// <https://docs.dataforseo.com/v3/dataforseo_labs/available_filters/>
+    pub async fn available_filters(&self) -> crate::DataForSeoApiResponse<serde_json::Value> {
+        self.client
+            .http_get("/v3/dataforseo_labs/available_filters")
+            .await
+    }
+    /// Lists the Labs tasks that returned an error in the last 7 days.
+    /// See <https://docs.dataforseo.com/v3/dataforseo_labs/errors/>.
+    pub async fn errors(
+        &self,
+        data: Vec<crate::entity::DataForSeoErrorsRequest>,
+    ) -> crate::DataForSeoApiResponse<crate::entity::DataForSeoErrorItem> {
+        self.client
+            .http_post("/v3/dataforseo_labs/errors", &data)
+            .await
+    }
 }
 
 /// Request body for the `id_list` endpoint.

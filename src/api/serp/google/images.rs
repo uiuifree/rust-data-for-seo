@@ -50,6 +50,17 @@ impl SerpApiGoogle<'_> {
             .http_post("/v3/serp/google/images/live/advanced", &data)
             .await
     }
+    /// <https://docs.dataforseo.com/v3/serp/google/images/live/html/>
+    pub async fn images_live_html(
+        &self,
+        data: Vec<SerpApiGoogleImagesTaskPostRequest>,
+    ) -> crate::DataForSeoApiResponse<
+        crate::entity::SerpApiSearchResult<crate::entity::SerpApiHtmlItem>,
+    > {
+        self.client
+            .http_post("/v3/serp/google/images/live/html", &data)
+            .await
+    }
 }
 
 /// Request body for Google Images task_post / live.

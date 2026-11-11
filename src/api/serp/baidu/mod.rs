@@ -31,7 +31,7 @@ impl SerpApiBaidu<'_> {
     }
     /// <https://docs.dataforseo.com/v3/serp/baidu/organic/tasks_ready/>
     pub async fn organic_tasks_ready(&self) -> DataForSeoApiResponse<SerpApiTaskReadyResult> {
-        self.client.serp().task_ready_se("baidu").await
+        self.client.serp().task_ready_se("baidu/organic").await
     }
     /// <https://docs.dataforseo.com/v3/serp/baidu/organic/task_get/advanced/>
     pub async fn organic_task_get_advanced(
@@ -49,6 +49,42 @@ impl SerpApiBaidu<'_> {
     ) -> DataForSeoApiResponse<SerpApiBaiduOrganicTaskHtml> {
         self.client
             .http_get(format!("/v3/serp/baidu/organic/task_get/html/{id}").as_str())
+            .await
+    }
+    /// <https://docs.dataforseo.com/v3/serp/baidu/locations/>
+    pub async fn locations(&self) -> crate::DataForSeoApiResponse<crate::SerpApiLocation> {
+        self.client.http_get("/v3/serp/baidu/locations").await
+    }
+    /// <https://docs.dataforseo.com/v3/serp/baidu/locations/>
+    pub async fn locations_country(
+        &self,
+        country: &str,
+    ) -> crate::DataForSeoApiResponse<crate::SerpApiLocation> {
+        self.client
+            .http_get(&format!("/v3/serp/baidu/locations/{country}"))
+            .await
+    }
+    /// <https://docs.dataforseo.com/v3/serp/baidu/languages/>
+    pub async fn languages(&self) -> crate::DataForSeoApiResponse<crate::entity::SerpApiLanguage> {
+        self.client.http_get("/v3/serp/baidu/languages").await
+    }
+    /// <https://docs.dataforseo.com/v3/serp/baidu/organic/tasks_fixed/>
+    pub async fn organic_tasks_fixed(
+        &self,
+    ) -> crate::DataForSeoApiResponse<crate::SerpApiTaskReadyResult> {
+        self.client
+            .http_get("/v3/serp/baidu/organic/tasks_fixed")
+            .await
+    }
+    /// <https://docs.dataforseo.com/v3/serp/baidu/organic/task_get/regular/>
+    pub async fn organic_task_get_regular(
+        &self,
+        id: &str,
+    ) -> crate::DataForSeoApiResponse<
+        crate::entity::SerpApiSearchResult<crate::entity::SerpApiGoogleOrganicItem>,
+    > {
+        self.client
+            .http_get(&format!("/v3/serp/baidu/organic/task_get/regular/{id}"))
             .await
     }
 }

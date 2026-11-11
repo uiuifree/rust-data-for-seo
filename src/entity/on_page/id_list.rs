@@ -14,7 +14,7 @@ pub struct OnPageDataApiIdList {
     /// Date and time the task was completed (UTC).
     pub datetime_done: Option<String>,
     /// Current status of the task.
-    pub status: Option<String>,
+    pub status: Option<serde_json::Value>,
     /// Cost of the task in USD.
     pub cost: Option<f64>,
     /// Additional metadata describing the task parameters.

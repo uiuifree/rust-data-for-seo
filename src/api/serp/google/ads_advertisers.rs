@@ -33,6 +33,23 @@ impl SerpApiGoogle<'_> {
             .http_get(format!("/v3/serp/google/ads_advertisers/task_get/advanced/{id}").as_str())
             .await
     }
+    /// <https://docs.dataforseo.com/v3/serp/google/ads_advertisers/locations/>
+    pub async fn ads_advertisers_locations(
+        &self,
+    ) -> crate::DataForSeoApiResponse<crate::SerpApiLocation> {
+        self.client
+            .http_get("/v3/serp/google/ads_advertisers/locations")
+            .await
+    }
+    /// <https://docs.dataforseo.com/v3/serp/google/ads_advertisers/live/advanced/>
+    pub async fn ads_advertisers_live_advanced(
+        &self,
+        data: Vec<SerpApiGoogleAdsAdvertisersTaskPostRequest>,
+    ) -> crate::DataForSeoApiResponse<crate::entity::SerpApiGoogleAdsAdvertisersTaskAdvanced> {
+        self.client
+            .http_post("/v3/serp/google/ads_advertisers/live/advanced", &data)
+            .await
+    }
 }
 
 /// Request body for Google Ads Advertisers task_post.

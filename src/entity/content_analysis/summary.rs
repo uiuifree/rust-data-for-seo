@@ -20,18 +20,18 @@ pub struct ContentAnalysisApiSummary {
     pub top_domains: Option<Vec<ContentAnalysisTopDomain>>,
     /// Citation count per sentiment connotation (anger, happiness, love,
     /// sadness, share, fun).
-    pub sentiment_connotations: Option<HashMap<String, f64>>,
+    pub sentiment_connotations: Option<HashMap<String, Option<f64>>>,
     /// Citation count per sentiment polarity (positive, negative, neutral).
-    pub connotation_types: Option<HashMap<String, f64>>,
+    pub connotation_types: Option<HashMap<String, Option<f64>>>,
     /// Text categories, each with its citation count.
     pub text_categories: Option<Vec<ContentAnalysisCategoryCount>>,
     /// Page categories, each with its citation count.
     pub page_categories: Option<Vec<ContentAnalysisCategoryCount>>,
     /// Citation count per page type (ecommerce, news, blogs, message-boards,
     /// organization).
-    pub page_types: Option<HashMap<String, i64>>,
+    pub page_types: Option<HashMap<String, Option<i64>>>,
     /// Citation count per country, keyed by ISO country code.
-    pub countries: Option<HashMap<String, i64>>,
+    pub countries: Option<HashMap<String, Option<i64>>>,
     /// Citation count per language, keyed by language code.
-    pub languages: Option<HashMap<String, i64>>,
+    pub languages: Option<HashMap<String, Option<i64>>>,
 }

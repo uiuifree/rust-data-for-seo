@@ -105,4 +105,15 @@ impl BusinessDataApiTripadvisor<'_> {
             ))
             .await
     }
+    /// <https://docs.dataforseo.com/v3/business_data/tripadvisor/locations/>
+    pub async fn locations_country(
+        &self,
+        country: &str,
+    ) -> crate::DataForSeoApiResponse<crate::SerpApiLocation> {
+        self.client
+            .http_get(&format!(
+                "/v3/business_data/tripadvisor/locations/{country}"
+            ))
+            .await
+    }
 }

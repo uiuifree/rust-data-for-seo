@@ -25,7 +25,7 @@ pub struct SerpApiElementLocalPack {
     /// URL to make a booking or reservation.
     pub booking_url: Option<String>,
     /// `true` if the result is a paid placement.
-    pub is_paid: Option<String>,
+    pub is_paid: Option<bool>,
     /// Aggregate rating shown for the result.
     pub rating: Option<SerpApiRating>,
     /// Google CID identifier of the entity.

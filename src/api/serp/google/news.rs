@@ -50,6 +50,15 @@ impl SerpApiGoogle<'_> {
             .http_post("/v3/serp/google/news/live/advanced", &data)
             .await
     }
+    /// <https://docs.dataforseo.com/v3/serp/google/news/live/html/>
+    pub async fn news_live_html(
+        &self,
+        data: Vec<SerpApiGoogleNewsTaskPostRequest>,
+    ) -> crate::DataForSeoApiResponse<crate::entity::SerpApiGoogleNewsTaskHtml> {
+        self.client
+            .http_post("/v3/serp/google/news/live/html", &data)
+            .await
+    }
 }
 
 /// Request body for Google News task_post / live.

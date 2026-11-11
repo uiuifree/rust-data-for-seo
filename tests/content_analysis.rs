@@ -99,7 +99,7 @@ mod deserialize {
         assert_eq!(item.score, Some(12.5));
         assert_eq!(item.page_types.as_ref().unwrap(), &["blogs"]);
         let rating = &item.ratings.as_ref().unwrap()[0];
-        assert_eq!(rating.rating_value.as_deref(), Some("4.5"));
+        assert_eq!(rating.rating_value.as_ref().unwrap(), "4.5");
         let content = item.content_info.as_ref().unwrap();
         assert_eq!(content.title.as_deref(), Some("Great product"));
         assert_eq!(
@@ -108,11 +108,17 @@ mod deserialize {
                 .as_ref()
                 .unwrap()
                 .get("happiness"),
-            Some(&0.8)
+            Some(&Some(0.8))
         );
         assert_eq!(
-            content.rating.as_ref().unwrap().rating_count.as_deref(),
-            Some("20")
+            content
+                .rating
+                .as_ref()
+                .unwrap()
+                .rating_count
+                .as_ref()
+                .unwrap(),
+            "20"
         );
     }
 
@@ -160,7 +166,10 @@ mod deserialize {
         );
         assert_eq!(result.total_count, Some(500));
         assert_eq!(result.top_domains.as_ref().unwrap()[0].count, Some(12));
-        assert_eq!(result.page_types.as_ref().unwrap().get("blogs"), Some(&30));
+        assert_eq!(
+            result.page_types.as_ref().unwrap().get("blogs"),
+            Some(&Some(30))
+        );
         assert_eq!(
             result.text_categories.as_ref().unwrap()[0]
                 .category
@@ -168,7 +177,10 @@ mod deserialize {
                 .unwrap(),
             &[10001, 10002]
         );
-        assert_eq!(result.countries.as_ref().unwrap().get("US"), Some(&40));
+        assert_eq!(
+            result.countries.as_ref().unwrap().get("US"),
+            Some(&Some(40))
+        );
     }
 
     #[test]
@@ -272,7 +284,7 @@ mod deserialize {
         assert_eq!(metrics.total_count, Some(75));
         assert_eq!(
             metrics.page_types.as_ref().unwrap().get("ecommerce"),
-            Some(&75)
+            Some(&Some(75))
         );
     }
 

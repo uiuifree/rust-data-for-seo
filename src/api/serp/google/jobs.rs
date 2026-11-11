@@ -45,15 +45,6 @@ impl SerpApiGoogle<'_> {
             .http_get(format!("/v3/serp/google/jobs/task_get/html/{id}").as_str())
             .await
     }
-    /// <https://docs.dataforseo.com/v3/serp/google/jobs/live/advanced/>
-    pub async fn jobs_live_advanced(
-        &self,
-        data: Vec<SerpApiGoogleJobsTaskPostRequest>,
-    ) -> DataForSeoApiResponse<SerpApiGoogleJobAdvanced> {
-        self.client
-            .http_post("/v3/serp/google/jobs/live/advanced", &data)
-            .await
-    }
 }
 
 /// Request body for Google Jobs task_post / live.

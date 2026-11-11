@@ -30,6 +30,8 @@ impl AiOptimizationApiLlmMentions<'_> {
 
     /// Returns individual mentions matching the targets.
     ///
+    /// Legacy path; new integrations should use [`Self::search_mentions`].
+    ///
     /// `POST /v3/ai_optimization/llm_mentions/search/live`
     /// See <https://docs.dataforseo.com/v3/ai_optimization/llm_mentions/search/live/>.
     pub async fn search(
@@ -63,7 +65,7 @@ impl AiOptimizationApiLlmMentions<'_> {
     pub async fn target_metrics_lite(
         &self,
         data: Vec<AiOptimizationLlmMentionsMetricsPost>,
-    ) -> DataForSeoApiResponse<AiOptimizationLlmMentionsMetrics> {
+    ) -> DataForSeoApiResponse<crate::entity::AiOptimizationLlmMentionsMetricsLite> {
         self.client
             .http_post(
                 "/v3/ai_optimization/llm_mentions/target_metrics_lite/live",
@@ -110,7 +112,7 @@ impl AiOptimizationApiLlmMentions<'_> {
     pub async fn top_mentioned_pages_lite(
         &self,
         data: Vec<AiOptimizationLlmMentionsTopMentionedPost>,
-    ) -> DataForSeoApiResponse<AiOptimizationLlmMentionsMetrics> {
+    ) -> DataForSeoApiResponse<crate::entity::AiOptimizationLlmMentionsMetricsLite> {
         self.client
             .http_post(
                 "/v3/ai_optimization/llm_mentions/top_mentioned_pages_lite/live",
@@ -141,7 +143,7 @@ impl AiOptimizationApiLlmMentions<'_> {
     pub async fn top_mentioned_domains_lite(
         &self,
         data: Vec<AiOptimizationLlmMentionsTopMentionedPost>,
-    ) -> DataForSeoApiResponse<AiOptimizationLlmMentionsMetrics> {
+    ) -> DataForSeoApiResponse<crate::entity::AiOptimizationLlmMentionsMetricsLite> {
         self.client
             .http_post(
                 "/v3/ai_optimization/llm_mentions/top_mentioned_domains_lite/live",
@@ -172,7 +174,7 @@ impl AiOptimizationApiLlmMentions<'_> {
     pub async fn top_mentioned_brands_lite(
         &self,
         data: Vec<AiOptimizationLlmMentionsTopMentionedPost>,
-    ) -> DataForSeoApiResponse<AiOptimizationLlmMentionsMetrics> {
+    ) -> DataForSeoApiResponse<crate::entity::AiOptimizationLlmMentionsMetricsLite> {
         self.client
             .http_post(
                 "/v3/ai_optimization/llm_mentions/top_mentioned_brands_lite/live",
@@ -203,7 +205,7 @@ impl AiOptimizationApiLlmMentions<'_> {
     pub async fn top_mentioned_brand_categories_lite(
         &self,
         data: Vec<AiOptimizationLlmMentionsTopMentionedPost>,
-    ) -> DataForSeoApiResponse<AiOptimizationLlmMentionsMetrics> {
+    ) -> DataForSeoApiResponse<crate::entity::AiOptimizationLlmMentionsMetricsLite> {
         self.client
             .http_post(
                 "/v3/ai_optimization/llm_mentions/top_mentioned_brand_categories_lite/live",
@@ -252,6 +254,25 @@ impl AiOptimizationApiLlmMentions<'_> {
         self.client
             .http_post(
                 "/v3/ai_optimization/llm_mentions/timeseries_new_lost/live",
+                &data,
+            )
+            .await
+    }
+    /// <https://docs.dataforseo.com/v3/ai_optimization/llm_mentions/available_filters/>
+    pub async fn available_filters(&self) -> crate::DataForSeoApiResponse<serde_json::Value> {
+        self.client
+            .http_get("/v3/ai_optimization/llm_mentions/available_filters")
+            .await
+    }
+    /// Searches LLM mentions of the given targets.
+    /// See <https://docs.dataforseo.com/v3/ai_optimization/llm_mentions/search_mentions/live/>.
+    pub async fn search_mentions(
+        &self,
+        data: Vec<AiOptimizationLlmMentionsSearchPost>,
+    ) -> crate::DataForSeoApiResponse<crate::entity::AiOptimizationLlmMentionsSearch> {
+        self.client
+            .http_post(
+                "/v3/ai_optimization/llm_mentions/search_mentions/live",
                 &data,
             )
             .await
